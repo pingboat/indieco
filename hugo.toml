@@ -1,0 +1,7 @@
+baseURL = 'https://indieco.in/'
+languageCode = 'en-us'
+title = 'indieco'
+
+[params]
+  description = "Growth partner for founders building brands that last."
+  author = "indieco"
