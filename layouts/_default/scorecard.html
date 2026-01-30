@@ -50,6 +50,7 @@
 </main>
 
 <script>
+{{
 // Questions data
 const questions = [
     {
@@ -240,18 +241,13 @@ function showQuestion(index) {
     const q = questions[index];
     
     let optionsHtml = q.options.map((opt, i) => 
-        <button class="option-btn" onclick="selectOption(${index}, ${i})">
-            ${opt.text}
-        </button>
+        '<button class="option-btn" onclick="selectOption(' + index + ', ' + i + ')">' + opt.text + '</button>'
     ).join('');
     
     container.innerHTML = 
-        <p class="question-number">Question ${index + 1} of ${questions.length}</p>
-        <h2 class="question-text">${q.question}</h2>
-        <div class="options">
-            ${optionsHtml}
-        </div>
-    ;
+        '<p class="question-number">Question ' + (index + 1) + ' of ' + questions.length + '</p>' +
+        '<h2 class="question-text">' + q.question + '</h2>' +
+        '<div class="options">' + optionsHtml + '</div>';
     
     // Update progress
     const progress = ((index) / questions.length) * 100;
@@ -321,9 +317,9 @@ document.getElementById('email-form').addEventListener('submit', function(e) {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData).toString()
-    }).then(() => {
+    }).then(function() {
         showResult();
-    }).catch(() => {
+    }).catch(function() {
         // Show result anyway if form fails
         showResult();
     });
@@ -336,16 +332,16 @@ function showResult() {
     const resultType = document.getElementById('result-type').value;
     const result = results[resultType];
     
-    document.getElementById('result-card').innerHTML =  
-        <p class="result-label">Your result</p>
-        <h2 class="result-title">${result.title}</h2>
-        <p class="result-subtitle">${result.subtitle}</p>
-        <p class="result-description">${result.description}</p>
-        <div class="result-cta">
-            <a href="/#waitlist" class="btn btn-primary">${result.cta}</a>
-            <a href="/" class="btn btn-secondary">Back to home</a>
-        </div>
-     ;
+    document.getElementById('result-card').innerHTML = 
+        '<p class="result-label">Your result</p>' +
+        '<h2 class="result-title">' + result.title + '</h2>' +
+        '<p class="result-subtitle">' + result.subtitle + '</p>' +
+        '<p class="result-description">' + result.description + '</p>' +
+        '<div class="result-cta">' +
+            '<a href="/#waitlist" class="btn btn-primary">' + result.cta + '</a>' +
+            '<a href="/" class="btn btn-secondary">Back to home</a>' +
+        '</div>';
 }
+}}
 </script>
 {{ end }}
