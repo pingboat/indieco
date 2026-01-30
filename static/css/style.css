@@ -3,14 +3,17 @@
    ======================================== */
 
 :root {
+    --color-primary: #2d3a8c;
+    --color-accent: #f5a623;
     --color-bg: #fafaf9;
     --color-text: #1c1917;
     --color-text-muted: #57534e;
     --color-border: #e7e5e4;
-    --color-accent: #1c1917;
-    --color-accent-hover: #44403c;
+    --color-primary-hover: #232d6e;
+    --color-accent-hover: #d99115;
     
-    --font-serif: 'Instrument Serif', Georgia, serif;
+    --font-logo: 'Nunito Sans', sans-serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
     --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     
     --space-xs: 0.5rem;
@@ -159,22 +162,21 @@ body {
 }
 
 .btn-primary {
-    background-color: var(--color-accent);
-    color: var(--color-bg);
+    background-color: var(--color-primary);
+    color: #fff;
 }
 
 .btn-primary:hover {
-    background-color: var(--color-accent-hover);
+    background-color: var(--color-primary-hover);
 }
 
 .btn-secondary {
-    background-color: transparent;
+    background-color: var(--color-accent);
     color: var(--color-text);
-    border: 1px solid var(--color-border);
 }
 
 .btn-secondary:hover {
-    border-color: var(--color-text);
+    background-color: var(--color-accent-hover);
 }
 
 /* Waitlist */
