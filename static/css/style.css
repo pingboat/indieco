@@ -12,7 +12,7 @@
     --color-primary-hover: #232d6e;
     --color-accent-hover: #d99115;
     
-    --font-logo: 'Nunito Sans', sans-serif;
+    --font-logo: 'Poppins', sans-serif;
     --font-serif: 'Playfair Display', Georgia, serif;
     --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     
@@ -234,6 +234,36 @@ body {
 .footer p {
     font-size: 0.85rem;
     color: var(--color-text-muted);
+}
+
+/* Center alignment for key sections */
+.hero {
+    text-align: center;
+}
+
+.credibility {
+    text-align: center;
+}
+
+.cta {
+    text-align: center;
+}
+
+.cta-buttons {
+    justify-content: center;
+}
+
+.waitlist {
+    text-align: center;
+}
+
+.waitlist-form {
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.footer {
+    text-align: center;
 }
 
 /* ========================================
