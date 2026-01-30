@@ -1,68 +1,112 @@
 {{ define "main" }}
-<main class="container">
+<main>
     <!-- Header -->
     <header class="header">
-        <div class="logo">indieco</div>
+        <div class="container">
+            <a href="/" class="logo">indieco</a>
+        </div>
     </header>
 
     <!-- Hero -->
     <section class="hero">
-        <h1 class="hero-title">Growth partner for founders building brands that last.</h1>
+        <div class="container">
+            <h1 class="hero-headline">Growth partner for founders building brands that last.</h1>
+            <p class="hero-tagline">Strategy. Positioning. Traction.</p>
+        </div>
     </section>
 
     <!-- Framework -->
     <section class="framework">
-        <h2 class="framework-title">The Integral Game Framework</h2>
-        
-        <div class="services">
-            <div class="service">
-                <h3 class="service-name">Founder Clarity</h3>
-                <p class="service-desc">Too many ideas? Get one clear path forward.</p>
-            </div>
-            
-            <div class="service">
-                <h3 class="service-name">Brand Positioning</h3>
-                <p class="service-desc">Can't articulate your difference? Get a story that attracts.</p>
-            </div>
-            
-            <div class="service">
-                <h3 class="service-name">GTM Blueprint</h3>
-                <p class="service-desc">Product but no customers? Get a traction playbook.</p>
-            </div>
-            
-            <div class="service">
-                <h3 class="service-name">Investor Readiness</h3>
-                <p class="service-desc">Need to raise? Get your pitch and deck ready.</p>
+        <div class="container">
+            <p class="framework-label">THE INTEGRAL GAME FRAMEWORK</p>
+            <blockquote class="framework-quote">
+                "We spend too much time trying to win the game — and too little figuring out which game to play."
+            </blockquote>
+
+            <div class="services-grid">
+                <!-- Founder Clarity -->
+                <div class="service-card">
+                    <div class="service-icon icon-clarity">
+                        <div class="circle"></div>
+                        <div class="ray ray-1"></div>
+                        <div class="ray ray-2"></div>
+                        <div class="ray ray-3"></div>
+                        <div class="ray ray-4"></div>
+                    </div>
+                    <span class="service-number">01</span>
+                    <h3 class="service-title">Founder Clarity</h3>
+                    <p class="service-desc">Too many ideas? Get one clear path forward.</p>
+                </div>
+
+                <!-- Brand Positioning -->
+                <div class="service-card">
+                    <div class="service-icon icon-positioning">
+                        <div class="triangle"></div>
+                    </div>
+                    <span class="service-number">02</span>
+                    <h3 class="service-title">Brand Positioning</h3>
+                    <p class="service-desc">Can't articulate your difference? Get a story that attracts.</p>
+                </div>
+
+                <!-- GTM Blueprint -->
+                <div class="service-card">
+                    <div class="service-icon icon-gtm">
+                        <div class="arrow"></div>
+                    </div>
+                    <span class="service-number">03</span>
+                    <h3 class="service-title">GTM Blueprint</h3>
+                    <p class="service-desc">Product but no customers? Get a traction playbook.</p>
+                </div>
+
+                <!-- Investor Readiness -->
+                <div class="service-card">
+                    <div class="service-icon icon-investor">
+                        <div class="bar bar-1"></div>
+                        <div class="bar bar-2"></div>
+                        <div class="bar bar-3"></div>
+                    </div>
+                    <span class="service-number">04</span>
+                    <h3 class="service-title">Investor Readiness</h3>
+                    <p class="service-desc">Need to raise? Get your pitch and deck ready.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Credibility -->
     <section class="credibility">
-        <p>Built brands serving 25+ countries. Implemented systems for Deutsche Bank, SBI, Starbucks.</p>
+        <div class="container">
+            <p>Built brands serving <strong>25+ countries</strong>. Implemented systems for <strong>Deutsche Bank</strong>, <strong>SBI</strong>, <strong>Starbucks</strong>.</p>
+        </div>
     </section>
 
     <!-- CTA -->
     <section class="cta">
-        <div class="cta-buttons">
-            <a href="#waitlist" class="btn btn-primary">Join the waiting list</a>
-            <a href="/scorecard/" class="btn btn-secondary">Take the Founder Scorecard</a>
+        <div class="container">
+            <div class="cta-buttons">
+                <a href="#waitlist" class="btn btn-primary">Join the waiting list</a>
+                <a href="/scorecard/" class="btn btn-secondary">Take the Founder Scorecard</a>
+            </div>
         </div>
     </section>
 
-    <!-- Waitlist Form -->
-    <section id="waitlist" class="waitlist">
-        <h3>Join the waiting list</h3>
-        <p>We work with a limited number of founders each quarter.</p>
-        <form class="waitlist-form" name="waitlist" method="POST" data-netlify="true">
-            <input type="email" name="email" placeholder="Your email" required>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+    <!-- Waitlist -->
+    <section class="waitlist" id="waitlist">
+        <div class="container">
+            <h2 class="waitlist-title">Join the waiting list</h2>
+            <p class="waitlist-subtitle">We work with a limited number of founders each quarter.</p>
+            <form class="waitlist-form" name="waitlist" method="POST" data-netlify="true">
+                <input type="email" name="email" placeholder="Your email" required>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; indieco. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; indieco. All rights reserved.</p>
+        </div>
     </footer>
 </main>
 {{ end }}
