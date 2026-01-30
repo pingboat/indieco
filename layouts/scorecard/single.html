@@ -9,7 +9,7 @@
     <section class="scorecard-intro" id="intro">
         <h1 class="scorecard-title">The Founder Readiness Scorecard</h1>
         <p class="scorecard-subtitle">Find out where you are in your journey — and what to focus on next.</p>
-        <p class="scorecard-meta">10 questions · 2 minutes</p>
+        <p class="scorecard-meta">15 questions · 3 minutes</p>
         <button class="btn btn-primary" onclick="startScorecard()">Start the scorecard</button>
     </section>
 
@@ -54,33 +54,79 @@
 const questions = [
     {
         id: 1,
-        question: "When someone asks what you're building, how do you feel?",
+        question: "What stage is your business at right now?",
         options: [
-            { text: "Confident — I nail it every time", scores: { clarity: 2, positioning: 2 } },
-            { text: "Okay — but I ramble a bit", scores: { clarity: 1, positioning: 0 } },
-            { text: "Awkward — I'm still figuring it out", scores: { clarity: 0, positioning: 0 } }
+            { text: "Idea stage", scores: { clarity: 0 } },
+            { text: "Prototype or MVP", scores: { clarity: 1 } },
+            { text: "Live with some customers", scores: { clarity: 2, gtm: 1 } },
+            { text: "Stable revenue", scores: { clarity: 2, gtm: 2, investor: 1 } }
         ]
     },
     {
         id: 2,
-        question: "How many ideas are you actively working on right now?",
+        question: "How many co-founders are on your team?",
         options: [
-            { text: "One — I'm laser focused", scores: { clarity: 2 } },
-            { text: "Two or three — they're related", scores: { clarity: 1 } },
-            { text: "Too many — I can't say no", scores: { clarity: 0 } }
+            { text: "Just me", scores: {} },
+            { text: "2", scores: {} },
+            { text: "3 or more", scores: {} }
         ]
     },
     {
         id: 3,
-        question: "If I asked your last 5 customers why they bought from you, would their answers match?",
+        question: "Can you pitch your business in 20 seconds — clearly and confidently?",
         options: [
-            { text: "Yes — they'd all say the same thing", scores: { positioning: 2 } },
-            { text: "Mostly — with some variation", scores: { positioning: 1 } },
-            { text: "No idea — I haven't asked", scores: { positioning: 0 } }
+            { text: "Yes, I nail it every time", scores: { clarity: 2, positioning: 2 } },
+            { text: "Sort of, but I ramble", scores: { clarity: 1, positioning: 1 } },
+            { text: "Not really, still figuring it out", scores: { clarity: 0, positioning: 0 } }
         ]
     },
     {
         id: 4,
+        question: "How many ideas or directions are you actively pursuing right now?",
+        options: [
+            { text: "One clear focus", scores: { clarity: 2 } },
+            { text: "Two or three related bets", scores: { clarity: 1 } },
+            { text: "Too many to count", scores: { clarity: 0 } }
+        ]
+    },
+    {
+        id: 5,
+        question: "Do you have a clear 90-day priority?",
+        options: [
+            { text: "Yes, I know exactly what to focus on", scores: { clarity: 2 } },
+            { text: "Sort of, but I get distracted", scores: { clarity: 1 } },
+            { text: "No, every week feels different", scores: { clarity: 0 } }
+        ]
+    },
+    {
+        id: 6,
+        question: "Do you have a branding kit (logo, colors, messaging) you're proud of?",
+        options: [
+            { text: "Yes, it's solid", scores: { positioning: 2 } },
+            { text: "Partial, needs work", scores: { positioning: 1 } },
+            { text: "No, it's a mess or doesn't exist", scores: { positioning: 0 } }
+        ]
+    },
+    {
+        id: 7,
+        question: "If I asked your last 5 customers why they chose you, would their answers match?",
+        options: [
+            { text: "Yes, same reason every time", scores: { positioning: 2 } },
+            { text: "Mostly, with some variation", scores: { positioning: 1 } },
+            { text: "No idea — haven't asked", scores: { positioning: 0 } }
+        ]
+    },
+    {
+        id: 8,
+        question: "How different is your offering from competitors?",
+        options: [
+            { text: "Very — we own a unique space", scores: { positioning: 2 } },
+            { text: "Somewhat — we have a few edges", scores: { positioning: 1 } },
+            { text: "Not much — we compete on price or hustle", scores: { positioning: 0 } }
+        ]
+    },
+    {
+        id: 9,
         question: "How would you describe your customer acquisition right now?",
         options: [
             { text: "Predictable — I know what works", scores: { gtm: 2 } },
@@ -89,58 +135,58 @@ const questions = [
         ]
     },
     {
-        id: 5,
-        question: "Do you have a clear 90-day priority?",
+        id: 10,
+        question: "Do you have these assets ready: website, social profiles, pitch deck?",
         options: [
-            { text: "Yes — I know exactly what to focus on", scores: { clarity: 2 } },
-            { text: "Sort of — but I get distracted", scores: { clarity: 1 } },
-            { text: "No — every week feels different", scores: { clarity: 0 } }
+            { text: "All three, polished", scores: { gtm: 2, investor: 2 } },
+            { text: "One or two, decent", scores: { gtm: 1, investor: 1 } },
+            { text: "None or very rough", scores: { gtm: 0, investor: 0 } }
         ]
     },
     {
-        id: 6,
-        question: "How different is your product/service from competitors?",
+        id: 11,
+        question: "Are you looking to raise external funding in the next 6 months?",
         options: [
-            { text: "Very — we own a unique space", scores: { positioning: 2 } },
-            { text: "Somewhat — we have a few edges", scores: { positioning: 1 } },
-            { text: "Not much — we compete on price or hustle", scores: { positioning: 0 } }
+            { text: "Yes, actively", scores: { investor: 0 } },
+            { text: "Maybe, exploring", scores: { investor: 1 } },
+            { text: "No, not right now", scores: { investor: 2 } }
         ]
     },
     {
-        id: 7,
-        question: "What's your biggest bottleneck right now?",
-        options: [
-            { text: "Getting more customers", scores: { gtm: 0 } },
-            { text: "Explaining what makes us different", scores: { positioning: 0 } },
-            { text: "Knowing what to focus on", scores: { clarity: 0 } },
-            { text: "Raising capital", scores: { investor: 0 } }
-        ]
-    },
-    {
-        id: 8,
+        id: 12,
         question: "If an investor asked for your deck tomorrow, what would you send?",
         options: [
             { text: "A polished deck — ready to go", scores: { investor: 2 } },
             { text: "A rough draft — needs work", scores: { investor: 1 } },
-            { text: "Nothing — I'd have to start from scratch", scores: { investor: 0 } }
+            { text: "Nothing — I'd start from scratch", scores: { investor: 0 } }
         ]
     },
     {
-        id: 9,
-        question: "How do you feel about your pricing?",
+        id: 13,
+        question: "What is the highest ambition for your company?",
         options: [
-            { text: "Confident — it reflects our value", scores: { positioning: 2, gtm: 1 } },
-            { text: "Uncertain — I wonder if it's too low", scores: { positioning: 1 } },
-            { text: "Lost — I just guessed", scores: { positioning: 0 } }
+            { text: "Build a lifestyle business", scores: {} },
+            { text: "Build and scale to exit", scores: {} },
+            { text: "Build a generational company", scores: {} }
         ]
     },
     {
-        id: 10,
-        question: "What stage feels most accurate for you?",
+        id: 14,
+        question: "How urgent is this for you?",
         options: [
-            { text: "Pre-launch — still building", scores: { clarity: 0 } },
-            { text: "Early — some customers, finding footing", scores: { gtm: 0, positioning: 0 } },
-            { text: "Growing — traction, ready to scale or raise", scores: { investor: 1, gtm: 1 } }
+            { text: "Very urgent — I need to move now", scores: {} },
+            { text: "Moderate — want progress in 3–6 months", scores: {} },
+            { text: "Not urgent — just exploring", scores: {} }
+        ]
+    },
+    {
+        id: 15,
+        question: "What's your single biggest challenge right now?",
+        options: [
+            { text: "Knowing what to focus on", scores: { clarity: -3 } },
+            { text: "Articulating what makes us different", scores: { positioning: -3 } },
+            { text: "Getting more customers", scores: { gtm: -3 } },
+            { text: "Raising capital", scores: { investor: -3 } }
         ]
     }
 ];
@@ -180,6 +226,7 @@ const results = {
 // State
 let currentQuestion = 0;
 let scores = { clarity: 0, positioning: 0, gtm: 0, investor: 0 };
+let answers = [];
 
 // Functions
 function startScorecard() {
@@ -192,19 +239,19 @@ function showQuestion(index) {
     const container = document.getElementById('question-container');
     const q = questions[index];
     
-    let optionsHtml = q.options.map((opt, i) => `
+    let optionsHtml = q.options.map((opt, i) => 
         <button class="option-btn" onclick="selectOption(${index}, ${i})">
             ${opt.text}
         </button>
-    `).join('');
+    ).join('');
     
-    container.innerHTML = `
+    container.innerHTML = 
         <p class="question-number">Question ${index + 1} of ${questions.length}</p>
         <h2 class="question-text">${q.question}</h2>
         <div class="options">
             ${optionsHtml}
         </div>
-    `;
+    ;
     
     // Update progress
     const progress = ((index) / questions.length) * 100;
@@ -213,6 +260,12 @@ function showQuestion(index) {
 
 function selectOption(questionIndex, optionIndex) {
     const option = questions[questionIndex].options[optionIndex];
+    
+    // Store answer
+    answers[questionIndex] = {
+        question: questions[questionIndex].question,
+        answer: option.text
+    };
     
     // Add scores
     if (option.scores) {
@@ -234,6 +287,9 @@ function showEmailCapture() {
     document.getElementById('questions').style.display = 'none';
     document.getElementById('email-capture').style.display = 'block';
     
+    // Update progress to 100%
+    document.getElementById('progress').style.width = '100%';
+    
     // Calculate result
     const resultType = calculateResult();
     document.getElementById('result-type').value = resultType;
@@ -250,11 +306,6 @@ function calculateResult() {
             lowestScore = scores[key];
             lowest = key;
         }
-    }
-    
-    // Special case: if they indicated raising capital as bottleneck and have decent other scores
-    if (scores.investor <= 2 && scores.clarity >= 3 && scores.positioning >= 3) {
-        return 'investor';
     }
     
     return lowest;
@@ -285,7 +336,7 @@ function showResult() {
     const resultType = document.getElementById('result-type').value;
     const result = results[resultType];
     
-    document.getElementById('result-card').innerHTML = `
+    document.getElementById('result-card').innerHTML =  
         <p class="result-label">Your result</p>
         <h2 class="result-title">${result.title}</h2>
         <p class="result-subtitle">${result.subtitle}</p>
@@ -294,7 +345,7 @@ function showResult() {
             <a href="/#waitlist" class="btn btn-primary">${result.cta}</a>
             <a href="/" class="btn btn-secondary">Back to home</a>
         </div>
-    `;
+     ;
 }
 </script>
 {{ end }}
