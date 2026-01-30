@@ -236,6 +236,36 @@ body {
     color: var(--color-text-muted);
 }
 
+/* Center alignment for key sections */
+.hero {
+    text-align: center;
+}
+
+.credibility {
+    text-align: center;
+}
+
+.cta {
+    text-align: center;
+}
+
+.cta-buttons {
+    justify-content: center;
+}
+
+.waitlist {
+    text-align: center;
+}
+
+.waitlist-form {
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.footer {
+    text-align: center;
+}
+
 /* ========================================
    Scorecard Styles
    ======================================== */
