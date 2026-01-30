@@ -1,0 +1,68 @@
+{{ define "main" }}
+<main class="container">
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">indieco</div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1 class="hero-title">Growth partner for founders building brands that last.</h1>
+    </section>
+
+    <!-- Framework -->
+    <section class="framework">
+        <h2 class="framework-title">The Integral Game Framework</h2>
+        
+        <div class="services">
+            <div class="service">
+                <h3 class="service-name">Founder Clarity</h3>
+                <p class="service-desc">Too many ideas? Get one clear path forward.</p>
+            </div>
+            
+            <div class="service">
+                <h3 class="service-name">Brand Positioning</h3>
+                <p class="service-desc">Can't articulate your difference? Get a story that attracts.</p>
+            </div>
+            
+            <div class="service">
+                <h3 class="service-name">GTM Blueprint</h3>
+                <p class="service-desc">Product but no customers? Get a traction playbook.</p>
+            </div>
+            
+            <div class="service">
+                <h3 class="service-name">Investor Readiness</h3>
+                <p class="service-desc">Need to raise? Get your pitch and deck ready.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credibility -->
+    <section class="credibility">
+        <p>Built brands serving 25+ countries. Implemented systems for Deutsche Bank, SBI, Starbucks.</p>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-buttons">
+            <a href="#waitlist" class="btn btn-primary">Join the waiting list</a>
+            <a href="/scorecard/" class="btn btn-secondary">Take the Founder Scorecard</a>
+        </div>
+    </section>
+
+    <!-- Waitlist Form -->
+    <section id="waitlist" class="waitlist">
+        <h3>Join the waiting list</h3>
+        <p>We work with a limited number of founders each quarter.</p>
+        <form class="waitlist-form" name="waitlist" method="POST" data-netlify="true">
+            <input type="email" name="email" placeholder="Your email" required>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; indieco. All rights reserved.</p>
+    </footer>
+</main>
+{{ end }}
