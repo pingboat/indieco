@@ -133,7 +133,8 @@ body {
 .credibility p {
     font-size: 1rem;
     color: var(--color-text-muted);
-    max-width: 500px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 /* CTA */
