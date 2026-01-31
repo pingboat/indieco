@@ -363,6 +363,38 @@ strong {
     color: var(--color-text-muted);
 }
 
+.footer-cta {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    text-decoration: underline;
+    margin-bottom: 1rem;
+}
+
+.footer-cta:hover {
+    color: var(--color-accent);
+}
+
+.footer-links {
+    margin-bottom: 1rem;
+}
+
+.footer-links a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: 0.9375rem;
+}
+
+.footer-links a:hover {
+    color: var(--color-primary);
+}
+
+.footer-divider {
+    margin: 0 0.5rem;
+    color: var(--color-text-muted);
+}
+
 /* ===== Scorecard Styles ===== */
 .scorecard-container {
     max-width: var(--max-width-narrow);
