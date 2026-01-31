@@ -309,6 +309,30 @@ strong {
     box-shadow: 0 4px 12px rgba(245, 166, 35, 0.3);
 }
 
+/* ===== About ===== */
+.about {
+    padding: 5rem 0;
+    background-color: var(--color-bg-alt);
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.about p {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto 1rem;
+    line-height: 1.6;
+}
+
+.about p:last-child {
+    margin-bottom: 0;
+}
+
 /* ===== Waitlist ===== */
 .waitlist {
     padding: 5rem 0;
