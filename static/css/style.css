@@ -376,8 +376,11 @@ strong {
 /* ===== Client Logos ===== */
 .clients-logos {
     margin-top: 4rem;
-    padding-top: 3rem;
     text-align: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1rem;
 }
 
 .clients-label {
@@ -390,10 +393,11 @@ strong {
 
 .clients-row {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
-    margin-bottom: 2rem;
+    gap: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .clients-row:last-child {
@@ -401,8 +405,8 @@ strong {
 }
 
 .clients-row img {
-    width: 120px;
-    height: 50px;
+    width: 100px;
+    height: 42px;
     object-fit: contain;
 }
 
