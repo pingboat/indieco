@@ -374,31 +374,29 @@ strong {
     border-color: var(--color-primary);
 }
 
-/* ===== Clients ===== */
-.clients {
-    padding: 4rem 0;
-    background-color: var(--color-bg);
-    border-top: 1px solid var(--color-border);
+/* ===== Client Logos (inside Waitlist) ===== */
+.clients-logos {
+    margin-top: 3rem;
+    text-align: center;
 }
 
 .clients-label {
     font-size: 0.875rem;
     color: var(--color-text-muted);
-    text-align: center;
-    margin-bottom: 2rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
 }
 
-.clients-logos {
+.clients-images {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 2.5rem 3rem;
+    gap: 2rem 2.5rem;
 }
 
-.clients-logos img {
+.clients-images img {
     height: 28px;
     width: auto;
     opacity: 0.7;
@@ -406,7 +404,7 @@ strong {
     transition: opacity 0.2s ease, filter 0.2s ease;
 }
 
-.clients-logos img:hover {
+.clients-images img:hover {
     opacity: 1;
     filter: grayscale(0%);
 }
