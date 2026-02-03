@@ -397,7 +397,7 @@ strong {
 }
 
 .clients-images img {
-    height: 28px;
+    height: 40px;
     width: auto;
     opacity: 0.7;
     filter: grayscale(100%);
