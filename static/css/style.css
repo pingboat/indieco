@@ -389,11 +389,13 @@ strong {
 }
 
 .clients-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 80px);
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    justify-items: center;
+    align-items: center;
     gap: 1.5rem 1rem;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .clients-grid img {
