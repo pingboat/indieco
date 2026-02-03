@@ -376,6 +376,7 @@ strong {
 /* ===== Client Logos ===== */
 .clients-logos {
     margin-top: 4rem;
+    margin-bottom: 3rem;
     text-align: center;
 }
 
@@ -391,7 +392,8 @@ strong {
     display: grid;
     grid-template-columns: repeat(7, 80px);
     justify-content: center;
-    gap: 1rem;
+    justify-items: center;
+    gap: 1.5rem 1rem;
 }
 
 .clients-grid img {
