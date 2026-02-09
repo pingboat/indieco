@@ -5,35 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ .Site.Title }}</title>
     <meta name="description" content="{{ .Site.Params.description }}">
-    
-<!-- Primary Meta Tags -->
-<title>indieco | Growth partner for founders</title>
-<meta name="description" content="Growth partner for founders building brands that last.">
 
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://indieco.in/">
-<meta property="og:title" content="indieco | Growth partner for founders">
-<meta property="og:description" content="Growth partner for founders building brands that last.">
-<meta property="og:image" content="https://indieco.in/images/og-image.png">
+    <!-- Primary Meta Tags -->
+    <title>indieco | Growth partner for founders</title>
+    <meta name="description" content="Growth partner for founders building brands that last.">
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="indieco | Growth partner for founders">
-<meta property="twitter:description" content="Growth partner for founders building brands that last.">
-<meta property="twitter:image" content="https://indieco.in/images/og-image.png">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://indieco.in/">
+    <meta property="og:title" content="indieco | Growth partner for founders">
+    <meta property="og:description" content="Growth partner for founders building brands that last.">
+    <meta property="og:image" content="https://indieco.in/images/og-image.png">
 
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="/images/favicon.png">
-    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="indieco | Growth partner for founders">
+    <meta property="twitter:description" content="Growth partner for founders building brands that last.">
+    <meta property="twitter:image" content="https://indieco.in/images/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+
     <!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500&family=Poppins:wght@700&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="logo">
+                <img src="/images/logo.png" 
+                     srcset="/images/logo.png 1x, /images/logo@2x.png 2x" 
+                     alt="indieco" 
+                     height="32">
+            </a>
+            
+            <nav class="nav-desktop">
+                <a href="/">Home</a>
+                <a href="/scorecard/">Scorecard</a>
+                <a href="/products/">Products</a>
+                <a href="https://cal.id/leon/founder-intro-call" class="nav-cta">Book a Call</a>
+            </nav>
+            
+            <button class="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <nav class="nav-mobile">
+            <a href="/">Home</a>
+            <a href="/scorecard/">Scorecard</a>
+            <a href="/products/">Products</a>
+            <a href="https://cal.id/leon/founder-intro-call">Book a Call</a>
+        </nav>
+    </header>
+
     {{ block "main" . }}{{ end }}
+
+    <script>
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMobile = document.querySelector('.nav-mobile');
+        
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navMobile.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
