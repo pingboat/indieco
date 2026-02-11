@@ -5,3 +5,8 @@ title = 'indieco'
 [params]
   description = "You're building your dream ventures. Who's building you?"
   tagline = "Growth partner for founders building brands that last."
+  author = "indieco"
+  
+  # Homepage Hero
+  heroTitle = "You're building your dream ventures. Who's building you?"
+  heroSubtitle = "Growth partner for founders building brands that last."
