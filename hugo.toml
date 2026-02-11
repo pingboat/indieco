@@ -3,5 +3,10 @@ languageCode = 'en-us'
 title = 'indieco'
 
 [params]
-  description = "Growth partner for founders building brands that last."
+  description = "You're building your dream ventures. Who's building you?"
+  tagline = "Growth partner for founders building brands that last."
   author = "indieco"
+  
+  # Homepage Hero
+  heroTitle = "You're building your dream ventures. Who's building you?"
+  heroSubtitle = "Growth partner for founders building brands that last."
