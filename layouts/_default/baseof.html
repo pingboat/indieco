@@ -42,9 +42,16 @@
     {{ block "main" . }}{{ end }}
     
     <script>
-document.getElementById('hamburger').addEventListener('click', function() {
-    this.classList.toggle('active');
-    document.getElementById('navMenu').classList.toggle('active');
+document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.querySelector('.nav-menu');
+    
+    if (toggle && menu) {
+        toggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            menu.classList.toggle('active');
+        });
+    }
 });
 </script>
 </body>
