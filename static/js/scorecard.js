@@ -142,17 +142,19 @@ const questions = [
 // Results data
 const results = {
     clarity: {
-        title: "You need Founder Clarity",
-        subtitle: "Too many directions. Not enough focus.",
-        description: "You're juggling ideas, opportunities, and possibilities — but without a clear 90-day priority, you'll stay scattered. Before you worry about marketing or fundraising, you need one path forward.",
-        cta: "Get clarity",
-        service: "Founder Clarity"
+    title: "You need Founder Clarity",
+    subtitle: "Too many directions. Not enough focus.",
+    description: "You're juggling ideas, opportunities, and possibilities — but without a clear 90-day priority, you'll stay scattered. Before you worry about marketing or fundraising, you need one path forward.",
+    cta: "Book a discovery call",
+    link: "https://cal.id/leon/discovery-call",
+    service: "Founder Clarity"
     },
     positioning: {
         title: "You need Brand Positioning",
         subtitle: "You know what you do. Others don't.",
         description: "Your product exists, but you can't articulate why it matters — or why you're different. Without a clear story, you'll keep competing on price and hustle instead of value.",
         cta: "Get positioned",
+        link: "https://shop.indieco.in/l/brand-system-template",
         service: "Brand Positioning"
     },
     gtm: {
@@ -160,6 +162,7 @@ const results = {
         subtitle: "You have something. Now you need customers.",
         description: "Your offering is clear, but traction is inconsistent. You need a repeatable playbook for getting customers — not just random tactics and hope.",
         cta: "Get traction",
+        link: "https://shop.indieco.in/l/gtm-blueprint-template",
         service: "GTM Blueprint"
     },
     investor: {
@@ -167,6 +170,7 @@ const results = {
         subtitle: "You're ready to raise. Your pitch isn't.",
         description: "You have traction and a story — but your pitch, deck, and investor narrative aren't there yet. Before you talk to investors, get ready to impress them.",
         cta: "Get ready",
+        link: "https://cal.id/leon/discovery-call",
         service: "Investor Readiness"
     }
 };
@@ -267,9 +271,9 @@ function showResult() {
         '<p class="result-subtitle">' + result.subtitle + '</p>' +
         '<p class="result-description">' + result.description + '</p>' +
         '<div class="result-cta">' +
-            '<a href="/#waitlist" class="btn btn-primary">' + result.cta + '</a>' +
-            '<a href="/" class="btn btn-secondary">Back to home</a>' +
-        '</div>';
+    '<a href="' + result.link + '" class="btn btn-primary">' + result.cta + '</a>' +
+    '<a href="/" class="btn btn-secondary">Back to home</a>' +
+'</div>';
 }
 
 // Handle form submission when DOM is ready
