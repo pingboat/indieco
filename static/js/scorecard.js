@@ -168,7 +168,7 @@ const results = {
     investor: {
         title: "You need Investor Readiness",
         subtitle: "You're ready to raise. Your pitch isn't.",
-        description: "You have traction and a story — but your pitch, deck, and investor narrative aren't there yet. Before you talk to investors, get ready to impress them.",
+        description: "You have traction and a story — but your pitch, deck, and investor narrative aren't there yet. Before you talk to investors, get ready to convince them.",
         cta: "Get ready",
         link: "https://cal.id/leon/discovery-call",
         service: "Investor Readiness"

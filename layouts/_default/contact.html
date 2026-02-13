@@ -1,0 +1,26 @@
+{{ define "main" }}
+<main>
+    <section class="contact-page">
+        <div class="container">
+            <h1 class="contact-page-title">Get in touch</h1>
+            <p class="contact-page-subtitle">Tell us where you are and what you need.</p>
+            
+            <form class="contact-form" name="contact" method="POST" data-netlify="true">
+                <div class="form-row">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <select name="stage" required>
+                    <option value="">Current stage</option>
+                    <option value="idea">Idea stage</option>
+                    <option value="mvp">Building MVP</option>
+                    <option value="early-customers">Have customers, need traction</option>
+                    <option value="scaling">Scaling, need systems</option>
+                </select>
+                <textarea name="message" rows="6" placeholder="What brings you here?" required></textarea>
+                <button type="submit" class="btn btn-primary">Send message</button>
+            </form>
+        </div>
+    </section>
+</main>
+{{ end }}
