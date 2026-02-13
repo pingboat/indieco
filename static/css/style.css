@@ -1889,9 +1889,12 @@ strong {
 }
 
 /* Bottom CTA */
-.products-cta .btn-primary {
-    background: #FF9933;
+.products-cta {
+    background: #3F51B5;
+    background: linear-gradient(135deg, #3F51B5 0%, #303F9F 100%);
     color: white;
+    text-align: center;
+    padding: 4rem 1.5rem;
 }
 
 .products-cta h2 {
@@ -1903,7 +1906,7 @@ strong {
 .products-cta p {
     font-size: 1.125rem;
     margin-bottom: 2rem;
-    color: rgba(255,255,255,0.9);
+    color: white;
 }
 
 .products-cta .btn-primary {
