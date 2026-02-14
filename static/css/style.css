@@ -2282,8 +2282,15 @@ strong {
     color: white;
     padding: 1rem 1.5rem;
     border-radius: 8px;
-    margin-bottom: 2rem;
+    margin: 0 auto 2rem;
+    max-width: calc(100% - 192px);
     box-shadow: 0 4px 12px rgba(255, 153, 51, 0.3);
+}
+
+@media (max-width: 768px) {
+    .urgency-banner {
+        max-width: calc(100% - 96px);
+    }
 }
 
 .urgency-banner-small {
