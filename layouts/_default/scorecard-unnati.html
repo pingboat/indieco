@@ -1,0 +1,64 @@
+{{ define "main" }}
+<main class="container scorecard-container">
+
+    <!-- Scorecard Intro -->
+    <section class="scorecard-intro" id="intro">
+        <div class="urgency-banner" id="countdown-banner">
+            <!-- Countdown inserted by JavaScript -->
+        </div>
+        
+        <h1 class="scorecard-title">
+            UNNATI Scheme<br>
+            <span class="title-connector">Eligibility Checker</span>
+        </h1>
+        <p class="scorecard-subtitle">Answer 15 questions to discover if you qualify for up to ₹7.5 crore in government incentives for your North-East business.</p>
+        <p class="scorecard-meta">15 questions · 4 minutes · Deadline: March 31, 2026</p>
+        <button class="btn btn-primary" onclick="startScorecard()">Check my eligibility</button>
+    </section>
+
+    <!-- Questions -->
+    <section class="scorecard-questions" id="questions" style="display: none;">
+        <div class="urgency-banner-small" id="countdown-banner-small">
+            <!-- Countdown inserted by JavaScript -->
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress"></div>
+        </div>
+        
+        <div class="question-container" id="question-container">
+            <!-- Questions inserted by JS -->
+        </div>
+    </section>
+
+    <!-- Email Capture -->
+    <section class="scorecard-email" id="email-capture" style="display: none;">
+        <h2>Almost there!</h2>
+        <p>Enter your details to see your personalized UNNATI eligibility results.</p>
+        <form class="email-form" id="email-form" name="unnati-eligibility" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="unnati-eligibility">
+            <input type="hidden" name="result" id="result-type">
+            <input type="hidden" name="score-geographic" id="score-geographic">
+            <input type="hidden" name="score-business" id="score-business">
+            <input type="hidden" name="score-readiness" id="score-readiness">
+            <input type="hidden" name="score-total" id="score-total">
+            <input type="hidden" name="result-title" id="result-title-field">
+            <input type="hidden" name="result-incentive" id="result-incentive-field">
+            <input type="email" name="email" placeholder="Your email address" required>
+            <input type="text" name="business" placeholder="Business name" required>
+            <input type="tel" name="phone" placeholder="WhatsApp number" required>
+            <button type="submit" class="btn btn-primary">See my results</button>
+        </form>
+    </section>
+
+    <!-- Results -->
+    <section class="scorecard-result" id="result" style="display: none;">
+        <div class="result-card" id="result-card">
+            <!-- Result inserted by JS -->
+        </div>
+    </section>
+
+</main>
+
+<script src="/js/scorecard-unnati.js"></script>
+{{ end }}
