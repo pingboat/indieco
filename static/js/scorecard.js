@@ -21,14 +21,14 @@ function showQuestion(index) {
     const q = questions[index];
     
     let optionsHtml = q.options.map(function(opt, i) {
-        return `<button class="option-btn" onclick="selectOption(${index}, ${i})">${opt.text}</button>`;
+        return <button class="option-btn" onclick="selectOption(${index}, ${i})">${opt.text}</button>`;
     }).join('');
     
-    container.innerHTML = `
+    container.innerHTML = 
         <p class="question-number">Question ${index + 1} of ${questions.length}</p>
         <h2 class="question-text">${q.question}</h2>
         <div class="options">${optionsHtml}</div>
-    `;
+    ;
     
     const progress = (index / questions.length) * 100;
     document.getElementById('progress').style.width = progress + '%';
@@ -116,7 +116,7 @@ function showResult() {
             <a href="${result.link}" class="btn btn-primary">${result.cta}</a>
             <a href="/" class="btn btn-secondary">Back to home</a>
         </div>
-    `;
+    ;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
