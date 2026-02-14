@@ -2278,16 +2278,16 @@ strong {
 
 /* ===== UNNATI Countdown Banner ===== */
 .urgency-banner {
-    background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+    background: #FF9933;
     color: white;
     padding: 1rem 1.5rem;
     border-radius: 8px;
     margin-bottom: 2rem;
-    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+    box-shadow: 0 4px 12px rgba(255, 153, 51, 0.3);
 }
 
 .urgency-banner-small {
-    background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+    background: #FF9933;
     color: white;
     padding: 0.75rem 1rem;
     border-radius: 6px;
