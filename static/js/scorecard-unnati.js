@@ -8,7 +8,7 @@ function updateCountdown() {
     const countdownHTML = `
         <div class="countdown-content">
             <span class="countdown-icon">⏰</span>
-            <span class="countdown-text">Only <strong>${daysLeft} days</strong> left to apply for UNNATI scheme (Deadline: March 31, 2026)</span>
+            <span class="countdown-text">Only <strong>${daysLeft} days</strong> left to apply</span>
         </div>
     `;
     
