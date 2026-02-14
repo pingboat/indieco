@@ -63,6 +63,11 @@ strong {
 /* ===== Header ===== */
 .header {
     padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    background: var(--color-white);
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .logo {
@@ -830,6 +835,18 @@ strong {
     padding: 4rem 0;
 }
 
+.result-phase {
+    background: var(--color-bg);
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+    text-align: center;
+    font-size: 0.9375rem;
+}
+
+.result-phase strong {
+    color: var(--color-primary);
+}
 .result-card {
     background: var(--color-white);
     border: 1px solid var(--color-border);
@@ -1911,6 +1928,7 @@ strong {
 
 .products-cta .btn-primary {
     background: #FF9933;
+    color: white;
 }
 
 .products-cta .btn-primary:hover {

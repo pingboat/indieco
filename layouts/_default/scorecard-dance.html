@@ -1,0 +1,48 @@
+{{ define "main" }}
+<main class="container scorecard-container">
+
+    <!-- Scorecard Intro -->
+    <section class="scorecard-intro" id="intro">
+        <h1 class="scorecard-title">Growth Audit for Premier Dance Academies</h1>
+        <p class="scorecard-subtitle">Answer 15 questions to discover what's holding you back from becoming your city's most sought-after dance academy — and get a custom roadmap to double your enrollment.</p>
+        <p class="scorecard-meta">15 questions · 5 minutes</p>
+        <button class="btn btn-primary" onclick="startScorecard()">Start the self-audit</button>
+    </section>
+
+    <!-- Questions -->
+    <section class="scorecard-questions" id="questions" style="display: none;">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress"></div>
+        </div>
+        
+        <div class="question-container" id="question-container">
+            <!-- Questions inserted by JS -->
+        </div>
+    </section>
+
+    <!-- Email Capture -->
+    <section class="scorecard-email" id="email-capture" style="display: none;">
+        <h2>Almost there!</h2>
+        <p>Enter your details to see your personalized growth audit results.</p>
+        <form class="email-form" id="email-form" name="dance-academy-audit" method="POST" data-netlify="true">
+            <input type="hidden" name="result" id="result-type">
+            <input type="hidden" name="score" id="result-score">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="email" name="email" placeholder="Your email" required>
+            <input type="text" name="academy" placeholder="Academy name" required>
+            <input type="tel" name="phone" placeholder="WhatsApp number (optional)">
+            <button type="submit" class="btn btn-primary">See my results</button>
+        </form>
+    </section>
+
+    <!-- Results -->
+    <section class="scorecard-result" id="result" style="display: none;">
+        <div class="result-card" id="result-card">
+            <!-- Result inserted by JS -->
+        </div>
+    </section>
+
+</main>
+
+<script src="/js/scorecard-dance-academy.js"></script>
+{{ end }}
