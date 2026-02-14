@@ -24,12 +24,28 @@
     <section class="scorecard-email" id="email-capture" style="display: none;">
         <h2>Almost there!</h2>
         <p>Enter your email to see your personalized results.</p>
-        <form class="email-form" id="email-form" name="scorecard" method="POST" data-netlify="true">
-            <input type="hidden" name="result" id="result-type">
-            <input type="hidden" name="score" id="result-score">
-            <input type="email" name="email" placeholder="Your email" required>
-            <button type="submit" class="btn btn-primary">See my results</button>
-        </form>
+        <form class="email-form"
+      id="email-form"
+      name="scorecard"
+      method="POST"
+      data-netlify="true">
+
+    <input type="hidden" name="form-name" value="scorecard">
+
+    <input type="hidden" name="Primary Result" id="result-type">
+
+    <input type="hidden" name="Clarity Score" id="score-clarity">
+    <input type="hidden" name="Positioning Score" id="score-positioning">
+    <input type="hidden" name="GTM Score" id="score-gtm">
+    <input type="hidden" name="Investor Score" id="score-investor">
+    <input type="hidden" name="Total Score" id="score-total">
+
+    <input type="email" name="email" placeholder="Your email" required>
+
+    <button type="submit" class="btn btn-primary">
+        See my results
+    </button>
+</form>
     </section>
 
     <!-- Results -->
