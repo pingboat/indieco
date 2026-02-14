@@ -1916,6 +1916,7 @@ strong {
 
 .products-cta .btn-primary {
     background: #FF9933;
+    color: white;
 }
 
 .products-cta .btn-primary:hover {
