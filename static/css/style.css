@@ -2075,9 +2075,10 @@ strong {
 
 .scorecard-intro {
     padding-top: 6rem;
-    padding-bottom: 4rem;
+    padding-bottom: 2rem;
     text-align: center;
 }
+
 
 .scorecard-title {
     font-size: 2.5rem;
@@ -2165,7 +2166,7 @@ strong {
 /* Email Capture Section */
 .scorecard-email {
     padding-top: 6rem;
-    padding-bottom: 4rem;
+    padding-bottom: 2rem;
     text-align: center;
 }
 
@@ -2183,7 +2184,7 @@ strong {
 /* Result Section */
 .scorecard-result {
     padding-top: 6rem;
-    padding-bottom: 4rem;
+    padding-bottom: 2rem;
 }
 
 .result-card {
