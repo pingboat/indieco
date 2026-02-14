@@ -2066,30 +2066,3 @@ strong {
         font-size: 2rem;
     }
 }
-
-/* FIX: CONTENT CUT OFF BY STICKY HEADER */
-
-/* 1. Add global padding to the body so the header doesn't cover the start of pages */
-body {
-    padding-top: 80px; /* Adjust this to match your header's height */
-}
-
-/* 2. Ensure the scorecard container clears the header specifically */
-.scorecard-container {
-    margin-top: 20px;
-    scroll-margin-top: 100px; /* If JS uses scroll commands */
-}
-
-/* 3. Global fix for the header - ensure it has a defined height to make padding-top accurate */
-.header {
-    height: 70px; 
-    display: flex;
-    align-items: center;
-}
-
-/* 4. Fix for the contact page and other 'main' content blocks */
-main {
-    position: relative;
-    z-index: 1;
-}
-
