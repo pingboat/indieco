@@ -3,20 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ .Site.Title }}</title>
-    <meta name="description" content="{{ .Site.Params.description }}">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="{{ .Site.Title }}">
-    <meta property="og:description" content="{{ .Site.Params.description }}">
+    <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ .Site.BaseURL }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+    <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta property="og:image" content="{{ if .Params.ogimage }}{{ .Params.ogimage | absURL }}{{ else }}{{ "/images/og-default.png" | absURL }}{{ end }}">
     
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ .Permalink }}">
+    <meta property="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+    <meta property="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta property="twitter:image" content="{{ if .Params.ogimage }}{{ .Params.ogimage | absURL }}{{ else }}{{ "/images/og-default.png" | absURL }}{{ end }}">
+
     <!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500&family=Poppins:wght@700&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -34,17 +42,17 @@
             <nav class="nav-menu">
                 <a href="/products/">Products</a>
                 <a href="/contact/">Contact</a>
-                <a href="https://cal.id/leon/discovery-call" target="_blank" rel="noopener">Book a Discovery Call</a>
+                <a href="https://cal.id/leon/founder-intro-call" target="_blank" rel="noopener">Book a Call</a>
             </nav>
         </div>
     </header>
 
-{{ block "main" . }}{{ end }}
+    {{ block "main" . }}{{ end }}
     
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <a href="https://cal.id/leon/discovery-call" class="footer-cta">Book a Discovery Call</a>
+            <a href="https://cal.id/leon/founder-intro-call" class="footer-cta">Ready to talk? Book an intro call.</a>
             <div class="footer-links">
                 <a href="https://twitter.com/iobyleon" target="_blank" aria-label="Twitter">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -69,7 +77,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-</script>
-    
+
+function closeMenu() {
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.querySelector('.nav-menu');
+    if (toggle && menu) {
+        toggle.classList.remove('active');
+        menu.classList.remove('active');
+    }
+}
+    </script>
 </body>
 </html>
