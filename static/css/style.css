@@ -793,7 +793,7 @@ strong {
 /* Email capture */
 .scorecard-email {
     text-align: center;
-    padding: 4rem 0;
+    padding: 4rem 1.5rem;
 }
 
 .scorecard-email h2 {
@@ -806,27 +806,34 @@ strong {
 }
 
 .email-form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: center;
-    max-width: 400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    max-width: 600px;
     margin: 0 auto;
 }
 
+.email-form input[type="text"]:first-of-type,
 .email-form input[type="email"] {
-    flex: 1;
-    min-width: 200px;
-    padding: 1rem;
-    font-size: 1rem;
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    font-family: var(--font-body);
+    /* First row: name and email */
 }
 
-.email-form input[type="email"]:focus {
-    outline: none;
-    border-color: var(--color-primary);
+.email-form input[type="text"]:nth-of-type(2),
+.email-form input[type="tel"] {
+    /* Second row: academy and phone */
+}
+
+.email-form button {
+    grid-column: 1 / -1;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .email-form {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
 }
 
 /* Results */
