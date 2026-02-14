@@ -1,5 +1,5 @@
 ---
-title: "Founder Intensive - Four Pillars Framework"
-description: "90-day personal operating system for founders. Limited to 5 founders per quarter."
-layout: "founder-intensive"
+title: "Founder Intensive"
+description: "90-day personal operating system for founders building sustainable ventures without burning out. Limited to 5 founders per cohort."
+ogimage: "/images/og-founder-intensive.png"
 ---
