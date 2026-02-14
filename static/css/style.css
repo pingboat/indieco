@@ -2070,7 +2070,6 @@ strong {
 /* ===== Scorecard Layouts ===== */
 .scorecard-container {
     padding: 0 1.5rem;
-    min-height: 80vh;
 }
 
 .scorecard-intro {
