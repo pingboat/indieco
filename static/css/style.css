@@ -2075,14 +2075,21 @@ strong {
 
 .scorecard-intro {
     padding-top: 6rem;
-    padding-bottom: 4rem;
+    padding-bottom: 2rem;
     text-align: center;
 }
+
 
 .scorecard-title {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    line-height: 1.2;
+    line-height: 1.3;
+}
+
+.title-connector {
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
 }
 
 .scorecard-subtitle {
@@ -2165,7 +2172,7 @@ strong {
 /* Email Capture Section */
 .scorecard-email {
     padding-top: 6rem;
-    padding-bottom: 4rem;
+    padding-bottom: 2rem;
     text-align: center;
 }
 
@@ -2183,7 +2190,7 @@ strong {
 /* Result Section */
 .scorecard-result {
     padding-top: 6rem;
-    padding-bottom: 4rem;
+    padding-bottom: 2rem;
 }
 
 .result-card {
