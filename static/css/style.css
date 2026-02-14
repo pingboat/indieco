@@ -2275,3 +2275,81 @@ strong {
         width: 100%;
     }
 }
+
+/* ===== UNNATI Countdown Banner ===== */
+.urgency-banner {
+    background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.urgency-banner-small {
+    background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9375rem;
+}
+
+.countdown-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.countdown-icon {
+    font-size: 1.5rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.countdown-text {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.countdown-text strong {
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.urgency-tag {
+    display: inline-block;
+    background: #FF6B6B;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.result-urgency {
+    background: #FFF3CD;
+    border-left: 4px solid #FF6B6B;
+    padding: 1rem;
+    margin: 1.5rem 0;
+    font-weight: 600;
+    color: #856404;
+}
+
+@media (max-width: 768px) {
+    .countdown-content {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .countdown-text {
+        font-size: 0.9375rem;
+        text-align: center;
+    }
+}
