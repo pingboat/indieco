@@ -63,6 +63,11 @@ strong {
 /* ===== Header ===== */
 .header {
     padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    background: var(--color-white);
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .logo {
