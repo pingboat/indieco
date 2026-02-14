@@ -806,27 +806,34 @@ strong {
 }
 
 .email-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
 }
 
-.email-form input[type="text"]:first-of-type,
-.email-form input[type="email"] {
-    /* First row: name and email */
+.email-form input[type="email"],
+.email-form input[type="text"],
+.email-form input[type="tel"] {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-family: var(--font-body);
+    background: var(--color-white);
 }
 
-.email-form input[type="text"]:nth-of-type(2),
-.email-form input[type="tel"] {
-    /* Second row: academy and phone */
+.email-form input:focus {
+    outline: none;
+    border-color: var(--color-primary);
 }
 
 .email-form button {
-    grid-column: 1 / -1;
-    max-width: 200px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: 250px;
+    margin: 0.5rem auto 0;
 }
 
 @media (max-width: 768px) {
