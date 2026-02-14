@@ -234,6 +234,33 @@ function showEmailCapture() {
     document.getElementById('questions').style.display = 'none';
     document.getElementById('email-capture').style.display = 'block';
     
+    document.getElementById('progress').style.width = '100%';
+    
+    const resultType = calculateResult();
+    const result = results[resultType];
+
+    // Scores
+    document.getElementById('result-type').value = resultType;
+    document.getElementById('score-clarity').value = scores.clarity;
+    document.getElementById('score-positioning').value = scores.positioning;
+    document.getElementById('score-gtm').value = scores.gtm;
+    document.getElementById('score-investor').value = scores.investor;
+
+    const totalScore = 
+        scores.clarity + 
+        scores.positioning + 
+        scores.gtm + 
+        scores.investor;
+
+    document.getElementById('score-total').value = totalScore;
+
+    // FULL RESULT CONTENT (new)
+    document.getElementById('result-title-field').value = result.title;
+    document.getElementById('result-subtitle-field').value = result.subtitle;
+    document.getElementById('result-description-field').value = result.description;
+    document.getElementById('result-service-field').value = result.service;
+    }
+    
     // Update progress to 100%
     document.getElementById('progress').style.width = '100%';
     
