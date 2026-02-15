@@ -292,10 +292,18 @@ function showResult() {
     const resultType = document.getElementById('result-type').value;
     const result = results[resultType];
     
-    // Get current countdown
+    // Calculate days left dynamically
     const deadline = new Date('2026-03-31T23:59:59');
     const now = new Date();
     const daysLeft = Math.ceil((deadline - now) / (1000 * 60 * 60 * 24));
+
+    // Dynamic urgency message based on days left
+    let urgencyMessage = '';
+    if (resultType === 'eligible' || resultType === 'maybeEligible') {
+        urgencyMessage = `Only ${daysLeft} days left to apply! Book a call to maximize your benefits.`;
+    } else {
+        urgencyMessage = `Let's find the right scheme for you.`;
+    }
 
     document.getElementById('result-card').innerHTML = `
         <div class="urgency-tag">⏰ ${daysLeft} days until deadline</div>
@@ -303,7 +311,7 @@ function showResult() {
         <h2 class="result-title">${result.title}</h2>
         <p class="result-subtitle">${result.subtitle}</p>
         <p class="result-description">${result.description}</p>
-        <div class="result-urgency">${result.urgency}</div>
+        <div class="result-urgency">${urgencyMessage}</div>
         <div class="result-cta">
             <a href="${result.link}" class="btn btn-primary">${result.cta}</a>
             <a href="/" class="btn btn-secondary">Back to home</a>
