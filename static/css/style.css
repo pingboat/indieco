@@ -1249,22 +1249,24 @@ strong {
 }
 
 .investment-summary {
-    background: #3F51B5;
-    color: white;
+    background: #3F51B5 !important;
     padding: 2rem;
     border-radius: 8px;
     margin-top: 2rem;
     text-align: center;
 }
 
+.investment-summary * {
+    color: white !important;
+}
+
 .investment-summary p {
     margin: 0.75rem 0;
     font-size: 1.125rem;
-    color: white;
 }
 
 .investment-summary strong {
-    color: rgba(255, 255, 255, 0.85);
+    opacity: 0.85;
     font-weight: 600;
 }
 
