@@ -1,0 +1,14 @@
+{{ define "main" }}
+<main class="product-single">
+    <div class="container">
+        <article class="product-content">
+            <h1 class="product-title">{{ .Title }}</h1>
+            <p class="product-description">{{ .Description }}</p>
+            
+            <div class="product-body">
+                {{ .Content }}
+            </div>
+        </article>
+    </div>
+</main>
+{{ end }}
