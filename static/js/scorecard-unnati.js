@@ -154,9 +154,9 @@ const questions = [
         id: 15,
         question: "What's your budget for professional assistance with UNNATI application?",
         options: [
-            { text: "₹50,000 - ₹1 lakh", scores: {} },
-            { text: "₹25,000 - ₹50,000", scores: {} },
-            { text: "Less than ₹25,000", scores: {} },
+            { text: "₹1 lakh - ₹1.5 lakh", scores: {} },
+            { text: "₹50,000 - ₹1,lakh", scores: {} },
+            { text: "Less than ₹50,000", scores: {} },
             { text: "Need to discuss", scores: {} }
         ]
     }
