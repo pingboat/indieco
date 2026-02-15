@@ -1250,16 +1250,35 @@ strong {
 
 .investment-summary {
     background: #3F51B5;
-    color: white;
     padding: 2rem;
     border-radius: 8px;
     margin-top: 2rem;
-    text-align: center;
 }
 
-.investment-summary p {
-    margin: 0.5rem 0;
+.intensive-summary-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.intensive-summary-item:last-child {
+    margin-bottom: 0;
+}
+
+.intensive-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+    min-width: 120px;
+    text-align: right;
+}
+
+.intensive-value {
+    color: #FFFFFF;
+    font-weight: 700;
     font-size: 1.125rem;
+    text-align: left;
 }
 
 /* Selection Process */
