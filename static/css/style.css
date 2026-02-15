@@ -1723,31 +1723,36 @@ strong {
 
 .featured-meta {
     display: flex;
-    justify-content: space-around;
-    padding: 1.5rem;
-    background: #f8f9fa;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    padding: 2.5rem 1.5rem;
+    background: #3F51B5; 
     border-radius: 8px;
-    margin-bottom: 2rem;
+    margin: 2rem 0;
+    gap: 0.75rem;
+    color: #ffffff; 
 }
 
 .meta-item {
     text-align: center;
+    border-top: none;
+    padding-top: 0;
 }
 
 .meta-label {
-    display: block;
-    font-size: 0.875rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: #666;
-    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7); /* Faded white for labels */
+    display: inline; /* Keep on one line like image */
+    margin-right: 0.5rem;
 }
 
 .meta-value {
-    display: block;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 700;
-    color: #3F51B5;
+    color: #ffffff;
+    display: inline;
 }
 
 .featured-scarcity {
