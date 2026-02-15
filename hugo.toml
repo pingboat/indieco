@@ -2,6 +2,9 @@ baseURL = 'https://indieco.in/'
 languageCode = 'en-us'
 title = 'indieco'
 
+# Google Analytics - Replace with your actual Measurement ID
+googleAnalytics = "G-4KEQFVW5ES"
+
 [params]
   description = "You're building your dream ventures. Who's building you?"
   tagline = "Growth partner for founders building brands that last."
@@ -10,3 +13,18 @@ title = 'indieco'
   # Homepage Hero
   heroTitle = "You're building your dream ventures. Who's building you?"
   heroSubtitle = "Growth partner for founders building brands that last."
+
+# Allow raw HTML in markdown content
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+# Sitemap configuration for SEO
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+
+# Output formats (HTML + RSS feed)
+[outputs]
+  home = ["HTML", "RSS"]
