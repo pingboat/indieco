@@ -1,5 +1,5 @@
 title: “Non-Profit Organization Readiness Scorecard”
-description: “A comprehensive assessment for non-profit organizations to evaluate readiness for growth, fundraising, and scaling impact across 10 critical dimensions.”
+description: “Self-assess your non-profit organizations to evaluate readiness for growth, fundraising, and scaling impact across 10 critical dimensions.”
 layout: “scorecard-nonprofit”
 ogimage: “/images/og-scorecard-nonprofit.png”
 Non-Profit Organization Readiness Assessment
