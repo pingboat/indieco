@@ -2365,3 +2365,284 @@ strong {
         text-align: center;
     }
 }
+
+
+/* ================================
+NON-PROFIT SCORECARD CSS ADDITIONS
+================================= */
+
+/* Scorecard Benefits Grid */
+.scorecard-benefits {
+display: grid;
+grid-template-columns: 1fr;
+gap: 2rem;
+margin: 3rem 0;
+max-width: 800px;
+margin-left: auto;
+margin-right: auto;
+}
+
+@media (min-width: 768px) {
+.scorecard-benefits {
+grid-template-columns: repeat(3, 1fr);
+gap: 2.5rem;
+}
+}
+
+.benefit-item {
+text-align: center;
+padding: 1.5rem;
+}
+
+.benefit-icon {
+width: 64px;
+height: 64px;
+margin: 0 auto 1.5rem;
+color: var(–color-primary, #2d3a8c);
+stroke-width: 1.5;
+}
+
+.benefit-item h3 {
+font-family: ‘DM Sans’, sans-serif;
+font-size: 1.125rem;
+font-weight: 700;
+color: var(–color-primary, #2d3a8c);
+margin-bottom: 0.5rem;
+}
+
+.benefit-item p {
+font-size: 0.875rem;
+color: var(–color-text-secondary, #57534e);
+line-height: 1.5;
+}
+
+/* Dimensions Section */
+.scorecard-dimensions {
+margin: 3rem 0 2rem;
+text-align: center;
+}
+
+.scorecard-dimensions h3 {
+font-family: ‘DM Sans’, sans-serif;
+font-size: 1.25rem;
+font-weight: 700;
+color: var(–color-primary, #2d3a8c);
+margin-bottom: 1.5rem;
+}
+
+.dimension-tags {
+display: flex;
+flex-wrap: wrap;
+gap: 0.75rem;
+justify-content: center;
+max-width: 700px;
+margin: 0 auto;
+}
+
+.dimension-tag {
+display: inline-block;
+padding: 0.5rem 1rem;
+background-color: #f5f5f4;
+border: 1px solid #e7e5e4;
+border-radius: 20px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 0.875rem;
+font-weight: 500;
+color: var(–color-primary, #2d3a8c);
+transition: all 0.2s ease;
+}
+
+.dimension-tag:hover {
+background-color: var(–color-primary, #2d3a8c);
+color: white;
+border-color: var(–color-primary, #2d3a8c);
+}
+
+/* Button Icon */
+.btn-icon {
+width: 20px;
+height: 20px;
+margin-left: 0.5rem;
+vertical-align: middle;
+display: inline-block;
+}
+
+/* Progress Container (if missing) */
+.progress-container {
+margin-bottom: 2rem;
+}
+
+.progress-text {
+text-align: center;
+font-size: 0.875rem;
+color: var(–color-text-secondary, #57534e);
+margin-top: 0.5rem;
+}
+
+/* Score Breakdown (Results Page) */
+.result-scores {
+margin: 2rem 0;
+padding: 2rem;
+background: #f5f5f4;
+border-radius: 8px;
+}
+
+.result-scores h3 {
+font-family: ‘DM Sans’, sans-serif;
+font-size: 1.25rem;
+font-weight: 700;
+color: var(–color-primary, #2d3a8c);
+margin-bottom: 1.5rem;
+}
+
+.score-bars {
+display: flex;
+flex-direction: column;
+gap: 1.5rem;
+}
+
+.score-bar-container {
+/* Individual score bar */
+}
+
+.score-bar-label {
+display: flex;
+justify-content: space-between;
+margin-bottom: 0.5rem;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 0.875rem;
+font-weight: 500;
+color: var(–color-text, #1c1917);
+}
+
+.score-value {
+color: var(–color-primary, #2d3a8c);
+font-weight: 700;
+}
+
+.score-bar-track {
+width: 100%;
+height: 12px;
+background: #e7e5e4;
+border-radius: 6px;
+overflow: hidden;
+}
+
+.score-bar-fill {
+height: 100%;
+border-radius: 6px;
+transition: width 0.6s ease;
+}
+
+/* Result Badge */
+.result-badge {
+text-align: center;
+margin-bottom: 1.5rem;
+}
+
+.badge-icon {
+width: 80px;
+height: 80px;
+border-radius: 50%;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+font-size: 2.5rem;
+color: white;
+margin: 0 auto;
+}
+
+/* Result Next Steps */
+.result-next-steps {
+margin: 2rem 0;
+padding: 2rem;
+background: white;
+border: 2px solid var(–color-primary, #2d3a8c);
+border-radius: 8px;
+}
+
+.result-next-steps h3 {
+font-family: ‘DM Sans’, sans-serif;
+font-size: 1.25rem;
+font-weight: 700;
+color: var(–color-primary, #2d3a8c);
+margin-bottom: 1rem;
+}
+
+.result-next-steps ol {
+list-style-position: inside;
+padding-left: 0;
+}
+
+.result-next-steps li {
+font-family: ‘DM Sans’, sans-serif;
+font-size: 1rem;
+line-height: 1.6;
+color: var(–color-text, #1c1917);
+margin-bottom: 0.75rem;
+padding-left: 0.5rem;
+}
+
+/* Result CTA */
+.result-cta {
+text-align: center;
+margin-top: 3rem;
+padding-top: 2rem;
+border-top: 1px solid #e7e5e4;
+}
+
+.result-cta-note {
+margin-top: 1rem;
+font-size: 0.875rem;
+color: var(–color-text-secondary, #57534e);
+}
+
+/* Email Capture Icon */
+.email-icon {
+width: 80px;
+height: 80px;
+margin: 0 auto 1.5rem;
+}
+
+.email-icon svg {
+width: 100%;
+height: 100%;
+color: var(–color-primary, #2d3a8c);
+}
+
+/* Form Privacy Note */
+.form-privacy {
+text-align: center;
+font-size: 0.75rem;
+color: var(–color-text-secondary, #57534e);
+margin-top: 1rem;
+}
+
+/* Mobile Responsiveness for Benefits */
+@media (max-width: 767px) {
+.scorecard-benefits {
+gap: 1.5rem;
+}
+
+```
+.benefit-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+}
+
+.benefit-item h3 {
+    font-size: 1rem;
+}
+
+.dimension-tags {
+    gap: 0.5rem;
+}
+
+.dimension-tag {
+    font-size: 0.8125rem;
+    padding: 0.4rem 0.75rem;
+}
+```
+
+}
