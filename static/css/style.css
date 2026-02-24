@@ -2367,110 +2367,94 @@ strong {
 }
 
 
-/* ========================
-NON-PROFIT SCORECARD STYLES
-========================= */
+/* =================
+NON-PROFIT SCORECARD
+================== */
 
-/* Intro Section - Center Aligned with Brand Colors */
+/* Force center alignment everywhere */
+.scorecard-intro,
+.scorecard-intro-content,
+.scorecard-header,
+.scorecard-questions,
+.scorecard-email,
+.scorecard-result {
+text-align: center !important;
+}
+
+/* Intro Section Container */
 .scorecard-intro {
-text-align: center;
 max-width: 900px;
 margin: 0 auto;
 padding: 4rem 1.5rem;
 }
 
-.scorecard-header {
-margin-bottom: 3rem;
-}
-
+/* Label */
 .scorecard-label {
-display: inline-block;
+color: #FF9933;
 font-size: 0.75rem;
 font-weight: 700;
 letter-spacing: 0.15em;
-color: #FF9933;
 text-transform: uppercase;
 margin-bottom: 1rem;
 }
 
-.scorecard-title {
+/* Title */
+.scorecard-intro .scorecard-title {
 font-family: ‘Playfair Display’, Georgia, serif;
 font-size: 2.5rem;
-font-weight: 700;
 color: #2d3a8c;
 margin-bottom: 1rem;
-line-height: 1.2;
 }
 
-.scorecard-subtitle {
+/* Subtitle */
+.scorecard-intro .scorecard-subtitle {
 font-size: 1.125rem;
 color: #57534e;
-line-height: 1.6;
 margin-bottom: 1.5rem;
 }
 
-.scorecard-meta {
+/* Meta info */
+.scorecard-intro .scorecard-meta {
+display: flex;
+justify-content: center;
+gap: 0.5rem;
 font-size: 0.875rem;
 color: #57534e;
-display: flex;
-gap: 0.5rem;
-justify-content: center;
-align-items: center;
+margin-bottom: 3rem;
 }
 
-.scorecard-meta span {
-display: inline-block;
-}
-
-/* Intro Content */
-.scorecard-intro-content {
-text-align: center;
-}
-
+/* What You’ll Discover heading */
 .scorecard-intro-content h2 {
 font-family: ‘Playfair Display’, Georgia, serif;
 font-size: 2rem;
 color: #2d3a8c;
-margin-bottom: 2.5rem;
-position: relative;
-display: inline-block;
+margin: 3rem auto 3rem;
+text-align: center;
 }
 
-.scorecard-intro-content h2::after {
-content: ‘’;
-position: absolute;
-bottom: -12px;
-left: 50%;
-transform: translateX(-50%);
-width: 60px;
-height: 3px;
-background: #FF9933;
-}
-
-/* Benefits Grid */
+/* BENEFITS - FORCE SINGLE ROW */
 .scorecard-benefits {
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-gap: 2.5rem;
-margin: 4rem auto 3rem;
+grid-template-columns: repeat(3, 1fr) !important;
+gap: 2rem;
+margin: 0 auto 3rem;
 max-width: 900px;
+text-align: center;
 }
 
 .benefit-item {
 text-align: center;
-padding: 1.5rem;
+padding: 1rem;
 }
 
 .benefit-icon {
 width: 64px;
 height: 64px;
-margin: 0 auto 1.5rem;
+margin: 0 auto 1rem;
 color: #2d3a8c;
-stroke-width: 2;
 }
 
 .benefit-item h3 {
-font-family: ‘DM Sans’, sans-serif;
 font-size: 1.125rem;
 font-weight: 700;
 color: #2d3a8c;
@@ -2480,19 +2464,18 @@ margin-bottom: 0.75rem;
 .benefit-item p {
 font-size: 0.9375rem;
 color: #57534e;
-line-height: 1.6;
+line-height: 1.5;
 }
 
 /* Dimensions Section */
 .scorecard-dimensions {
-margin: 3rem auto 2.5rem;
+margin: 3rem auto 2rem;
 text-align: center;
 }
 
 .scorecard-dimensions h3 {
 font-family: ‘Playfair Display’, Georgia, serif;
 font-size: 1.5rem;
-font-weight: 700;
 color: #2d3a8c;
 margin-bottom: 2rem;
 }
@@ -2507,46 +2490,39 @@ margin: 0 auto;
 }
 
 .dimension-tag {
-display: inline-block;
 padding: 0.625rem 1.25rem;
-background-color: #f5f5f4;
+background: #f5f5f4;
 border: 2px solid #e7e5e4;
 border-radius: 24px;
-font-family: ‘DM Sans’, sans-serif;
 font-size: 0.875rem;
 font-weight: 600;
-color: #2d3a8c;
+color: #57534e; /* Body text color, NOT blue */
 transition: all 0.2s ease;
 }
 
 .dimension-tag:hover {
-background-color: #2d3a8c;
+background: #2d3a8c;
 color: white;
 border-color: #2d3a8c;
-transform: translateY(-2px);
 }
 
-/* Primary Button with Icon */
-.btn-large {
-padding: 1.25rem 2.5rem;
-font-size: 1.125rem;
-display: inline-flex;
-align-items: center;
-gap: 0.75rem;
-margin-top: 1rem;
+/* Button */
+.scorecard-intro .btn-large {
+margin-top: 2rem;
 }
 
 .btn-icon {
 width: 20px;
 height: 20px;
-stroke-width: 2;
+margin-left: 0.5rem;
 }
 
-/* Questions Section - FIXED */
+/* Questions Section - CENTER ALIGNED */
 .scorecard-questions {
 max-width: 800px;
 margin: 0 auto;
 padding: 3rem 1.5rem;
+text-align: center;
 }
 
 .progress-container {
@@ -2566,20 +2542,16 @@ margin-bottom: 1rem;
 height: 100%;
 background: linear-gradient(90deg, #2d3a8c 0%, #FF9933 100%);
 transition: width 0.3s ease;
-width: 0%;
 }
 
 .progress-text {
 text-align: center;
 font-size: 0.875rem;
 color: #57534e;
-font-weight: 500;
 }
 
-/* Question Card */
 .question-card {
 text-align: center;
-margin-bottom: 2rem;
 }
 
 .question-dimension {
@@ -2589,22 +2561,21 @@ font-weight: 700;
 letter-spacing: 0.1em;
 text-transform: uppercase;
 color: #FF9933;
-margin-bottom: 1.5rem;
-padding: 0.5rem 1rem;
 background: #FFF3E0;
+padding: 0.5rem 1rem;
 border-radius: 20px;
+margin-bottom: 1.5rem;
 }
 
 .question-text {
 font-family: ‘Playfair Display’, Georgia, serif;
 font-size: 1.75rem;
-font-weight: 700;
 color: #2d3a8c;
-line-height: 1.3;
 margin-bottom: 2.5rem;
+text-align: center;
 }
 
-/* Question Options - FIXED */
+/* Question Options */
 .question-options {
 display: flex;
 flex-direction: column;
@@ -2617,12 +2588,8 @@ padding: 1.25rem 1.5rem;
 display: flex;
 justify-content: space-between;
 align-items: center;
-gap: 1rem;
 text-align: left;
-font-family: ‘DM Sans’, sans-serif;
 font-size: 1rem;
-line-height: 1.5;
-color: #1c1917;
 background: white;
 border: 2px solid #e7e5e4;
 border-radius: 8px;
@@ -2632,6 +2599,7 @@ transition: all 0.2s ease;
 
 .option-text {
 flex: 1;
+text-align: left;
 }
 
 .option-arrow {
@@ -2640,7 +2608,6 @@ width: 20px;
 height: 20px;
 color: #2d3a8c;
 stroke-width: 2.5;
-transition: transform 0.2s ease;
 }
 
 .option-btn:hover {
@@ -2654,7 +2621,7 @@ transform: translateX(4px);
 color: #FF9933;
 }
 
-/* Email Capture Section */
+/* Email Capture - CENTER ALIGNED */
 .scorecard-email {
 max-width: 600px;
 margin: 0 auto;
@@ -2679,7 +2646,6 @@ margin: 0 auto 1.5rem;
 width: 100%;
 height: 100%;
 color: #2d3a8c;
-stroke-width: 2;
 }
 
 .scorecard-email h2 {
@@ -2689,23 +2655,23 @@ color: #2d3a8c;
 margin-bottom: 1rem;
 }
 
-.scorecard-email > p,
-.email-capture-content > p {
+.scorecard-email p {
 font-size: 1.125rem;
 color: #57534e;
-line-height: 1.6;
 margin-bottom: 2rem;
 }
 
-/* Form Styling */
+/* Form */
+#email-form {
+text-align: left;
+}
+
 .form-group {
 margin-bottom: 1.25rem;
-text-align: left;
 }
 
 .form-group label {
 display: block;
-font-family: ‘DM Sans’, sans-serif;
 font-size: 0.875rem;
 font-weight: 600;
 color: #1c1917;
@@ -2716,13 +2682,9 @@ margin-bottom: 0.5rem;
 .form-group select {
 width: 100%;
 padding: 0.875rem 1rem;
-font-family: ‘DM Sans’, sans-serif;
 font-size: 1rem;
-color: #1c1917;
-background: white;
 border: 2px solid #e7e5e4;
 border-radius: 6px;
-transition: border-color 0.2s ease;
 }
 
 .form-group input:focus,
@@ -2738,11 +2700,12 @@ color: #57534e;
 margin-top: 1rem;
 }
 
-/* Results Section */
+/* Results - CENTER ALIGNED */
 .scorecard-result {
 max-width: 800px;
 margin: 0 auto;
 padding: 4rem 1.5rem;
+text-align: center;
 }
 
 .result-content {
@@ -2758,6 +2721,7 @@ margin-bottom: 3rem;
 }
 
 .result-badge {
+text-align: center;
 margin-bottom: 1.5rem;
 }
 
@@ -2770,13 +2734,11 @@ align-items: center;
 justify-content: center;
 font-size: 2.5rem;
 color: white;
-margin: 0 auto;
 }
 
 .result-title {
 font-family: ‘Playfair Display’, Georgia, serif;
 font-size: 2.25rem;
-font-weight: 700;
 color: #2d3a8c;
 margin-bottom: 0.75rem;
 }
@@ -2784,11 +2746,30 @@ margin-bottom: 0.75rem;
 .result-subtitle {
 font-size: 1.25rem;
 color: #57534e;
-line-height: 1.5;
 margin-bottom: 2rem;
 }
 
-/* Score Breakdown */
+.result-description {
+text-align: left;
+font-size: 1rem;
+line-height: 1.7;
+color: #1c1917;
+margin-bottom: 2rem;
+}
+
+.result-description p {
+margin-bottom: 1rem;
+}
+
+.result-description strong {
+color: #2d3a8c;
+}
+
+.result-description ul {
+margin: 1rem 0 1rem 1.5rem;
+}
+
+/* Score Bars */
 .result-scores {
 margin: 3rem 0;
 padding: 2rem;
@@ -2799,7 +2780,6 @@ border-radius: 8px;
 .result-scores h3 {
 font-family: ‘Playfair Display’, Georgia, serif;
 font-size: 1.5rem;
-font-weight: 700;
 color: #2d3a8c;
 margin-bottom: 1.5rem;
 text-align: center;
@@ -2811,18 +2791,12 @@ flex-direction: column;
 gap: 1.5rem;
 }
 
-.score-bar-container {
-/* Individual score bar wrapper */
-}
-
 .score-bar-label {
 display: flex;
 justify-content: space-between;
 margin-bottom: 0.5rem;
-font-family: ‘DM Sans’, sans-serif;
 font-size: 0.875rem;
 font-weight: 600;
-color: #1c1917;
 }
 
 .score-value {
@@ -2844,32 +2818,6 @@ border-radius: 6px;
 transition: width 0.6s ease;
 }
 
-/* Result Description */
-.result-description {
-font-size: 1rem;
-line-height: 1.7;
-color: #1c1917;
-margin-bottom: 2rem;
-}
-
-.result-description p {
-margin-bottom: 1rem;
-}
-
-.result-description strong {
-color: #2d3a8c;
-font-weight: 700;
-}
-
-.result-description ul {
-margin: 1rem 0 1rem 1.5rem;
-}
-
-.result-description li {
-margin-bottom: 0.5rem;
-color: #57534e;
-}
-
 /* Next Steps */
 .result-next-steps {
 margin: 2.5rem 0;
@@ -2877,29 +2825,24 @@ padding: 2rem;
 background: white;
 border: 2px solid #2d3a8c;
 border-radius: 8px;
+text-align: left;
 }
 
 .result-next-steps h3 {
 font-family: ‘Playfair Display’, Georgia, serif;
 font-size: 1.5rem;
-font-weight: 700;
 color: #2d3a8c;
 margin-bottom: 1.5rem;
 }
 
 .result-next-steps ol {
-list-style-position: outside;
 padding-left: 1.5rem;
-counter-reset: item;
 }
 
 .result-next-steps li {
-font-family: ‘DM Sans’, sans-serif;
 font-size: 1rem;
 line-height: 1.7;
-color: #1c1917;
 margin-bottom: 1rem;
-padding-left: 0.5rem;
 }
 
 /* Result CTA */
@@ -2916,69 +2859,24 @@ font-size: 0.9375rem;
 color: #57534e;
 }
 
-/* Mobile Responsiveness */
+/* Mobile - Stack benefits vertically */
 @media (max-width: 768px) {
-.scorecard-title {
-font-size: 2rem;
+.scorecard-benefits {
+grid-template-columns: 1fr !important;
+gap: 2rem;
 }
 
 ```
-.scorecard-intro-content h2 {
-    font-size: 1.5rem;
-}
-
-.scorecard-benefits {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-}
-
-.benefit-icon {
-    width: 56px;
-    height: 56px;
-}
-
-.dimension-tags {
-    gap: 0.5rem;
-}
-
-.dimension-tag {
-    font-size: 0.8125rem;
-    padding: 0.5rem 1rem;
+.scorecard-title {
+    font-size: 2rem;
 }
 
 .question-text {
     font-size: 1.375rem;
 }
 
-.option-btn {
-    padding: 1rem;
-    font-size: 0.9375rem;
-}
-
-.result-content {
-    padding: 2rem 1.5rem;
-}
-
 .result-title {
     font-size: 1.75rem;
-}
-```
-
-}
-
-@media (max-width: 480px) {
-.scorecard-title {
-font-size: 1.75rem;
-}
-
-```
-.question-text {
-    font-size: 1.25rem;
-}
-
-.btn-large {
-    width: 100%;
-    justify-content: center;
 }
 ```
 
