@@ -2367,26 +2367,93 @@ strong {
 }
 
 
-/* ================================
-NON-PROFIT SCORECARD CSS ADDITIONS
-================================= */
+/* ========================
+NON-PROFIT SCORECARD STYLES
+========================= */
 
-/* Scorecard Benefits Grid */
+/* Intro Section - Center Aligned with Brand Colors */
+.scorecard-intro {
+text-align: center;
+max-width: 900px;
+margin: 0 auto;
+padding: 4rem 1.5rem;
+}
+
+.scorecard-header {
+margin-bottom: 3rem;
+}
+
+.scorecard-label {
+display: inline-block;
+font-size: 0.75rem;
+font-weight: 700;
+letter-spacing: 0.15em;
+color: #FF9933;
+text-transform: uppercase;
+margin-bottom: 1rem;
+}
+
+.scorecard-title {
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: 2.5rem;
+font-weight: 700;
+color: #2d3a8c;
+margin-bottom: 1rem;
+line-height: 1.2;
+}
+
+.scorecard-subtitle {
+font-size: 1.125rem;
+color: #57534e;
+line-height: 1.6;
+margin-bottom: 1.5rem;
+}
+
+.scorecard-meta {
+font-size: 0.875rem;
+color: #57534e;
+display: flex;
+gap: 0.5rem;
+justify-content: center;
+align-items: center;
+}
+
+.scorecard-meta span {
+display: inline-block;
+}
+
+/* Intro Content */
+.scorecard-intro-content {
+text-align: center;
+}
+
+.scorecard-intro-content h2 {
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: 2rem;
+color: #2d3a8c;
+margin-bottom: 2.5rem;
+position: relative;
+display: inline-block;
+}
+
+.scorecard-intro-content h2::after {
+content: ‘’;
+position: absolute;
+bottom: -12px;
+left: 50%;
+transform: translateX(-50%);
+width: 60px;
+height: 3px;
+background: #FF9933;
+}
+
+/* Benefits Grid */
 .scorecard-benefits {
 display: grid;
-grid-template-columns: 1fr;
-gap: 2rem;
-margin: 3rem 0;
-max-width: 800px;
-margin-left: auto;
-margin-right: auto;
-}
-
-@media (min-width: 768px) {
-.scorecard-benefits {
-grid-template-columns: repeat(3, 1fr);
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 gap: 2.5rem;
-}
+margin: 4rem auto 3rem;
+max-width: 900px;
 }
 
 .benefit-item {
@@ -2398,36 +2465,36 @@ padding: 1.5rem;
 width: 64px;
 height: 64px;
 margin: 0 auto 1.5rem;
-color: var(–color-primary, #2d3a8c);
-stroke-width: 1.5;
+color: #2d3a8c;
+stroke-width: 2;
 }
 
 .benefit-item h3 {
 font-family: ‘DM Sans’, sans-serif;
 font-size: 1.125rem;
 font-weight: 700;
-color: var(–color-primary, #2d3a8c);
-margin-bottom: 0.5rem;
+color: #2d3a8c;
+margin-bottom: 0.75rem;
 }
 
 .benefit-item p {
-font-size: 0.875rem;
-color: var(–color-text-secondary, #57534e);
-line-height: 1.5;
+font-size: 0.9375rem;
+color: #57534e;
+line-height: 1.6;
 }
 
 /* Dimensions Section */
 .scorecard-dimensions {
-margin: 3rem 0 2rem;
+margin: 3rem auto 2.5rem;
 text-align: center;
 }
 
 .scorecard-dimensions h3 {
-font-family: ‘DM Sans’, sans-serif;
-font-size: 1.25rem;
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: 1.5rem;
 font-weight: 700;
-color: var(–color-primary, #2d3a8c);
-margin-bottom: 1.5rem;
+color: #2d3a8c;
+margin-bottom: 2rem;
 }
 
 .dimension-tags {
@@ -2435,64 +2502,307 @@ display: flex;
 flex-wrap: wrap;
 gap: 0.75rem;
 justify-content: center;
-max-width: 700px;
+max-width: 800px;
 margin: 0 auto;
 }
 
 .dimension-tag {
 display: inline-block;
-padding: 0.5rem 1rem;
+padding: 0.625rem 1.25rem;
 background-color: #f5f5f4;
-border: 1px solid #e7e5e4;
-border-radius: 20px;
+border: 2px solid #e7e5e4;
+border-radius: 24px;
 font-family: ‘DM Sans’, sans-serif;
 font-size: 0.875rem;
-font-weight: 500;
-color: var(–color-primary, #2d3a8c);
+font-weight: 600;
+color: #2d3a8c;
 transition: all 0.2s ease;
 }
 
 .dimension-tag:hover {
-background-color: var(–color-primary, #2d3a8c);
+background-color: #2d3a8c;
 color: white;
-border-color: var(–color-primary, #2d3a8c);
+border-color: #2d3a8c;
+transform: translateY(-2px);
 }
 
-/* Button Icon */
+/* Primary Button with Icon */
+.btn-large {
+padding: 1.25rem 2.5rem;
+font-size: 1.125rem;
+display: inline-flex;
+align-items: center;
+gap: 0.75rem;
+margin-top: 1rem;
+}
+
 .btn-icon {
 width: 20px;
 height: 20px;
-margin-left: 0.5rem;
-vertical-align: middle;
-display: inline-block;
+stroke-width: 2;
 }
 
-/* Progress Container (if missing) */
+/* Questions Section - FIXED */
+.scorecard-questions {
+max-width: 800px;
+margin: 0 auto;
+padding: 3rem 1.5rem;
+}
+
 .progress-container {
-margin-bottom: 2rem;
+margin-bottom: 3rem;
+}
+
+.progress-bar {
+width: 100%;
+height: 8px;
+background: #e7e5e4;
+border-radius: 4px;
+overflow: hidden;
+margin-bottom: 1rem;
+}
+
+.progress-fill {
+height: 100%;
+background: linear-gradient(90deg, #2d3a8c 0%, #FF9933 100%);
+transition: width 0.3s ease;
+width: 0%;
 }
 
 .progress-text {
 text-align: center;
 font-size: 0.875rem;
-color: var(–color-text-secondary, #57534e);
-margin-top: 0.5rem;
+color: #57534e;
+font-weight: 500;
 }
 
-/* Score Breakdown (Results Page) */
+/* Question Card */
+.question-card {
+text-align: center;
+margin-bottom: 2rem;
+}
+
+.question-dimension {
+display: inline-block;
+font-size: 0.75rem;
+font-weight: 700;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: #FF9933;
+margin-bottom: 1.5rem;
+padding: 0.5rem 1rem;
+background: #FFF3E0;
+border-radius: 20px;
+}
+
+.question-text {
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: 1.75rem;
+font-weight: 700;
+color: #2d3a8c;
+line-height: 1.3;
+margin-bottom: 2.5rem;
+}
+
+/* Question Options - FIXED */
+.question-options {
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+
+.option-btn {
+width: 100%;
+padding: 1.25rem 1.5rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 1rem;
+text-align: left;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 1rem;
+line-height: 1.5;
+color: #1c1917;
+background: white;
+border: 2px solid #e7e5e4;
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.2s ease;
+}
+
+.option-text {
+flex: 1;
+}
+
+.option-arrow {
+flex-shrink: 0;
+width: 20px;
+height: 20px;
+color: #2d3a8c;
+stroke-width: 2.5;
+transition: transform 0.2s ease;
+}
+
+.option-btn:hover {
+border-color: #2d3a8c;
+background: #f5f5f4;
+transform: translateX(4px);
+}
+
+.option-btn:hover .option-arrow {
+transform: translateX(4px);
+color: #FF9933;
+}
+
+/* Email Capture Section */
+.scorecard-email {
+max-width: 600px;
+margin: 0 auto;
+padding: 4rem 1.5rem;
+text-align: center;
+}
+
+.email-capture-content {
+background: white;
+padding: 3rem 2rem;
+border-radius: 12px;
+border: 2px solid #e7e5e4;
+}
+
+.email-icon {
+width: 80px;
+height: 80px;
+margin: 0 auto 1.5rem;
+}
+
+.email-icon svg {
+width: 100%;
+height: 100%;
+color: #2d3a8c;
+stroke-width: 2;
+}
+
+.scorecard-email h2 {
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: 2rem;
+color: #2d3a8c;
+margin-bottom: 1rem;
+}
+
+.scorecard-email > p,
+.email-capture-content > p {
+font-size: 1.125rem;
+color: #57534e;
+line-height: 1.6;
+margin-bottom: 2rem;
+}
+
+/* Form Styling */
+.form-group {
+margin-bottom: 1.25rem;
+text-align: left;
+}
+
+.form-group label {
+display: block;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 0.875rem;
+font-weight: 600;
+color: #1c1917;
+margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+width: 100%;
+padding: 0.875rem 1rem;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 1rem;
+color: #1c1917;
+background: white;
+border: 2px solid #e7e5e4;
+border-radius: 6px;
+transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+outline: none;
+border-color: #2d3a8c;
+}
+
+.form-privacy {
+text-align: center;
+font-size: 0.8125rem;
+color: #57534e;
+margin-top: 1rem;
+}
+
+/* Results Section */
+.scorecard-result {
+max-width: 800px;
+margin: 0 auto;
+padding: 4rem 1.5rem;
+}
+
+.result-content {
+background: white;
+padding: 3rem 2.5rem;
+border-radius: 12px;
+border: 2px solid #e7e5e4;
+}
+
+.result-header {
+text-align: center;
+margin-bottom: 3rem;
+}
+
+.result-badge {
+margin-bottom: 1.5rem;
+}
+
+.badge-icon {
+width: 80px;
+height: 80px;
+border-radius: 50%;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+font-size: 2.5rem;
+color: white;
+margin: 0 auto;
+}
+
+.result-title {
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: 2.25rem;
+font-weight: 700;
+color: #2d3a8c;
+margin-bottom: 0.75rem;
+}
+
+.result-subtitle {
+font-size: 1.25rem;
+color: #57534e;
+line-height: 1.5;
+margin-bottom: 2rem;
+}
+
+/* Score Breakdown */
 .result-scores {
-margin: 2rem 0;
+margin: 3rem 0;
 padding: 2rem;
 background: #f5f5f4;
 border-radius: 8px;
 }
 
 .result-scores h3 {
-font-family: ‘DM Sans’, sans-serif;
-font-size: 1.25rem;
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: 1.5rem;
 font-weight: 700;
-color: var(–color-primary, #2d3a8c);
+color: #2d3a8c;
 margin-bottom: 1.5rem;
+text-align: center;
 }
 
 .score-bars {
@@ -2502,7 +2812,7 @@ gap: 1.5rem;
 }
 
 .score-bar-container {
-/* Individual score bar */
+/* Individual score bar wrapper */
 }
 
 .score-bar-label {
@@ -2511,12 +2821,12 @@ justify-content: space-between;
 margin-bottom: 0.5rem;
 font-family: ‘DM Sans’, sans-serif;
 font-size: 0.875rem;
-font-weight: 500;
-color: var(–color-text, #1c1917);
+font-weight: 600;
+color: #1c1917;
 }
 
 .score-value {
-color: var(–color-primary, #2d3a8c);
+color: #2d3a8c;
 font-weight: 700;
 }
 
@@ -2534,52 +2844,61 @@ border-radius: 6px;
 transition: width 0.6s ease;
 }
 
-/* Result Badge */
-.result-badge {
-text-align: center;
-margin-bottom: 1.5rem;
+/* Result Description */
+.result-description {
+font-size: 1rem;
+line-height: 1.7;
+color: #1c1917;
+margin-bottom: 2rem;
 }
 
-.badge-icon {
-width: 80px;
-height: 80px;
-border-radius: 50%;
-display: inline-flex;
-align-items: center;
-justify-content: center;
-font-size: 2.5rem;
-color: white;
-margin: 0 auto;
+.result-description p {
+margin-bottom: 1rem;
 }
 
-/* Result Next Steps */
+.result-description strong {
+color: #2d3a8c;
+font-weight: 700;
+}
+
+.result-description ul {
+margin: 1rem 0 1rem 1.5rem;
+}
+
+.result-description li {
+margin-bottom: 0.5rem;
+color: #57534e;
+}
+
+/* Next Steps */
 .result-next-steps {
-margin: 2rem 0;
+margin: 2.5rem 0;
 padding: 2rem;
 background: white;
-border: 2px solid var(–color-primary, #2d3a8c);
+border: 2px solid #2d3a8c;
 border-radius: 8px;
 }
 
 .result-next-steps h3 {
-font-family: ‘DM Sans’, sans-serif;
-font-size: 1.25rem;
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: 1.5rem;
 font-weight: 700;
-color: var(–color-primary, #2d3a8c);
-margin-bottom: 1rem;
+color: #2d3a8c;
+margin-bottom: 1.5rem;
 }
 
 .result-next-steps ol {
-list-style-position: inside;
-padding-left: 0;
+list-style-position: outside;
+padding-left: 1.5rem;
+counter-reset: item;
 }
 
 .result-next-steps li {
 font-family: ‘DM Sans’, sans-serif;
 font-size: 1rem;
-line-height: 1.6;
-color: var(–color-text, #1c1917);
-margin-bottom: 0.75rem;
+line-height: 1.7;
+color: #1c1917;
+margin-bottom: 1rem;
 padding-left: 0.5rem;
 }
 
@@ -2588,51 +2907,34 @@ padding-left: 0.5rem;
 text-align: center;
 margin-top: 3rem;
 padding-top: 2rem;
-border-top: 1px solid #e7e5e4;
+border-top: 2px solid #e7e5e4;
 }
 
 .result-cta-note {
 margin-top: 1rem;
-font-size: 0.875rem;
-color: var(–color-text-secondary, #57534e);
+font-size: 0.9375rem;
+color: #57534e;
 }
 
-/* Email Capture Icon */
-.email-icon {
-width: 80px;
-height: 80px;
-margin: 0 auto 1.5rem;
-}
-
-.email-icon svg {
-width: 100%;
-height: 100%;
-color: var(–color-primary, #2d3a8c);
-}
-
-/* Form Privacy Note */
-.form-privacy {
-text-align: center;
-font-size: 0.75rem;
-color: var(–color-text-secondary, #57534e);
-margin-top: 1rem;
-}
-
-/* Mobile Responsiveness for Benefits */
-@media (max-width: 767px) {
-.scorecard-benefits {
-gap: 1.5rem;
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+.scorecard-title {
+font-size: 2rem;
 }
 
 ```
-.benefit-icon {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 1rem;
+.scorecard-intro-content h2 {
+    font-size: 1.5rem;
 }
 
-.benefit-item h3 {
-    font-size: 1rem;
+.scorecard-benefits {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.benefit-icon {
+    width: 56px;
+    height: 56px;
 }
 
 .dimension-tags {
@@ -2641,7 +2943,42 @@ gap: 1.5rem;
 
 .dimension-tag {
     font-size: 0.8125rem;
-    padding: 0.4rem 0.75rem;
+    padding: 0.5rem 1rem;
+}
+
+.question-text {
+    font-size: 1.375rem;
+}
+
+.option-btn {
+    padding: 1rem;
+    font-size: 0.9375rem;
+}
+
+.result-content {
+    padding: 2rem 1.5rem;
+}
+
+.result-title {
+    font-size: 1.75rem;
+}
+```
+
+}
+
+@media (max-width: 480px) {
+.scorecard-title {
+font-size: 1.75rem;
+}
+
+```
+.question-text {
+    font-size: 1.25rem;
+}
+
+.btn-large {
+    width: 100%;
+    justify-content: center;
 }
 ```
 
