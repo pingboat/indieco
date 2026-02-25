@@ -2752,3 +2752,16 @@ grid-template-columns: 1fr !important;
 ```
 
 }
+
+.scorecard-container * {
+    text-align: center !important;
+}
+
+.option-text,
+.form-group label,
+.form-group input,
+.form-group select,
+.result-description p,
+.result-next-steps li {
+    text-align: left !important;
+}
