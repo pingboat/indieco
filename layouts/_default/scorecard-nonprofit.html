@@ -1,5 +1,4 @@
-{{ define “main” }}
-
+{{ define "main" }}
 <div class="scorecard-container">
     <!-- Intro Screen -->
     <section class="scorecard-intro" id="intro">
@@ -16,160 +15,156 @@
             </div>
         </div>
 
-```
-    <div class="scorecard-intro-content">
-        <h2>What You'll Discover</h2>
-        <div class="scorecard-benefits">
-            <div class="benefit-item">
-                <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                </svg>
-                <h3>Your Organizational Strengths</h3>
-                <p>Identify what's working well across mission, governance, and operations</p>
-            </div>
-            <div class="benefit-item">
-                <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                </svg>
-                <h3>Priority Development Areas</h3>
-                <p>See exactly where to focus your capacity-building efforts</p>
-            </div>
-            <div class="benefit-item">
-                <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <h3>Readiness for Growth</h3>
-                <p>Understand if you're ready to scale, fundraise, or expand programs</p>
-            </div>
-        </div>
-
-        <button class="btn btn-primary btn-large" onclick="startScorecard()">
-            Start Assessment
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-        </button>
-    </div>
-</section>
-
-<!-- Questions Screen -->
-<section class="scorecard-questions" id="questions" style="display: none;">
-    <div class="progress-container">
-        <div class="progress-bar">
-            <div class="progress-fill" id="progress"></div>
-        </div>
-        <p class="progress-text">
-            Question <span id="current-q">1</span> of <span id="total-q">15</span>
-        </p>
-    </div>
-    
-    <div class="question-container" id="question-container">
-        <!-- Questions injected by JavaScript -->
-    </div>
-</section>
-
-<!-- Email Capture Screen -->
-<section class="scorecard-email" id="email-capture" style="display: none;">
-    <div class="email-capture-content">
-        <div class="email-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-        </div>
-        <h2>Almost there!</h2>
-        <p>Get your personalized assessment report with specific recommendations for your organization's growth.</p>
-        
-        <form id="email-form" name="nonprofit-scorecard" method="POST" data-netlify="true">
-            <input type="hidden" name="form-name" value="nonprofit-scorecard">
-            <input type="hidden" name="result-type" id="result-type">
-            <input type="hidden" name="score-mission" id="score-mission">
-            <input type="hidden" name="score-governance" id="score-governance">
-            <input type="hidden" name="score-financial" id="score-financial">
-            <input type="hidden" name="score-fundraising" id="score-fundraising">
-            <input type="hidden" name="score-team" id="score-team">
-            <input type="hidden" name="total-score" id="total-score">
-
-            <div class="form-group">
-                <label for="name">Your Name *</label>
-                <input type="text" id="name" name="name" required>
+        <div class="scorecard-intro-content">
+            <h2>What You'll Discover</h2>
+            <div class="scorecard-benefits">
+                <div class="benefit-item">
+                    <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                    </svg>
+                    <h3>Your Organizational Strengths</h3>
+                    <p>Identify what's working well across mission, governance, and operations</p>
+                </div>
+                <div class="benefit-item">
+                    <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                    <h3>Priority Development Areas</h3>
+                    <p>See exactly where to focus your capacity-building efforts</p>
+                </div>
+                <div class="benefit-item">
+                    <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h3>Readiness for Growth</h3>
+                    <p>Understand if you're ready to scale, fundraise, or expand programs</p>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="email">Email Address *</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <div class="form-group">
-                <label for="organization">Organization Name *</label>
-                <input type="text" id="organization" name="organization" required>
-            </div>
-
-            <div class="form-group">
-                <label for="role">Your Role</label>
-                <select id="role" name="role">
-                    <option value="">Select...</option>
-                    <option value="founder">Founder/Co-Founder</option>
-                    <option value="executive">Executive Director</option>
-                    <option value="board">Board Member</option>
-                    <option value="program">Program Director</option>
-                    <option value="development">Development/Fundraising Lead</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-large">
-                Get My Results
+            <button class="btn btn-primary btn-large" onclick="startScorecard()">
+                Start Assessment
                 <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
             </button>
+        </div>
+    </section>
 
-            <p class="form-privacy">Your information is safe and will never be shared.</p>
-        </form>
-    </div>
-</section>
-
-<!-- Results Screen -->
-<section class="scorecard-result" id="result" style="display: none;">
-    <div class="result-content">
-        <div class="result-header">
-            <div class="result-badge" id="result-badge">
-                <!-- Badge injected by JavaScript -->
+    <!-- Questions Screen -->
+    <section class="scorecard-questions" id="questions" style="display: none;">
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
             </div>
-            <h2 class="result-title" id="result-title"></h2>
-            <p class="result-subtitle" id="result-subtitle"></p>
+            <p class="progress-text">
+                Question <span id="current-q">1</span> of <span id="total-q">15</span>
+            </p>
         </div>
+        
+        <div class="question-container" id="question-container">
+            <!-- Questions injected by JavaScript -->
+        </div>
+    </section>
 
-        <div class="result-scores">
-            <h3>Your Dimensional Scores</h3>
-            <div id="score-breakdown" class="score-bars">
-                <!-- Score bars injected by JavaScript -->
+    <!-- Email Capture Screen -->
+    <section class="scorecard-email" id="email-capture" style="display: none;">
+        <div class="email-capture-content">
+            <div class="email-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <h2>Almost there!</h2>
+            <p>Get your personalized assessment report with specific recommendations for your organization's growth.</p>
+            
+            <form id="email-form" name="nonprofit-scorecard" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="nonprofit-scorecard">
+                <input type="hidden" name="result-type" id="result-type">
+                <input type="hidden" name="score-mission" id="score-mission">
+                <input type="hidden" name="score-governance" id="score-governance">
+                <input type="hidden" name="score-financial" id="score-financial">
+                <input type="hidden" name="score-fundraising" id="score-fundraising">
+                <input type="hidden" name="score-team" id="score-team">
+                <input type="hidden" name="total-score" id="total-score">
+
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="organization">Organization Name *</label>
+                    <input type="text" id="organization" name="organization" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Your Role</label>
+                    <select id="role" name="role">
+                        <option value="">Select...</option>
+                        <option value="founder">Founder/Co-Founder</option>
+                        <option value="executive">Executive Director</option>
+                        <option value="board">Board Member</option>
+                        <option value="program">Program Director</option>
+                        <option value="development">Development/Fundraising Lead</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-large">
+                    Get My Results
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </button>
+
+                <p class="form-privacy">Your information is safe and will never be shared.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Results Screen -->
+    <section class="scorecard-result" id="result" style="display: none;">
+        <div class="result-content">
+            <div class="result-header">
+                <div class="result-badge" id="result-badge">
+                    <!-- Badge injected by JavaScript -->
+                </div>
+                <h2 class="result-title" id="result-title"></h2>
+                <p class="result-subtitle" id="result-subtitle"></p>
+            </div>
+
+            <div class="result-scores">
+                <h3>Your Dimensional Scores</h3>
+                <div id="score-breakdown" class="score-bars">
+                    <!-- Score bars injected by JavaScript -->
+                </div>
+            </div>
+
+            <div class="result-description" id="result-description">
+                <!-- Description injected by JavaScript -->
+            </div>
+
+            <div class="result-next-steps">
+                <h3>Recommended Next Steps</h3>
+                <ol id="next-steps-list">
+                    <!-- Steps injected by JavaScript -->
+                </ol>
+            </div>
+
+            <div class="result-cta">
+                <a href="/contact/" class="btn btn-primary btn-large" id="result-cta-btn">
+                    Schedule a Consultation
+                </a>
+                <p class="result-cta-note">Let's discuss how indieco can support your organization's growth journey.</p>
             </div>
         </div>
-
-        <div class="result-description" id="result-description">
-            <!-- Description injected by JavaScript -->
-        </div>
-
-        <div class="result-next-steps">
-            <h3>Recommended Next Steps</h3>
-            <ol id="next-steps-list">
-                <!-- Steps injected by JavaScript -->
-            </ol>
-        </div>
-
-        <div class="result-cta">
-            <a href="/contact/" class="btn btn-primary btn-large" id="result-cta-btn">
-                Schedule a Consultation
-            </a>
-            <p class="result-cta-note">Let's discuss how indieco can support your organization's growth journey.</p>
-        </div>
-    </div>
-</section>
-```
-
+    </section>
 </div>
 
 <script src="/js/scorecard-nonprofit.js"></script>
-
 {{ end }}
