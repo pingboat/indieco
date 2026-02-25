@@ -2395,24 +2395,28 @@ text-align: left !important;
 
 /* Container widths */
 .scorecard-intro {
+text-align: center !important;
 max-width: 900px !important;
 margin: 0 auto !important;
 padding: 4rem 1.5rem !important;
 }
 
 .scorecard-questions {
+text-align: center !important;
 max-width: 800px !important;
 margin: 0 auto !important;
 padding: 3rem 1.5rem !important;
 }
 
 .scorecard-email {
+text-align: center !important;
 max-width: 600px !important;
 margin: 0 auto !important;
 padding: 4rem 1.5rem !important;
 }
 
 .scorecard-result {
+text-align: center !important;
 max-width: 800px !important;
 margin: 0 auto !important;
 padding: 4rem 1.5rem !important;
