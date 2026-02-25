@@ -2765,3 +2765,23 @@ grid-template-columns: 1fr !important;
 .result-next-steps li {
     text-align: left !important;
 }
+
+/* Surgical centering for the scorecard boxes only */
+.scorecard-container,
+.scorecard-intro,
+.scorecard-questions,
+.scorecard-email,
+.scorecard-result,
+.question-card,
+.email-capture-content,
+.result-content {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important; /* Forces it to behave like a centered box */
+    float: none !important;    /* Kills any left-floating behavior */
+}
+
+/* Ensure the text inside the header stays centered */
+.scorecard-header, .scorecard-meta {
+    text-align: center !important;
+}
