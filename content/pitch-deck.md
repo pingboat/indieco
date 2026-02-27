@@ -5,7 +5,7 @@ layout: “pitch-deck”
 url: “/pitch-deck/”
 ---
 
-Get Your Investor-Ready Pitch Deck
+## Get Your Investor-Ready Pitch Deck
 Creating a compelling pitch deck requires the right information, organized clearly. Complete this brief so we can design a pitch deck that helps you raise capital.
 This takes 15-20 minutes to complete thoroughly. Don’t rush it - the quality of your inputs directly affects the quality of the final deck.
 What Happens Next
