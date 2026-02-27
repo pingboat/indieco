@@ -1,3 +1,4 @@
+---
 title: “Pitch Deck”
 description: “Get a custom quote for your investor-ready pitch deck”
 layout: “pitch-deck”
@@ -11,3 +12,4 @@ What Happens Next
 	3.	You receive a custom quote via email with timeline and pricing
 	4.	Once confirmed, we start designing your deck
 Our pitch decks have helped founders raise ₹50+ crores in funding.
+---
