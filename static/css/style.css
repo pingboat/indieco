@@ -2826,3 +2826,306 @@ grid-template-columns: 1fr !important;
 .benefit-item > div {
     text-align: center !important;
 }
+
+
+/* ===========================================
+PITCH DECK BRIEF FORM STYLES
+Add to your static/css/style.css
+=========================================== */
+
+/* Container */
+.pitch-deck-container {
+max-width: 900px;
+margin: 0 auto;
+padding: 2rem 1.5rem;
+}
+
+/* Intro Section */
+.pitch-deck-intro {
+text-align: center;
+padding: 4rem 0 3rem;
+}
+
+.pitch-deck-label {
+display: inline-block;
+font-size: 0.75rem;
+font-weight: 700;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: #FF9933;
+margin-bottom: 1rem;
+}
+
+.pitch-deck-title {
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: 2.5rem;
+color: #2d3a8c;
+margin-bottom: 1rem;
+}
+
+.pitch-deck-subtitle {
+font-size: 1.125rem;
+color: #57534e;
+margin-bottom: 2rem;
+}
+
+.pitch-deck-content {
+text-align: left;
+max-width: 800px;
+margin: 0 auto;
+}
+
+.pitch-deck-content h2 {
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: 1.5rem;
+color: #2d3a8c;
+margin: 2rem 0 1rem;
+}
+
+.pitch-deck-content h3 {
+font-size: 1.25rem;
+color: #2d3a8c;
+margin: 1.5rem 0 1rem;
+}
+
+.pitch-deck-content p {
+font-size: 1rem;
+line-height: 1.7;
+margin-bottom: 1rem;
+color: #1c1917;
+}
+
+.pitch-deck-content ul {
+margin: 1rem 0 1rem 1.5rem;
+}
+
+.pitch-deck-content li {
+margin-bottom: 0.5rem;
+line-height: 1.6;
+}
+
+/* Form Section */
+.pitch-deck-form-section {
+padding: 2rem 0;
+}
+
+.form-section {
+background: white;
+padding: 2.5rem;
+margin-bottom: 2rem;
+border-radius: 8px;
+border: 2px solid #e7e5e4;
+}
+
+.section-title {
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: 1.5rem;
+color: #2d3a8c;
+margin-bottom: 1.5rem;
+padding-bottom: 0.75rem;
+border-bottom: 2px solid #FF9933;
+}
+
+.form-group {
+margin-bottom: 1.5rem;
+}
+
+.form-row {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1.5rem;
+margin-bottom: 1.5rem;
+}
+
+.form-group label {
+display: block;
+font-size: 0.9375rem;
+font-weight: 600;
+color: #1c1917;
+margin-bottom: 0.5rem;
+}
+
+.form-group input[type=“text”],
+.form-group input[type=“email”],
+.form-group input[type=“tel”],
+.form-group input[type=“url”],
+.form-group input[type=“date”],
+.form-group select,
+.form-group textarea {
+width: 100%;
+padding: 0.875rem 1rem;
+font-size: 1rem;
+font-family: ‘DM Sans’, system-ui, sans-serif;
+color: #1c1917;
+background: white;
+border: 2px solid #e7e5e4;
+border-radius: 6px;
+transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+outline: none;
+border-color: #2d3a8c;
+}
+
+.form-group textarea {
+resize: vertical;
+font-family: ‘DM Sans’, system-ui, sans-serif;
+}
+
+.form-group select {
+appearance: none;
+background-image: url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ width=‘12’ height=‘12’ viewBox=‘0 0 12 12’%3E%3Cpath fill=’%232d3a8c’ d=‘M6 9L1 4h10z’/%3E%3C/svg%3E”);
+background-repeat: no-repeat;
+background-position: right 1rem center;
+padding-right: 2.5rem;
+}
+
+.helper-text {
+display: block;
+font-size: 0.8125rem;
+color: #57534e;
+margin-top: 0.5rem;
+font-style: italic;
+}
+
+/* Radio and Checkbox Groups */
+.radio-group,
+.checkbox-group {
+display: flex;
+flex-direction: column;
+gap: 0.75rem;
+margin-top: 0.5rem;
+}
+
+.radio-label,
+.checkbox-label {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+font-size: 0.9375rem;
+color: #1c1917;
+cursor: pointer;
+}
+
+.radio-label input[type=“radio”],
+.checkbox-label input[type=“checkbox”] {
+width: auto;
+margin: 0;
+cursor: pointer;
+}
+
+/* Submit Button */
+.form-section button[type=“submit”] {
+width: 100%;
+max-width: 300px;
+margin: 0 auto;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 0.75rem;
+}
+
+.form-note {
+text-align: center;
+font-size: 0.8125rem;
+color: #57534e;
+margin-top: 1rem;
+}
+
+/* Thank You Section */
+.pitch-deck-thank-you {
+padding: 4rem 1.5rem;
+text-align: center;
+}
+
+.thank-you-content {
+max-width: 600px;
+margin: 0 auto;
+}
+
+.thank-you-icon {
+width: 80px;
+height: 80px;
+margin: 0 auto 2rem;
+}
+
+.thank-you-icon svg {
+width: 100%;
+height: 100%;
+color: #10b981;
+stroke-width: 2;
+}
+
+.pitch-deck-thank-you h2 {
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: 2.5rem;
+color: #2d3a8c;
+margin-bottom: 1rem;
+}
+
+.pitch-deck-thank-you p {
+font-size: 1.125rem;
+color: #57534e;
+margin-bottom: 1rem;
+line-height: 1.6;
+}
+
+.pitch-deck-thank-you strong {
+color: #2d3a8c;
+font-weight: 600;
+}
+
+.next-steps-box {
+background: #f5f5f4;
+padding: 2rem;
+border-radius: 8px;
+margin: 2rem 0;
+text-align: left;
+}
+
+.next-steps-box h3 {
+font-family: ‘Playfair Display’, Georgia, serif;
+font-size: 1.25rem;
+color: #2d3a8c;
+margin-bottom: 1rem;
+text-align: center;
+}
+
+.next-steps-box ol {
+list-style-position: inside;
+padding-left: 0;
+}
+
+.next-steps-box li {
+font-size: 1rem;
+line-height: 1.7;
+color: #1c1917;
+margin-bottom: 0.75rem;
+padding-left: 0.5rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+.pitch-deck-title {
+font-size: 2rem;
+}
+
+```
+.form-section {
+    padding: 1.5rem;
+}
+
+.form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+}
+
+.section-title {
+    font-size: 1.25rem;
+}
+```
+
+}
