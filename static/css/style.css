@@ -3129,3 +3129,26 @@ font-size: 2rem;
 ```
 
 }
+
+.pitch-deck-content {
+    max-width: 900px;
+    margin: 4rem auto;
+}
+
+.pitch-deck-content h2,
+.pitch-deck-content h3 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.pitch-deck-content p {
+    margin-bottom: 1.25rem;
+    color: var(--color-text-muted);
+}
+
+.pitch-deck-content ol {
+    margin: 1.5rem 0 1.5rem 1.25rem;
+}
+
+.pitch-deck-content li {
+    margin-bottom: 0.75rem;
