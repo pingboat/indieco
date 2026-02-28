@@ -3191,34 +3191,36 @@ font-size: 2rem;
 }
 
 /* =========================================
-   PITCH DECK: CENTER SUBMIT SECTION
+   FORCE CENTER SUBMIT BUTTON & FOOTER
    ========================================= */
 
-/* Targets the container holding the Submit button */
-.pitch-deck-content .form-submit-container, 
-.pitch-deck-content .submit-area {
-    text-align: center !important;
+/* This targets the wrapper box containing the button and the disclaimer */
+.pitch-deck-content .form-actions,
+.pitch-deck-content fieldset:last-of-type,
+.pitch-deck-content .submit-section {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    justify-content: center !important;
-    margin: 40px auto !important;
-    padding: 40px !important;
-}
-
-/* Ensures the button itself is centered if it's a block element */
-.pitch-deck-content button[type="submit"],
-.pitch-deck-content .btn-submit {
-    margin: 0 auto 15px auto !important;
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Keeps the "By submitting..." text centered below the button */
-.pitch-deck-content .submit-footer-text,
-.pitch-deck-content .form-submit-container p {
     text-align: center !important;
-    width: 100%;
-    margin-top: 10px !important;
+    width: 100% !important;
+    padding: 40px 20px !important;
+}
+
+/* This specifically targets the button itself */
+.pitch-deck-content button#submit-button,
+.pitch-deck-content .button.primary,
+.pitch-deck-content button[type="submit"] {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: inline-flex !important;
+    float: none !important; /* Kills any left floats */
+}
+
+/* This ensures the 'By submitting...' text stays centered below */
+.pitch-deck-content .form-footer-text,
+.pitch-deck-content .form-actions + p,
+.pitch-deck-content .submit-section p {
+    text-align: center !important;
+    margin: 15px auto 0 auto !important;
+    width: 100% !important;
 }
