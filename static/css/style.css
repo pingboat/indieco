@@ -3130,47 +3130,62 @@ font-size: 2rem;
 
 }
 
-/* ===================================
-   WHAT HAPPENS NEXT BOX (Pitch Deck)
-   =================================== */
+/* =========================================
+   WHAT HAPPENS NEXT – PIXEL PERFECT VERSION
+   ========================================= */
 
 .pitch-deck-content h3 {
-    max-width: 950px;
+    max-width: 980px;
     margin: 80px auto 0 auto;
-    padding: 50px 60px 25px 60px;
-    background: #f5f5f7;
-    border: 1px solid #e5e5ea;
+    padding: 60px 80px 20px 80px;
+    background: #f5f6f8;
+    border: 1px solid #e3e5ea;
     border-bottom: none;
     border-radius: 18px 18px 0 0;
-    font-size: 2rem;
+
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: #2f3473;
+    text-align: left;
 }
 
+/* Divider line */
+.pitch-deck-content h3::after {
+    content: "";
+    display: block;
+    height: 1px;
+    background: #dcdfe6;
+    margin-top: 20px;
+}
+
+/* Ordered List Block */
 .pitch-deck-content h3 + ol {
-    max-width: 950px;
+    max-width: 980px;
     margin: 0 auto;
-    padding: 10px 60px 10px 80px;
-    background: #f5f5f7;
-    border-left: 1px solid #e5e5ea;
-    border-right: 1px solid #e5e5ea;
+    padding: 30px 80px 20px 95px;
+    background: #f5f6f8;
+    border-left: 1px solid #e3e5ea;
+    border-right: 1px solid #e3e5ea;
 }
 
 .pitch-deck-content h3 + ol li {
-    margin-bottom: 1.25rem;
-    font-size: 1.1rem;
-    line-height: 1.7;
+    margin-bottom: 22px;
+    font-size: 1.25rem;
+    line-height: 1.75;
+    color: #2d2d2d;
 }
 
+/* Bottom Statement */
 .pitch-deck-content h3 + ol + p {
-    max-width: 950px;
+    max-width: 980px;
     margin: 0 auto 80px auto;
-    padding: 30px 60px 50px 60px;
-    background: #f5f5f7;
-    border: 1px solid #e5e5ea;
+    padding: 40px 80px 60px 80px;
+    background: #f5f6f8;
+    border: 1px solid #e3e5ea;
     border-top: none;
     border-radius: 0 0 18px 18px;
-    font-size: 1.1rem;
-}
 
-.pitch-deck-content h3 + ol + p strong {
-    color: #1e1e5a;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2f3473;
 }
