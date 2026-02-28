@@ -3019,7 +3019,7 @@ cursor: pointer;
 
 /* Submit Button */
 .form-section button[type=“submit”] {
-width: fit-contentn;
+width: fit-content;
 min-width: 280px;
 margin: 0 auto;
 display: flex;
