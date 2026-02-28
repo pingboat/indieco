@@ -19,5 +19,5 @@ Creating a compelling pitch deck right information, organised clearly, that come
 
   **Our pitch decks have already helped founders raise ₹50+ crores in funding.**
 
-  ## Submit Your Startup Details Now!
+  ## Submit Your Startup Brief Now
 
