@@ -3191,36 +3191,35 @@ font-size: 2rem;
 }
 
 /* =========================================
-   EXCLUSIVE PITCH DECK BUTTON CENTERING
+   PITCH DECK ONLY: CENTER SUBMIT BUTTON
    ========================================= */
 
-/* 1. Target the box containing the button and the disclaimer */
+/* 1. Target the specific wrapper box on this page only */
 .pitch-deck-content .form-actions,
-.pitch-deck-content form > div:last-of-type {
-    display: block !important;
+.pitch-deck-content form > div:last-child {
+    display: flex !important;
+    flex-direction: column !important; /* Stack button and text vertically */
+    align-items: center !important;    /* This is the magic for Flex centering */
+    justify-content: center !important;
     text-align: center !important;
     width: 100% !important;
-    margin: 40px 0 !important;
-    float: none !important;
-    clear: both !important;
+    border-top: 1px solid #e3e5ea !important; /* Matches your section borders */
+    padding: 40px 20px !important;
 }
 
-/* 2. Force the button to behave as a centered inline element */
+/* 2. Reset the button itself to ensure it doesn't float left */
 .pitch-deck-content button[type="submit"],
-.pitch-deck-content .submit-brief-button {
-    display: inline-flex !important;
+.pitch-deck-content .button {
     margin: 0 auto !important;
     float: none !important;
-    text-align: center !important;
-    /* This ensures it isn't being pushed by a width: 100% */
-    width: auto !important; 
+    display: inline-flex !important;
+    width: auto !important; /* Keep it from stretching full-width */
 }
 
-/* 3. Force the disclaimer text underneath to center */
+/* 3. Ensure the disclaimer text underneath is also centered */
 .pitch-deck-content .form-actions p,
-.pitch-deck-content form > div:last-of-type p {
-    display: block !important;
+.pitch-deck-content form > div:last-child p {
     text-align: center !important;
-    margin: 15px auto !important;
+    margin: 15px auto 0 auto !important;
     width: 100% !important;
 }
