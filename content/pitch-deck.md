@@ -12,10 +12,10 @@ Creating a compelling pitch deck right information, organised clearly, that come
 
 ### What Happens Next
 
-1. **You complete the brief** (15-20 minutes)
-2. **We review within 24 hours** and assess complexity
-3. **You receive a custom quote** via email with timeline and pricing
-4. **Once confirmed**, we start designing your deck
+  1. **You complete the brief** (15-20 minutes)
+  2. **We review within 24 hours** and assess complexity
+  3. **You receive a custom quote** via email with timeline and pricing
+  4. **Once confirmed**, we start designing your deck
 
-**Our pitch decks have helped founders raise ₹50+ crores in funding.**
+  **Our pitch decks have helped founders raise ₹50+ crores in funding.**
 
