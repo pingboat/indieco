@@ -17,5 +17,5 @@ Creating a compelling pitch deck right information, organised clearly, that come
   3. **You receive a custom quote** via email with timeline and pricing
   4. **Once confirmed**, we start designing your deck
 
-  **Our pitch decks have helped founders raise ₹50+ crores in funding.**
+  **Our pitch decks have already helped founders raise ₹50+ crores in funding.**
 
