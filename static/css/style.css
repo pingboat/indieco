@@ -3191,38 +3191,32 @@ font-size: 2rem;
 }
 
 /* =========================================
-   BRUTE FORCE BUTTON CENTERING
+   PITCH DECK ONLY: CENTER SUBMIT BUTTON
    ========================================= */
 
-/* 1. Target the box that holds the button */
-.pitch-deck-content form > div:last-child,
-.pitch-deck-content .form-actions,
-.pitch-deck-content .submit-area {
-    display: block !important;
+/* 1. Target the specific container on the Pitch Deck page */
+.pitch-deck-content form .form-actions,
+.pitch-deck-content form div:last-child {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important; /* This centers the flex children */
+    justify-content: center !important;
     text-align: center !important;
     width: 100% !important;
-    margin: 40px 0 !important;
-    padding: 0 !important;
-    border: none !important; /* Removes inner borders if interfering */
+    padding: 20px 0 !important;
 }
 
-/* 2. Target the actual button inside that box */
-.pitch-deck-content form button,
-.pitch-deck-content #submit-button,
-.pitch-deck-content .button {
-    display: inline-flex !important;
+/* 2. Ensure the button itself doesn't stretch and stays centered */
+.pitch-deck-content form button[type="submit"] {
     margin: 0 auto !important;
+    display: inline-flex !important;
+    width: auto !important;
     float: none !important;
-    position: relative !important;
-    left: 50%;
-    transform: translateX(-50%); /* The 'Golden Rule' for forced centering */
 }
 
-/* 3. Ensure the disclaimer text below it stays centered */
-.pitch-deck-content form > div:last-child p,
-.pitch-deck-content .form-footer-text {
+/* 3. Center the disclaimer text below the button */
+.pitch-deck-content form .form-actions p,
+.pitch-deck-content form div:last-child p {
     text-align: center !important;
-    margin-top: 15px !important;
-    width: 100% !important;
-    display: block !important;
+    margin: 15px auto 0 auto !important;
 }
