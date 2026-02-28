@@ -3130,75 +3130,53 @@ font-size: 2rem;
 
 }
 
-/* =================
-   WHAT HAPPENS NEXT
-   =============== */
+/* =========================================
+   TARGETED "WHAT HAPPENS NEXT" CARD
+   ========================================= */
 
-/* 1. Target the H3 as the "Top" of the card */
+/* 1. The Header - Starting the card */
 .pitch-deck-content h3 {
-    max-width: 800px;
-    margin: 60px auto 0 auto; /* Centers the header */
-    padding: 50px 60px 20px 60px;
-    background: #f5f6f8;
+    max-width: 850px;
+    margin: 60px auto 0 auto !important;
+    padding: 40px 50px 20px 50px !important;
+    background: #f8f9fb; /* Subtle contrast background */
     border: 1px solid #e3e5ea;
     border-bottom: none;
-    border-radius: 18px 18px 0 0;
-
-    font-family: var(--font-display);
-    font-size: 2.25rem;
-    font-weight: 500;
-    color: var(--color-primary);
-    text-align: left;
+    border-radius: 12px 12px 0 0;
+    text-align: left !important;
 }
 
-/* 2. Target the Ordered List as the "Body" of the card */
+/* 2. The List - Middle of the card */
 .pitch-deck-content h3 + ol {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 60px 20px 85px; /* Keeps text left-aligned but inside the card */
-    background: #f5f6f8;
+    max-width: 850px;
+    margin: 0 auto !important;
+    padding: 10px 50px 20px 80px !important; /* Extra left pad for numbers */
+    background: #f8f9fb;
     border-left: 1px solid #e3e5ea;
     border-right: 1px solid #e3e5ea;
-    list-style-position: outside;
+    text-align: left !important;
 }
 
 .pitch-deck-content h3 + ol li {
-    margin-bottom: 18px;
-    font-family: var(--font-body);
-    font-size: 1.15rem;
-    line-height: 1.6;
-    color: var(--color-text);
-    text-align: left;
+    margin-bottom: 15px;
+    text-align: left !important;
 }
 
-/* 3. Target the P as the "Footer" of the card */
-.pitch-deck-content h3 + ol + p {
-    max-width: 800px;
-    margin: 0 auto 60px auto; /* Centers the footer */
-    padding: 20px 60px 50px 60px;
-    background: #f5f6f8;
+/* 3. The Bold Stat - Bottom of the card */
+/* Targets the 'p' tag that immediately follows the 'ol' */
+.pitch-deck-content ol + p {
+    max-width: 850px;
+    margin: 0 auto 60px auto !important;
+    padding: 20px 50px 40px 50px !important;
+    background: #f8f9fb;
     border: 1px solid #e3e5ea;
     border-top: none;
-    border-radius: 0 0 18px 18px;
-
-    font-family: var(--font-body);
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--color-primary);
-    text-align: left;
-    line-height: 1.4;
+    border-radius: 0 0 12px 12px;
+    text-align: left !important;
 }
 
-/* Responsive Fix for Mobile */
-@media (max-width: 768px) {
-    .pitch-deck-content h3, 
-    .pitch-deck-content h3 + ol, 
-    .pitch-deck-content h3 + ol + p {
-        max-width: 100%;
-        padding-left: 40px;
-        padding-right: 40px;
-    }
-    .pitch-deck-content h3 + ol {
-        padding-left: 55px; /* Account for numbers on mobile */
-    }
+/* Ensure the bold text inside the footer stays left-aligned */
+.pitch-deck-content ol + p strong {
+    display: block;
+    text-align: left !important;
 }
