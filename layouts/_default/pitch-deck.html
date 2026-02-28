@@ -1,95 +1,117 @@
 {{ define "main" }}
 
-<div class="pitch-deck-container">
-    <section class="pitch-deck-intro">
-        <div class="pitch-deck-header">
-            <span class="pitch-deck-label">INVESTOR PITCH DECK</span>
-            <h1 class="pitch-deck-title">{{ .Title }}</h1>
-            <p class="pitch-deck-subtitle">{{ .Description }}</p>
+<div class="pitch-deck-container" style="font-family: sans-serif; color: #333; line-height: 1.6;">
+    
+    <section class="pitch-deck-intro" style="text-align: center; padding: 40px 20px;">
+        <div class="pitch-deck-header" style="margin-bottom: 2rem;">
+            <span class="pitch-deck-label" style="letter-spacing: 2px; color: #666; font-weight: bold; font-size: 0.9rem;">INVESTOR PITCH DECK</span>
+            <h1 class="pitch-deck-title" style="font-size: 2.5rem; color: #1a237e; margin: 10px 0;">{{ .Title }}</h1>
+            <p class="pitch-deck-subtitle" style="font-size: 1.2rem; color: #555;">{{ .Description }}</p>
         </div>
 
-    <div class="pitch-deck-content">
-        {{ .Content }}
-    </div>
-</section>
+        <div class="pitch-deck-content" style="max-width: 800px; margin: 0 auto;">
+            <h2 style="font-size: 2rem; color: #1a237e; margin-bottom: 1.5rem;">Be so good they can't ignore you.</h2>
+            
+            <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                Creating a compelling pitch deck means having the right information, organized clearly, that comes across as a moving & impactful story. Complete this brief so we can design a winning pitch deck that helps you raise capital.
+            </p>
 
-<section class="pitch-deck-form-section">
-    <form name="pitch-deck" method="POST" data-netlify="true" id="pitch-deck-form">
-        <input type="hidden" name="form-name" value="pitch-deck">
-        
-        <div class="form-section">
-            <h2 class="section-title">1. Your Information</h2>
-            <div class="form-row" style="display: flex; flex-wrap: wrap; gap: 1rem;">
-                <div class="form-group" style="flex: 1 1 300px;">
-                    <label for="full-name">Full Name *</label>
-                    <input type="text" id="full-name" name="full-name" required style="width: 100%;">
-                </div>
-                <div class="form-group" style="flex: 1 1 300px;">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required style="width: 100%;">
-                </div>
-            </div>
-        </div>
+            <p style="font-weight: bold; color: #3949ab; margin-bottom: 2.5rem;">
+                This takes 15-20 minutes to complete thoroughly. Don't rush it — the quality of your inputs directly affects the quality of the final deck.
+            </p>
 
-        <div class="form-section">
-            <h2 class="section-title">2. Company Basics</h2>
-            <div class="form-row" style="display: flex; flex-wrap: wrap; gap: 1rem;">
-                <div class="form-group" style="flex: 1 1 300px;">
-                    <label for="company-name">Company/Startup Name *</label>
-                    <input type="text" id="company-name" name="company-name" required style="width: 100%;">
-                </div>
-                <div class="form-group" style="flex: 1 1 300px;">
-                    <label for="website">Website (if exists)</label>
-                    <input type="url" id="website" name="website" placeholder="https://..." style="width: 100%;">
-                </div>
+            <div class="what-happens-next" style="text-align: left; display: inline-block; background: #f8f9fa; padding: 2rem; border-radius: 8px; margin-bottom: 3rem; border: 1px solid #eee;">
+                <h3 style="margin-top: 0; color: #1a237e; border-bottom: 2px solid #e0e0e0; padding-bottom: 0.5rem; margin-bottom: 1rem;">What Happens Next</h3>
+                <ol style="padding-left: 1.5rem; line-height: 2;">
+                    <li>You complete the brief (15-20 minutes)</li>
+                    <li>We review within 24 hours and assess complexity</li>
+                    <li>You receive a custom quote via email with timeline and pricing</li>
+                    <li>Once confirmed, we start designing your deck</li>
+                </ol>
+                <p style="margin-top: 1.5rem; font-weight: bold; color: #1a237e; text-align: center;">
+                    Our pitch decks have helped founders raise ₹50+ crores in funding.
+                </p>
             </div>
             
-            <div class="form-row" style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
-                <div class="form-group" style="flex: 1 1 300px;">
-                    <label for="industry">Industry/Sector *</label>
-                    <input type="text" id="industry" name="industry" placeholder="e.g., EdTech" required style="width: 100%;">
-                </div>
-                <div class="form-group" style="flex: 1 1 300px;">
-                    <label for="stage">Current Stage *</label>
-                    <select id="stage" name="stage" required style="width: 100%; box-sizing: border-box;">
-                        <option value="">Select stage...</option>
-                        <option value="idea">Idea Stage</option>
-                        <option value="mvp">MVP/Prototype</option>
-                        <option value="early-revenue">Early Revenue</option>
-                    </select>
-                </div>
+            <div style="margin-top: 1rem;">
+                {{ .Content }}
             </div>
         </div>
+    </section>
 
-        <div class="form-section">
-            <h2 class="section-title">12. Design & Delivery</h2>
-            <div class="form-row" style="display: flex; flex-wrap: wrap; gap: 1rem;">
-                <div class="form-group" style="flex: 1 1 300px;">
-                    <label for="deadline">When do you need this by? *</label>
-                    <input type="date" id="deadline" name="deadline" required style="width: 100%;">
-                </div>
-                <div class="form-group" style="flex: 1 1 300px;">
-                    <label for="format-preference">Preferred format</label>
-                    <select id="format-preference" name="format-preference" style="width: 100%; box-sizing: border-box;">
-                        <option value="ppt">PowerPoint (.pptx)</option>
-                        <option value="google-slides">Google Slides</option>
-                        <option value="both">Both</option>
-                    </select>
+    <section class="pitch-deck-form-section" style="max-width: 800px; margin: 0 auto; padding: 20px;">
+        <form name="pitch-deck" method="POST" data-netlify="true" id="pitch-deck-form">
+            <input type="hidden" name="form-name" value="pitch-deck">
+            
+            <div class="form-section" style="margin-bottom: 2rem; padding: 20px; border: 1px solid #eee; border-radius: 8px;">
+                <h2 class="section-title" style="color: #1a237e; margin-bottom: 1.5rem;">1. Your Information</h2>
+                <div class="form-row" style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                    <div class="form-group" style="flex: 1 1 300px;">
+                        <label for="full-name" style="display: block; margin-bottom: 5px; font-weight: bold;">Full Name *</label>
+                        <input type="text" id="full-name" name="full-name" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                    </div>
+                    <div class="form-group" style="flex: 1 1 300px;">
+                        <label for="email" style="display: block; margin-bottom: 5px; font-weight: bold;">Email Address *</label>
+                        <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="form-section" style="text-align: center; display: flex; flex-direction: column; align-items: center; margin-top: 2rem;">
-            <button type="submit" class="btn btn-primary btn-large" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
-                Submit Brief
-                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width: 20px; height: 20px;">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            <div class="form-section" style="margin-bottom: 2rem; padding: 20px; border: 1px solid #eee; border-radius: 8px;">
+                <h2 class="section-title" style="color: #1a237e; margin-bottom: 1.5rem;">12. Design & Delivery</h2>
+                <div class="form-row" style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                    <div class="form-group" style="flex: 1 1 300px;">
+                        <label for="deadline" style="display: block; margin-bottom: 5px; font-weight: bold;">When do you need this by? *</label>
+                        <input type="date" id="deadline" name="deadline" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                    </div>
+                    <div class="form-group" style="flex: 1 1 300px;">
+                        <label for="format-preference" style="display: block; margin-bottom: 5px; font-weight: bold;">Preferred format</label>
+                        <select id="format-preference" name="format-preference" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; background: white;">
+                            <option value="ppt">PowerPoint (.pptx)</option>
+                            <option value="google-slides">Google Slides</option>
+                            <option value="both">Both</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section" style="text-align: center; display: flex; flex-direction: column; align-items: center; margin-top: 3rem; margin-bottom: 5rem;">
+                <button type="submit" class="btn btn-primary btn-large" style="background: #1a237e; color: white; padding: 15px 40px; border: none; border-radius: 6px; font-size: 1.1rem; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 10px;">
+                    Submit Brief
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width: 20px; height: 20px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </button>
+                <p class="form-note" style="margin-top: 1rem; color: #666; font-size: 0.9rem;">By submitting, you agree to receive a response from indieco within 24 hours</p>
+            </div>
+        </form>
+    </section>
+
+    <section class="pitch-deck-thank-you" id="thank-you-message" style="display: none; text-align: center; padding: 80px 20px;">
+        <div class="thank-you-content" style="max-width: 700px; margin: 0 auto;">
+            <div class="thank-you-icon" style="margin-bottom: 1.5rem;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#2e7d32" style="width: 80px; height: 80px; margin: 0 auto;">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-            </button>
-            <p class="form-note" style="margin-top: 1rem;">By submitting, you agree to receive a response from indieco within 24 hours</p>
+            </div>
+            <h2 style="font-size: 2.5rem; color: #1a237e; margin-bottom: 1rem;">Thank You!</h2>
+            <p style="font-size: 1.2rem; color: #333;">We've received your pitch deck brief and will review it within 24 hours.</p>
+            <p style="margin-bottom: 3rem;">You'll receive a custom quote via email at <strong id="submitted-email"></strong></p>
+            
+            <div class="next-steps-box" style="text-align: left; display: inline-block; background: #f0f4f8; padding: 2.5rem; border-radius: 12px; width: 100%; box-sizing: border-box; margin-bottom: 2rem;">
+                <h3 style="margin-top: 0; color: #1a237e; text-align: center; border-bottom: 2px solid #cbd5e0; padding-bottom: 10px; margin-bottom: 20px;">What Happens Next?</h3>
+                <ol style="line-height: 1.8;">
+                    <li>We review your brief and assess complexity</li>
+                    <li>You receive a detailed quote with timeline and pricing</li>
+                    <li>Once confirmed, we start designing your deck</li>
+                    <li>You receive Draft 1 for review</li>
+                    <li>Two rounds of revisions</li>
+                    <li>Final delivery with editable files</li>
+                </ol>
+            </div>
+            <a href="/" style="display: inline-block; padding: 12px 30px; background: #eee; color: #333; text-decoration: none; border-radius: 4px; font-weight: bold;">Back to Home</a>
         </div>
-    </form>
-</section>
+    </section>
 
 </div>
 
