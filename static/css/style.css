@@ -3130,62 +3130,75 @@ font-size: 2rem;
 
 }
 
-/* =========================================
-   WHAT HAPPENS NEXT – PIXEL PERFECT VERSION
-   ========================================= */
+/* =================
+   WHAT HAPPENS NEXT
+   =============== */
 
+/* 1. Target the H3 as the "Top" of the card */
 .pitch-deck-content h3 {
-    max-width: 980px;
-    margin: 80px auto 0 auto;
-    padding: 60px 80px 20px 80px;
+    max-width: 800px;
+    margin: 60px auto 0 auto; /* Centers the header */
+    padding: 50px 60px 20px 60px;
     background: #f5f6f8;
     border: 1px solid #e3e5ea;
     border-bottom: none;
     border-radius: 18px 18px 0 0;
 
-    font-size: 2.4rem;
+    font-family: var(--font-display);
+    font-size: 2.25rem;
     font-weight: 500;
-    color: #2f3473;
+    color: var(--color-primary);
     text-align: left;
 }
 
-/* Divider line */
-.pitch-deck-content h3::after {
-    content: "";
-    display: block;
-    height: 1px;
-    background: #dcdfe6;
-    margin-top: 20px;
-}
-
-/* Ordered List Block */
+/* 2. Target the Ordered List as the "Body" of the card */
 .pitch-deck-content h3 + ol {
-    max-width: 980px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 30px 80px 20px 95px;
+    padding: 0 60px 20px 85px; /* Keeps text left-aligned but inside the card */
     background: #f5f6f8;
     border-left: 1px solid #e3e5ea;
     border-right: 1px solid #e3e5ea;
+    list-style-position: outside;
 }
 
 .pitch-deck-content h3 + ol li {
-    margin-bottom: 22px;
-    font-size: 1.25rem;
-    line-height: 1.75;
-    color: #2d2d2d;
+    margin-bottom: 18px;
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    text-align: left;
 }
 
-/* Bottom Statement */
+/* 3. Target the P as the "Footer" of the card */
 .pitch-deck-content h3 + ol + p {
-    max-width: 980px;
-    margin: 0 auto 80px auto;
-    padding: 40px 80px 60px 80px;
+    max-width: 800px;
+    margin: 0 auto 60px auto; /* Centers the footer */
+    padding: 20px 60px 50px 60px;
     background: #f5f6f8;
     border: 1px solid #e3e5ea;
     border-top: none;
     border-radius: 0 0 18px 18px;
 
-    font-size: 1.5rem;
+    font-family: var(--font-body);
+    font-size: 1.4rem;
     font-weight: 600;
-    color: #2f3473;
+    color: var(--color-primary);
+    text-align: left;
+    line-height: 1.4;
+}
+
+/* Responsive Fix for Mobile */
+@media (max-width: 768px) {
+    .pitch-deck-content h3, 
+    .pitch-deck-content h3 + ol, 
+    .pitch-deck-content h3 + ol + p {
+        max-width: 100%;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .pitch-deck-content h3 + ol {
+        padding-left: 55px; /* Account for numbers on mobile */
+    }
 }
