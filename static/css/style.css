@@ -3130,26 +3130,47 @@ font-size: 2rem;
 
 }
 
-.pitch-deck-content {
-    max-width: 900px;
-    margin: 4rem auto;
-}
+/* ===================================
+   WHAT HAPPENS NEXT BOX (Pitch Deck)
+   =================================== */
 
-.pitch-deck-content h2,
 .pitch-deck-content h3 {
-    margin-top: 3rem;
-    margin-bottom: 1rem;
+    max-width: 950px;
+    margin: 80px auto 0 auto;
+    padding: 50px 60px 25px 60px;
+    background: #f5f5f7;
+    border: 1px solid #e5e5ea;
+    border-bottom: none;
+    border-radius: 18px 18px 0 0;
+    font-size: 2rem;
 }
 
-.pitch-deck-content p {
+.pitch-deck-content h3 + ol {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 10px 60px 10px 80px;
+    background: #f5f5f7;
+    border-left: 1px solid #e5e5ea;
+    border-right: 1px solid #e5e5ea;
+}
+
+.pitch-deck-content h3 + ol li {
     margin-bottom: 1.25rem;
-    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    line-height: 1.7;
 }
 
-.pitch-deck-content ol {
-    margin: 1.5rem 0 1.5rem 1.25rem;
+.pitch-deck-content h3 + ol + p {
+    max-width: 950px;
+    margin: 0 auto 80px auto;
+    padding: 30px 60px 50px 60px;
+    background: #f5f5f7;
+    border: 1px solid #e5e5ea;
+    border-top: none;
+    border-radius: 0 0 18px 18px;
+    font-size: 1.1rem;
 }
 
-.pitch-deck-content li {
-    margin-bottom: 0.75rem;
+.pitch-deck-content h3 + ol + p strong {
+    color: #1e1e5a;
 }
