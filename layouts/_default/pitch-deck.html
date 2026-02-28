@@ -13,467 +13,82 @@
     </div>
 </section>
 
-<!-- The Form -->
 <section class="pitch-deck-form-section">
     <form name="pitch-deck" method="POST" data-netlify="true" id="pitch-deck-form">
         <input type="hidden" name="form-name" value="pitch-deck">
         
-        <!-- Section 1: Contact Information -->
         <div class="form-section">
             <h2 class="section-title">1. Your Information</h2>
-            
-            <div class="form-row">
-                <div class="form-group">
+            <div class="form-row" style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                <div class="form-group" style="flex: 1 1 300px;">
                     <label for="full-name">Full Name *</label>
-                    <input type="text" id="full-name" name="full-name" required>
+                    <input type="text" id="full-name" name="full-name" required style="width: 100%;">
                 </div>
-                
-                <div class="form-group">
+                <div class="form-group" style="flex: 1 1 300px;">
                     <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="linkedin">LinkedIn Profile (optional)</label>
-                    <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/...">
+                    <input type="email" id="email" name="email" required style="width: 100%;">
                 </div>
             </div>
         </div>
 
-        <!-- Section 2: Company Basics -->
         <div class="form-section">
             <h2 class="section-title">2. Company Basics</h2>
-            
-            <div class="form-row">
-                <div class="form-group">
+            <div class="form-row" style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                <div class="form-group" style="flex: 1 1 300px;">
                     <label for="company-name">Company/Startup Name *</label>
-                    <input type="text" id="company-name" name="company-name" required>
+                    <input type="text" id="company-name" name="company-name" required style="width: 100%;">
                 </div>
-                
-                <div class="form-group">
+                <div class="form-group" style="flex: 1 1 300px;">
                     <label for="website">Website (if exists)</label>
-                    <input type="url" id="website" name="website" placeholder="https://...">
+                    <input type="url" id="website" name="website" placeholder="https://..." style="width: 100%;">
                 </div>
             </div>
             
-            <div class="form-row">
-                <div class="form-group">
+            <div class="form-row" style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
+                <div class="form-group" style="flex: 1 1 300px;">
                     <label for="industry">Industry/Sector *</label>
-                    <input type="text" id="industry" name="industry" placeholder="e.g., EdTech, FinTech, Healthcare" required>
+                    <input type="text" id="industry" name="industry" placeholder="e.g., EdTech" required style="width: 100%;">
                 </div>
-                
-                <div class="form-group">
+                <div class="form-group" style="flex: 1 1 300px;">
                     <label for="stage">Current Stage *</label>
-                    <select id="stage" name="stage" required>
+                    <select id="stage" name="stage" required style="width: 100%; box-sizing: border-box;">
                         <option value="">Select stage...</option>
                         <option value="idea">Idea Stage</option>
                         <option value="mvp">MVP/Prototype</option>
-                        <option value="early-revenue">Early Revenue (<₹50L)</option>
-                        <option value="scaling">Scaling (₹50L-5Cr)</option>
-                        <option value="growth">Growth Stage (>₹5Cr)</option>
+                        <option value="early-revenue">Early Revenue</option>
                     </select>
                 </div>
             </div>
-            
-            <div class="form-group">
-                <label for="one-liner">One-line description of what you do *</label>
-                <input type="text" id="one-liner" name="one-liner" placeholder="e.g., Uber for X, Airbnb for Y" required>
-            </div>
         </div>
 
-        <!-- Section 3: The Problem -->
-        <div class="form-section">
-            <h2 class="section-title">3. The Problem You're Solving</h2>
-            
-            <div class="form-group">
-                <label for="problem">What problem are you solving? *</label>
-                <textarea id="problem" name="problem" rows="4" placeholder="Describe the problem clearly in 3-4 sentences" required></textarea>
-                <span class="helper-text">Be specific. Investors need to understand why this problem matters.</span>
-            </div>
-            
-            <div class="form-group">
-                <label for="target-customer">Who has this problem? (Target customer) *</label>
-                <textarea id="target-customer" name="target-customer" rows="3" placeholder="e.g., SME owners in tier 2 cities, College students aged 18-24, B2B SaaS companies..." required></textarea>
-            </div>
-            
-            <div class="form-group">
-                <label for="market-size">How big is this market? *</label>
-                <textarea id="market-size" name="market-size" rows="3" placeholder="Provide TAM/SAM/SOM if you have it, or rough estimates with sources" required></textarea>
-            </div>
-            
-            <div class="form-group">
-                <label for="current-alternatives">How do people solve this today? *</label>
-                <textarea id="current-alternatives" name="current-alternatives" rows="3" placeholder="What alternatives or competitors exist?" required></textarea>
-            </div>
-        </div>
-
-        <!-- Section 4: Your Solution -->
-        <div class="form-section">
-            <h2 class="section-title">4. Your Solution</h2>
-            
-            <div class="form-group">
-                <label for="solution">What is your product/service? *</label>
-                <textarea id="solution" name="solution" rows="4" placeholder="Explain your solution in 3-4 sentences" required></textarea>
-            </div>
-            
-            <div class="form-group">
-                <label for="unique-value">What makes your solution unique? *</label>
-                <textarea id="unique-value" name="unique-value" rows="3" placeholder="Why is your approach better than alternatives?" required></textarea>
-            </div>
-            
-            <div class="form-group">
-                <label for="demo-link">Do you have a demo/prototype/MVP?</label>
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input type="radio" name="has-demo" value="yes" onclick="showDemoLink()"> Yes
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="has-demo" value="no" onclick="hideDemoLink()" checked> No
-                    </label>
-                </div>
-                <input type="url" id="demo-link" name="demo-link" placeholder="https://..." style="display: none; margin-top: 0.5rem;">
-            </div>
-        </div>
-
-        <!-- Section 5: Business Model -->
-        <div class="form-section">
-            <h2 class="section-title">5. Business Model</h2>
-            
-            <div class="form-group">
-                <label for="revenue-model">How do you make money? *</label>
-                <textarea id="revenue-model" name="revenue-model" rows="3" placeholder="e.g., Subscription, Transaction fee, Freemium, B2B SaaS pricing..." required></textarea>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="pricing">What's your pricing?</label>
-                    <input type="text" id="pricing" name="pricing" placeholder="e.g., ₹999/month, 2% commission per transaction">
-                </div>
-                
-                <div class="form-group">
-                    <label for="current-revenue">Current monthly revenue (if any)</label>
-                    <input type="text" id="current-revenue" name="current-revenue" placeholder="e.g., ₹5L/month, Pre-revenue">
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="unit-economics">Unit economics (CAC, LTV, if known)</label>
-                <textarea id="unit-economics" name="unit-economics" rows="2" placeholder="Customer acquisition cost, Lifetime value, margins, etc."></textarea>
-                <span class="helper-text">If you don't have this data yet, that's okay.</span>
-            </div>
-        </div>
-
-        <!-- Section 6: Traction & Metrics -->
-        <div class="form-section">
-            <h2 class="section-title">6. Traction & Metrics</h2>
-            
-            <div class="form-group">
-                <label for="current-metrics">Current key metrics *</label>
-                <textarea id="current-metrics" name="current-metrics" rows="4" placeholder="e.g., 5,000 users, 200 paying customers, 30% MoM growth, ₹10L revenue, etc. If pre-launch, mention pilot customers, LOIs, or validation." required></textarea>
-            </div>
-            
-            <div class="form-group">
-                <label for="milestones">Key milestones achieved so far</label>
-                <textarea id="milestones" name="milestones" rows="3" placeholder="Product launched, First paying customer, Hit ₹1Cr ARR, Partnership with X, etc."></textarea>
-            </div>
-            
-            <div class="form-group">
-                <label for="notable-customers">Notable customers/clients (if any)</label>
-                <input type="text" id="notable-customers" name="notable-customers" placeholder="e.g., Tata, Reliance, IIT Delhi...">
-            </div>
-        </div>
-
-        <!-- Section 7: Market & Competition -->
-        <div class="form-section">
-            <h2 class="section-title">7. Market & Competition</h2>
-            
-            <div class="form-group">
-                <label for="competitors">Who are your main competitors? *</label>
-                <textarea id="competitors" name="competitors" rows="3" placeholder="List 3-5 direct and indirect competitors" required></textarea>
-            </div>
-            
-            <div class="form-group">
-                <label for="competitive-advantage">What's your competitive advantage? *</label>
-                <textarea id="competitive-advantage" name="competitive-advantage" rows="3" placeholder="Why will you win? Technology, team, distribution, network effects, etc." required></textarea>
-            </div>
-            
-            <div class="form-group">
-                <label for="gtm-strategy">How will you acquire customers? *</label>
-                <textarea id="gtm-strategy" name="gtm-strategy" rows="3" placeholder="Digital marketing, sales team, partnerships, community building, etc." required></textarea>
-            </div>
-        </div>
-
-        <!-- Section 8: Team -->
-        <div class="form-section">
-            <h2 class="section-title">8. Your Team</h2>
-            
-            <div class="form-group">
-                <label for="founders">Founder details *</label>
-                <textarea id="founders" name="founders" rows="5" placeholder="For each founder, provide: Name, Role, Brief background (1-2 sentences highlighting relevant experience)" required></textarea>
-                <span class="helper-text">Example: "Rahul Sharma, CEO - 8 years at Google leading product teams. IIT Delhi CS grad."</span>
-            </div>
-            
-            <div class="form-group">
-                <label for="team-photos">Do you have professional photos of the team?</label>
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input type="radio" name="has-photos" value="yes"> Yes, will provide
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="has-photos" value="no" checked> No, need help with this
-                    </label>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="advisors">Key advisors or notable team members (if any)</label>
-                <textarea id="advisors" name="advisors" rows="2" placeholder="Names and credentials"></textarea>
-            </div>
-        </div>
-
-        <!-- Section 9: Financials -->
-        <div class="form-section">
-            <h2 class="section-title">9. Financials</h2>
-            
-            <div class="form-group">
-                <label for="has-projections">Do you have financial projections?</label>
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input type="radio" name="has-projections" value="yes" onclick="showProjectionsUpload()"> Yes
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="has-projections" value="no" onclick="hideProjectionsUpload()" checked> No
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="has-projections" value="need-help" onclick="hideProjectionsUpload()"> No, need help creating them
-                    </label>
-                </div>
-                <textarea id="projections-details" name="projections-details" rows="3" placeholder="Describe your projections (3-5 year revenue, expenses, breakeven timeline)" style="display: none; margin-top: 0.5rem;"></textarea>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="burn-rate">Current monthly burn rate (if applicable)</label>
-                    <input type="text" id="burn-rate" name="burn-rate" placeholder="e.g., ₹5L/month">
-                </div>
-                
-                <div class="form-group">
-                    <label for="runway">Current runway (if applicable)</label>
-                    <input type="text" id="runway" name="runway" placeholder="e.g., 12 months">
-                </div>
-            </div>
-        </div>
-
-        <!-- Section 10: The Ask -->
-        <div class="form-section">
-            <h2 class="section-title">10. The Ask (Fundraising)</h2>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="raise-amount">How much are you raising? *</label>
-                    <input type="text" id="raise-amount" name="raise-amount" placeholder="e.g., ₹2 Cr, $500K" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="raise-timeline">Expected timeline for fundraising *</label>
-                    <select id="raise-timeline" name="raise-timeline" required>
-                        <option value="">Select timeline...</option>
-                        <option value="immediate">Immediately (within 1 month)</option>
-                        <option value="1-3-months">1-3 months</option>
-                        <option value="3-6-months">3-6 months</option>
-                        <option value="6-plus-months">6+ months</option>
-                    </select>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="fund-usage">What will you use the funds for? *</label>
-                <textarea id="fund-usage" name="fund-usage" rows="4" placeholder="List top 3-4 uses (e.g., Product development - 40%, Marketing - 30%, Team hiring - 20%, Operations - 10%)" required></textarea>
-            </div>
-            
-            <div class="form-group">
-                <label for="investor-target">Who are you targeting? *</label>
-                <div class="checkbox-group">
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="investor-target" value="angel-investors"> Angel Investors
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="investor-target" value="vc-funds"> VC Funds
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="investor-target" value="corporate-investors"> Corporate/Strategic Investors
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="investor-target" value="accelerators"> Accelerators/Incubators
-                    </label>
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="investor-target" value="other"> Other
-                    </label>
-                </div>
-            </div>
-        </div>
-
-        <!-- Section 11: Existing Materials -->
-        <div class="form-section">
-            <h2 class="section-title">11. Existing Materials</h2>
-            
-            <div class="form-group">
-                <label for="existing-deck">Do you have an existing pitch deck?</label>
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input type="radio" name="has-existing-deck" value="yes"> Yes
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="has-existing-deck" value="no" checked> No
-                    </label>
-                </div>
-                <span class="helper-text">If yes, please share the link (Google Drive, Dropbox, etc.) in the "Additional Information" section below</span>
-            </div>
-            
-            <div class="form-group">
-                <label for="brand-materials">Do you have brand guidelines or a logo?</label>
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input type="radio" name="has-brand" value="yes"> Yes
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="has-brand" value="no" checked> No
-                    </label>
-                </div>
-                <span class="helper-text">If yes, please share the link in the "Additional Information" section below</span>
-            </div>
-        </div>
-
-        <!-- Section 12: Design Preferences -->
         <div class="form-section">
             <h2 class="section-title">12. Design & Delivery</h2>
-            
-            <div class="form-group">
-                <label for="design-style">Design style preference</label>
-                <select id="design-style" name="design-style">
-                    <option value="">No specific preference</option>
-                    <option value="minimal">Minimal & Clean</option>
-                    <option value="bold">Bold & Visual</option>
-                    <option value="corporate">Corporate & Professional</option>
-                    <option value="creative">Creative & Unique</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="slide-count">Expected number of slides</label>
-                <select id="slide-count" name="slide-count">
-                    <option value="">Not sure</option>
-                    <option value="10-12">10-12 slides (Concise)</option>
-                    <option value="15-18">15-18 slides (Standard)</option>
-                    <option value="20-plus">20+ slides (Comprehensive)</option>
-                </select>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
+            <div class="form-row" style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                <div class="form-group" style="flex: 1 1 300px;">
                     <label for="deadline">When do you need this by? *</label>
-                    <input type="date" id="deadline" name="deadline" required>
+                    <input type="date" id="deadline" name="deadline" required style="width: 100%;">
                 </div>
-                
-                <div class="form-group">
+                <div class="form-group" style="flex: 1 1 300px;">
                     <label for="format-preference">Preferred format</label>
-                    <select id="format-preference" name="format-preference">
+                    <select id="format-preference" name="format-preference" style="width: 100%; box-sizing: border-box;">
                         <option value="ppt">PowerPoint (.pptx)</option>
                         <option value="google-slides">Google Slides</option>
                         <option value="both">Both</option>
                     </select>
                 </div>
             </div>
-            
-            <div class="form-group">
-                <label for="inspiration">Any competitor decks you admire? (optional)</label>
-                <input type="text" id="inspiration" name="inspiration" placeholder="Share links if you have examples">
-            </div>
         </div>
 
-        <!-- Section 13: Budget & Additional Info -->
-        <div class="form-section">
-            <h2 class="section-title">13. Budget & Additional Information</h2>
-            
-            <div class="form-group">
-                <label for="budget">What's your budget for this project?</label>
-                <select id="budget" name="budget">
-                    <option value="">Prefer not to say</option>
-                    <option value="under-25k">Under ₹25,000</option>
-                    <option value="25k-50k">₹25,000 - ₹50,000</option>
-                    <option value="50k-1l">₹50,000 - ₹1,00,000</option>
-                    <option value="1l-plus">₹1,00,000+</option>
-                    <option value="not-sure">Not sure, need guidance</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="previous-designer">Have you worked with a pitch deck designer before?</label>
-                <div class="radio-group">
-                    <label class="radio-label">
-                        <input type="radio" name="previous-designer" value="yes"> Yes
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="previous-designer" value="no" checked> No
-                    </label>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="additional-info">Anything else we should know?</label>
-                <textarea id="additional-info" name="additional-info" rows="4" placeholder="Links to existing materials, specific requirements, questions, concerns, etc."></textarea>
-            </div>
-            
-            <div class="form-group">
-                <label for="referral">How did you hear about us?</label>
-                <input type="text" id="referral" name="referral" placeholder="Google, Referral, LinkedIn, etc.">
-            </div>
-        </div>
-
-        <!-- Submit Button -->
-        <div class="form-section">
-            <button type="submit" class="btn btn-primary btn-large">
+        <div class="form-section" style="text-align: center; display: flex; flex-direction: column; align-items: center; margin-top: 2rem;">
+            <button type="submit" class="btn btn-primary btn-large" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
                 Submit Brief
-                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="width: 20px; height: 20px;">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
             </button>
-            <p class="form-note">By submitting, you agree to receive a response from indieco within 24 hours</p>
+            <p class="form-note" style="margin-top: 1rem;">By submitting, you agree to receive a response from indieco within 24 hours</p>
         </div>
     </form>
-</section>
-
-<!-- Thank You Message (Hidden, shown after submission) -->
-<section class="pitch-deck-thank-you" id="thank-you-message" style="display: none;">
-    <div class="thank-you-content">
-        <div class="thank-you-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-        </div>
-        <h2>Thank You!</h2>
-        <p>We've received your pitch deck brief and will review it within 24 hours.</p>
-        <p>You'll receive a custom quote via email at <strong id="submitted-email"></strong></p>
-        <div class="next-steps-box">
-            <h3>What Happens Next?</h3>
-            <ol>
-                <li>We review your brief and assess complexity</li>
-                <li>You receive a detailed quote with timeline and pricing</li>
-                <li>Once confirmed, we start designing your deck</li>
-                <li>You receive Draft 1 for review</li>
-                <li>Two rounds of revisions</li>
-                <li>Final delivery with editable files</li>
-            </ol>
-        </div>
-        <a href="/" class="btn btn-secondary">Back to Home</a>
-    </div>
 </section>
 
 </div>
