@@ -3189,3 +3189,36 @@ font-size: 2rem;
     margin: 100px auto 40px auto !important; /* Large top margin to separate from the card */
     font-weight: 600;
 }
+
+/* =========================================
+   PITCH DECK: CENTER SUBMIT SECTION
+   ========================================= */
+
+/* Targets the container holding the Submit button */
+.pitch-deck-content .form-submit-container, 
+.pitch-deck-content .submit-area {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 40px auto !important;
+    padding: 40px !important;
+}
+
+/* Ensures the button itself is centered if it's a block element */
+.pitch-deck-content button[type="submit"],
+.pitch-deck-content .btn-submit {
+    margin: 0 auto 15px auto !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Keeps the "By submitting..." text centered below the button */
+.pitch-deck-content .submit-footer-text,
+.pitch-deck-content .form-submit-container p {
+    text-align: center !important;
+    width: 100%;
+    margin-top: 10px !important;
+}
