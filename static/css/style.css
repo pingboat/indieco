@@ -3175,8 +3175,8 @@ font-size: 2rem;
     text-align: left !important;
 }
 
-/* Ensure the bold text inside the footer stays left-aligned */
+/* Ensure the bold text inside the footer stays center-aligned */
 .pitch-deck-content ol + p strong {
     display: block;
-    text-align: left !important;
+    text-align: center; !important;
 }
