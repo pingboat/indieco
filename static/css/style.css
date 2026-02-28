@@ -2807,28 +2807,21 @@ text-align: center !important;
 
 /* Mobile */
 @media (max-width: 768px) {
-.scorecard-benefits {
-grid-template-columns: 1fr !important;
-}
+    .scorecard-benefits {
+        grid-template-columns: 1fr !important;
+    }
 
-```
-.scorecard-title {
-    font-size: 2rem !important;
-}
+    .scorecard-title {
+        font-size: 2rem !important;
+    }
 
-.question-text {
-    font-size: 1.375rem !important;
-}
+    .question-text {
+        font-size: 1.375rem !important;
+    }
 
-.result-title {
-    font-size: 1.75rem !important;
-}
-```
-
-}
-
-.benefit-item > div {
-    text-align: center !important;
+    .result-title {
+        font-size: 1.75rem !important;
+    }
 }
 
 
