@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -935,7 +935,7 @@
             <button class="nd-btn-outline" onclick="switchLayer(currentLayer === 0 ? 1 : 0)">
               <span id="layerToggleLabel">Switch to Voter Intelligence →</span>
             </button>
-            <button class="nd-next" onclick="alert('In the live portal, this saves to the constituency database and generates the household slip.')">Save Record &amp; Print Slip</button>
+            <button class="nd-next" onclick="alert('In the live portal, this saves to the constituency database and generates the household slip.')">Save Record &#x26; Print Slip</button>
           </div>
         </div>
 
@@ -1014,7 +1014,11 @@
         t.classList.toggle('active', i === idx);
       });
       const lbl = document.getElementById('layerToggleLabel');
-      if (lbl) lbl.textContent = idx === 0 ? 'Switch to Voter Intelligence →' : '← Back to Scheme Eligibility';
+      if (lbl) lbl.textContent = idx === 0 ? 'Switch to Voter Intelligence >>' : '<< Back to Scheme Eligibility';
     }
     // init
     switchLayer(0);
+  </script>
+
+</body>
+</html>
