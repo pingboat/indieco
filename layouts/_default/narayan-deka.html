@@ -1671,21 +1671,19 @@
 
 
 /* ── BJP LOTUS LOGO ── */
-.nd-hero-name-wrap {
+.nd-name-logo-row {
   display: flex;
-  align-items: flex-end;
-  gap: 1.2rem;
+  align-items: flex-start;
+  gap: 96px; /* 1 inch gap = 96px at 96dpi */
+  margin-bottom: 0.5rem;
 }
 
 .nd-bjp-logo {
-  width: 144px;   /* 1.5 inches at 96dpi */
+  width: 144px;  /* 1.5 inches at 96dpi */
   height: 144px;
   object-fit: contain;
   flex-shrink: 0;
-  margin-bottom: 0.4rem;
-  /* Tint the black logo to saffron */
-  filter: invert(1) sepia(1) saturate(6) hue-rotate(340deg) brightness(1.1);
-  opacity: 0;
+  margin-top: 2rem;
   animation: ndFadeIn 1s ease 0.8s both;
 }
 
@@ -1714,9 +1712,9 @@
   <div class="nd-hero">
     <div class="nd-hero-left">
       <div class="nd-eyebrow">Barkhetri Constituency · Assam 2026</div>
-      <div class="nd-hero-name-wrap">
+      <div class="nd-name-logo-row">
         <h1 class="nd-hero-name">Narayan<br><em>Deka</em></h1>
-        <img src="/images/bjp-lotus.webp" alt="BJP Lotus" class="nd-bjp-logo">
+        <img src="/images/bjp-lotus.png" alt="BJP Lotus" class="nd-bjp-logo">
       </div>
       <div class="nd-constituency">Barkhetri, Nalbari District</div>
       <p class="nd-tagline">
@@ -1729,7 +1727,6 @@
         <a href="#portal" class="nd-btn-ghost">See the Portal</a>
       </div>
     </div>
-
 
 <div class="nd-hero-right">
   <div class="nd-hero-bg"></div>
@@ -1771,7 +1768,6 @@
   </div>
 </div>
 
-
   </div>
 
   <!-- ── TICKER ── -->
@@ -1800,7 +1796,6 @@
   <section id="strategy" class="nd-section">
     <div class="nd-section-label">The Starting Point</div>
     <div class="nd-case-grid nd-border-top nd-reveal">
-
 
   <div>
     <h2>Why 2021 happened — and why it <em>won't</em> happen again</h2>
@@ -1865,7 +1860,6 @@
 
 </div>
 
-
   </section>
 
   <!-- ── PORTAL ── -->
@@ -1873,7 +1867,6 @@
   <section id="portal" class="nd-section">
     <div class="nd-section-label">The Portal</div>
     <div class="nd-border-top">
-
 
   <div class="nd-portal-header nd-reveal">
     <h2>Aapunar Adhikar<br><em>আপুনাৰ অধিকাৰ</em></h2>
@@ -1979,7 +1972,6 @@
 
 </div>
 
-
   </section>
 
   <!-- ── TIMELINE ── -->
@@ -1989,7 +1981,6 @@
     <div class="nd-border-top">
       <div class="nd-timeline-h2 nd-reveal">8 Weeks. 124 Villages. One Outcome.</div>
       <div class="nd-timeline nd-reveal">
-
 
     <div class="nd-titem">
       <div class="nd-tdot"></div>
@@ -2038,7 +2029,6 @@
   </div>
 </div>
 
-
   </section>
 
   <!-- ── COMMS ── -->
@@ -2079,7 +2069,6 @@
     <div class="nd-section-label">Voter Data Architecture</div>
     <div class="nd-border-top">
 
-```
   <div class="nd-data-header nd-reveal">
     <div class="nd-data-header-left">
       <h2>Every form submission is a <em>household intelligence record</em></h2>
