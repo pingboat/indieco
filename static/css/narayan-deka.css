@@ -151,8 +151,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  opacity: 0;
-  animation: ndFadeUp 0.8s ease 0.2s forwards;
+  animation: ndFadeUp 0.8s ease 0.2s both;
 }
 
 .nd-eyebrow::before {
@@ -171,8 +170,7 @@
   letter-spacing: -0.02em;
   color: var(--indigo);
   margin-bottom: 0.5rem;
-  opacity: 0;
-  animation: ndFadeUp 0.8s ease 0.4s forwards;
+  animation: ndFadeUp 0.8s ease 0.4s both;
 }
 
 .nd-hero-name em {
@@ -186,8 +184,7 @@
   font-weight: 700;
   color: var(--indigo-light);
   margin-bottom: 2rem;
-  opacity: 0;
-  animation: ndFadeUp 0.8s ease 0.6s forwards;
+  animation: ndFadeUp 0.8s ease 0.6s both;
 }
 
 .nd-tagline {
@@ -197,8 +194,7 @@
   max-width: 420px;
   line-height: 1.85;
   margin-bottom: 3rem;
-  opacity: 0;
-  animation: ndFadeUp 0.8s ease 0.8s forwards;
+  animation: ndFadeUp 0.8s ease 0.8s both;
 }
 
 .nd-tagline strong { color: var(--text-body); font-weight: 500; }
@@ -207,8 +203,7 @@
   display: flex;
   gap: 1rem;
   align-items: center;
-  opacity: 0;
-  animation: ndFadeUp 0.8s ease 1s forwards;
+  animation: ndFadeUp 0.8s ease 1s both;
 }
 
 /* ── HERO RIGHT — stays dark indigo as contrast panel ── */
@@ -239,8 +234,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  animation: ndFadeIn 1.4s ease 0.6s forwards;
+  animation: ndFadeIn 1.4s ease 0.6s both;
 }
 
 .nd-hero-geo svg { width: 85%; height: 85%; opacity: 0.18; }
@@ -266,13 +260,12 @@
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  opacity: 0;
-  animation: ndFadeUp 0.8s ease 1.3s forwards;
+  animation: ndFadeUp 0.8s ease 1.3s both;
 }
 
 .nd-stat-pill {
-  background: rgba(245,240,232,0.1);
-  border: 1px solid rgba(245,240,232,0.2);
+  background: rgba(245,240,232,0.12);
+  border: 1px solid rgba(245,240,232,0.25);
   backdrop-filter: blur(12px);
   padding: 0.8rem 1.5rem;
   display: flex;
@@ -292,7 +285,7 @@
   font-size: 0.68rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(245,240,232,0.7);
+  color: rgba(245,240,232,0.85);
   line-height: 1.4;
 }
 
