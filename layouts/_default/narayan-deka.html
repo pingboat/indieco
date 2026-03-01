@@ -1669,6 +1669,26 @@
 }
 
 
+
+/* ── BJP LOTUS LOGO ── */
+.nd-hero-name-wrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.2rem;
+}
+
+.nd-bjp-logo {
+  width: 144px;   /* 1.5 inches at 96dpi */
+  height: 144px;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-bottom: 0.4rem;
+  /* Tint the black logo to saffron */
+  filter: invert(1) sepia(1) saturate(6) hue-rotate(340deg) brightness(1.1);
+  opacity: 0;
+  animation: ndFadeIn 1s ease 0.8s both;
+}
+
   </style>
 
 </head>
@@ -1694,7 +1714,10 @@
   <div class="nd-hero">
     <div class="nd-hero-left">
       <div class="nd-eyebrow">Barkhetri Constituency · Assam 2026</div>
-      <h1 class="nd-hero-name">Narayan<br><em>Deka</em></h1>
+      <div class="nd-hero-name-wrap">
+        <h1 class="nd-hero-name">Narayan<br><em>Deka</em></h1>
+        <img src="/images/bjp-lotus.webp" alt="BJP Lotus" class="nd-bjp-logo">
+      </div>
       <div class="nd-constituency">Barkhetri, Nalbari District</div>
       <p class="nd-tagline">
         A comeback built not on promises — but on <strong>demonstrated presence</strong>.
@@ -1706,6 +1729,7 @@
         <a href="#portal" class="nd-btn-ghost">See the Portal</a>
       </div>
     </div>
+
 
 <div class="nd-hero-right">
   <div class="nd-hero-bg"></div>
@@ -1841,6 +1865,7 @@
 
 </div>
 
+
   </section>
 
   <!-- ── PORTAL ── -->
@@ -1954,6 +1979,7 @@
 
 </div>
 
+
   </section>
 
   <!-- ── TIMELINE ── -->
@@ -2053,6 +2079,7 @@
     <div class="nd-section-label">Voter Data Architecture</div>
     <div class="nd-border-top">
 
+```
   <div class="nd-data-header nd-reveal">
     <div class="nd-data-header-left">
       <h2>Every form submission is a <em>household intelligence record</em></h2>
@@ -2615,7 +2642,6 @@
   </div><!-- end nd-form-wrap -->
 </div>
 
-
   </section>
 
   <!-- ── CTA ── -->
@@ -2642,7 +2668,6 @@
   <div class="nd-demo-badge">⚡ Demo Build</div>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-
 
 // Scrolled nav
 const nav = document.getElementById('ndNav');
@@ -2696,7 +2721,6 @@ function switchLayer(idx) {
 }
 // init
 switchLayer(0);
-
 
   </script>
 
