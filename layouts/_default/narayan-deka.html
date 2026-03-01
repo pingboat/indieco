@@ -26,6 +26,7 @@
       <li><a href="#portal">Portal</a></li>
       <li><a href="#timeline">Timeline</a></li>
       <li><a href="#comms">Comms</a></li>
+      <li><a href="#data">Data</a></li>
     </ul>
     <a href="#contact" class="nd-nav-cta">Begin →</a>
   </nav>
@@ -373,13 +374,583 @@
     </div>
   </section>
 
+
+  <!-- ── DATA COLLECTION FORM ── -->
+  <section id="data" class="nd-section">
+    <div class="nd-section-label">Voter Data Architecture</div>
+    <div class="nd-border-top">
+
+      <div class="nd-data-header nd-reveal">
+        <div class="nd-data-header-left">
+          <h2>Every form submission is a <em>household intelligence record</em></h2>
+          <p class="nd-prose">This is what the Adhikar Mitra operator fills in for every household at every village camp. Two layers in one form: <strong>scheme eligibility data</strong> that drives the portal output, and <strong>voter intelligence data</strong> that feeds the war room. Every field has a strategic purpose.</p>
+        </div>
+        <div class="nd-data-header-right">
+          <div class="nd-data-stat"><span class="nd-ds-num">25,000</span><span class="nd-ds-label">Target household records</span></div>
+          <div class="nd-data-stat"><span class="nd-ds-num">2</span><span class="nd-ds-label">Data layers per record</span></div>
+          <div class="nd-data-stat"><span class="nd-ds-num">124</span><span class="nd-ds-label">Villages covered</span></div>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="nd-form-wrap nd-reveal">
+
+        <!-- Layer badge -->
+        <div class="nd-layer-tabs">
+          <div class="nd-layer-tab active" onclick="switchLayer(0)">
+            <span class="nd-lt-num">Layer 1</span>
+            <span class="nd-lt-name">Scheme Eligibility</span>
+            <span class="nd-lt-desc">Drives portal output — what schemes this household qualifies for</span>
+          </div>
+          <div class="nd-layer-tab" onclick="switchLayer(1)">
+            <span class="nd-lt-num">Layer 2</span>
+            <span class="nd-lt-name">Voter Intelligence</span>
+            <span class="nd-lt-desc">Feeds the war room — booth data, political lean, follow-up flags</span>
+          </div>
+        </div>
+
+        <!-- LAYER 1: SCHEME ELIGIBILITY -->
+        <div class="nd-form-layer" id="layer0">
+          <div class="nd-form-meta">
+            <span class="nd-form-tag scheme">Scheme Eligibility Data</span>
+            <span class="nd-form-note">Collected by Adhikar Mitra operator · Stored with household ID</span>
+          </div>
+
+          <div class="nd-form-grid">
+
+            <!-- BLOCK A: Identity & Location -->
+            <div class="nd-form-block">
+              <div class="nd-fb-header">
+                <span class="nd-fb-letter">A</span>
+                <div>
+                  <div class="nd-fb-title">Identity & Location</div>
+                  <div class="nd-fb-sub">Determines state schemes + geographic targeting filters</div>
+                </div>
+              </div>
+              <div class="nd-fields">
+                <div class="nd-field">
+                  <label class="nd-label">Household ID <span class="nd-auto">auto-generated</span></label>
+                  <input class="nd-input nd-input-mono" type="text" value="BK-047-293" readonly>
+                  <div class="nd-field-hint">Village cluster code + sequential number. Links slip → helpline → follow-up record.</div>
+                </div>
+                <div class="nd-field">
+                  <label class="nd-label">Head of Household Name</label>
+                  <input class="nd-input" type="text" placeholder="Full name">
+                </div>
+                <div class="nd-field-row">
+                  <div class="nd-field">
+                    <label class="nd-label">Village / Gram Panchayat</label>
+                    <input class="nd-input" type="text" placeholder="Village name">
+                  </div>
+                  <div class="nd-field">
+                    <label class="nd-label">Mobile Number</label>
+                    <input class="nd-input nd-input-mono" type="tel" placeholder="10-digit number">
+                    <div class="nd-field-hint">For helpline callback + camp reminders</div>
+                  </div>
+                </div>
+                <div class="nd-field-row">
+                  <div class="nd-field">
+                    <label class="nd-label">Q1 — State / UT</label>
+                    <select class="nd-select">
+                      <option>Assam</option>
+                    </select>
+                  </div>
+                  <div class="nd-field">
+                    <label class="nd-label">Q2 — Residence Type</label>
+                    <div class="nd-radio-row">
+                      <label class="nd-radio"><input type="radio" name="res" checked> <span>🏡 Rural / Village</span></label>
+                      <label class="nd-radio"><input type="radio" name="res"> <span>🏙️ Urban / Town</span></label>
+                    </div>
+                    <div class="nd-field-hint">Critical — PMAY-G vs PMAY-U, MGNREGA eligibility</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BLOCK B: Demographics -->
+            <div class="nd-form-block">
+              <div class="nd-fb-header">
+                <span class="nd-fb-letter">B</span>
+                <div>
+                  <div class="nd-fb-title">Demographics</div>
+                  <div class="nd-fb-sub">Age, gender, social category — highest-impact eligibility filters</div>
+                </div>
+              </div>
+              <div class="nd-fields">
+                <div class="nd-field-row">
+                  <div class="nd-field">
+                    <label class="nd-label">Q3 — Age of Head of Household</label>
+                    <input class="nd-input nd-input-mono" type="number" placeholder="Years" min="18" max="100">
+                    <div class="nd-field-hint">Filters senior citizen, youth, and reproductive age schemes</div>
+                  </div>
+                  <div class="nd-field">
+                    <label class="nd-label">Q4 — Gender</label>
+                    <div class="nd-radio-col">
+                      <label class="nd-radio"><input type="radio" name="gen" checked> <span>Male</span></label>
+                      <label class="nd-radio"><input type="radio" name="gen"> <span>Female</span></label>
+                      <label class="nd-radio"><input type="radio" name="gen"> <span>Transgender</span></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="nd-field">
+                  <label class="nd-label">Pregnant / Recent Birth? <span class="nd-cond">If Female</span></label>
+                  <div class="nd-radio-row">
+                    <label class="nd-radio"><input type="radio" name="preg"> <span>Yes — within 6 months</span></label>
+                    <label class="nd-radio"><input type="radio" name="preg" checked> <span>No</span></label>
+                  </div>
+                  <div class="nd-field-hint">Unlocks PMMVY, JSY, state maternity schemes</div>
+                </div>
+                <div class="nd-field">
+                  <label class="nd-label">Q5 — Caste Category</label>
+                  <div class="nd-radio-row nd-radio-wrap">
+                    <label class="nd-radio"><input type="radio" name="caste" checked> <span>General</span></label>
+                    <label class="nd-radio"><input type="radio" name="caste"> <span>OBC</span></label>
+                    <label class="nd-radio"><input type="radio" name="caste"> <span>SC</span></label>
+                    <label class="nd-radio"><input type="radio" name="caste"> <span>ST</span></label>
+                    <label class="nd-radio"><input type="radio" name="caste"> <span>DNT</span></label>
+                  </div>
+                  <div class="nd-field-hint">Single highest-impact filter — unlocks category-specific scheme buckets</div>
+                </div>
+                <div class="nd-field">
+                  <label class="nd-label">Q6 — Disability in Household</label>
+                  <div class="nd-radio-row">
+                    <label class="nd-radio"><input type="radio" name="dis" checked> <span>None</span></label>
+                    <label class="nd-radio"><input type="radio" name="dis"> <span>Yes — specify type</span></label>
+                  </div>
+                  <select class="nd-select nd-select-sub">
+                    <option>Select disability type...</option>
+                    <option>Locomotor</option>
+                    <option>Visual</option>
+                    <option>Hearing / Speech</option>
+                    <option>Intellectual / Learning</option>
+                    <option>Mental Health</option>
+                    <option>Multiple</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- BLOCK C: Economic Status -->
+            <div class="nd-form-block">
+              <div class="nd-fb-header">
+                <span class="nd-fb-letter">C</span>
+                <div>
+                  <div class="nd-fb-title">Economic Status</div>
+                  <div class="nd-fb-sub">Income and ration card — primary economic eligibility proxies</div>
+                </div>
+              </div>
+              <div class="nd-fields">
+                <div class="nd-field">
+                  <label class="nd-label">Q7 — Ration Card Type</label>
+                  <div class="nd-radio-col">
+                    <label class="nd-radio"><input type="radio" name="ration"> <span>Antyodaya (AAY) <span class="nd-badge-inline red">Poorest — most schemes</span></span></label>
+                    <label class="nd-radio"><input type="radio" name="ration"> <span>Priority Household (PHH)</span></label>
+                    <label class="nd-radio"><input type="radio" name="ration" checked> <span>Have card — type unknown</span></label>
+                    <label class="nd-radio"><input type="radio" name="ration"> <span>No ration card</span></label>
+                  </div>
+                  <div class="nd-field-hint">Most reliable economic proxy — people know their card color even if not its classification</div>
+                </div>
+                <div class="nd-field">
+                  <label class="nd-label">Q8 — Annual Household Income</label>
+                  <div class="nd-radio-col">
+                    <label class="nd-radio"><input type="radio" name="inc" checked> <span>Below ₹1 lakh <span class="nd-hint-grey">(~₹8,000/month)</span></span></label>
+                    <label class="nd-radio"><input type="radio" name="inc"> <span>₹1 – 2.5 lakh <span class="nd-hint-grey">(~₹8–20K/month)</span></span></label>
+                    <label class="nd-radio"><input type="radio" name="inc"> <span>₹2.5 – 5 lakh <span class="nd-hint-grey">(~₹20–42K/month)</span></span></label>
+                    <label class="nd-radio"><input type="radio" name="inc"> <span>₹5 – 8 lakh</span></label>
+                    <label class="nd-radio"><input type="radio" name="inc"> <span>Above ₹8 lakh <span class="nd-hint-grey">(likely excludes most schemes)</span></span></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BLOCK D: Livelihood -->
+            <div class="nd-form-block">
+              <div class="nd-fb-header">
+                <span class="nd-fb-letter">D</span>
+                <div>
+                  <div class="nd-fb-title">Livelihood & Land</div>
+                  <div class="nd-fb-sub">Second highest-impact filter after caste — determines entire scheme universe</div>
+                </div>
+              </div>
+              <div class="nd-fields">
+                <div class="nd-field">
+                  <label class="nd-label">Q9 — Primary Occupation <span class="nd-cond">Multi-select</span></label>
+                  <div class="nd-check-grid">
+                    <label class="nd-check"><input type="checkbox" checked> <span>🌾 Farmer (own land)</span></label>
+                    <label class="nd-check"><input type="checkbox"> <span>👨‍🌾 Agricultural Labourer</span></label>
+                    <label class="nd-check"><input type="checkbox"> <span>🏗️ Construction / Daily Wage</span></label>
+                    <label class="nd-check"><input type="checkbox"> <span>🛒 Shop / Self-Employed</span></label>
+                    <label class="nd-check"><input type="checkbox"> <span>🎓 Student</span></label>
+                    <label class="nd-check"><input type="checkbox"> <span>🏠 Homemaker</span></label>
+                    <label class="nd-check"><input type="checkbox"> <span>💼 Salaried (Private)</span></label>
+                    <label class="nd-check"><input type="checkbox"> <span>🏛️ Government Employee</span></label>
+                    <label class="nd-check"><input type="checkbox"> <span>🔧 Skilled Tradesperson</span></label>
+                    <label class="nd-check"><input type="checkbox"> <span>❌ Unemployed</span></label>
+                  </div>
+                </div>
+                <div class="nd-field">
+                  <label class="nd-label">Q10 — Agricultural Land Owned</label>
+                  <div class="nd-radio-col">
+                    <label class="nd-radio"><input type="radio" name="land"> <span>No agricultural land</span></label>
+                    <label class="nd-radio"><input type="radio" name="land" checked> <span>Less than 1 acre <span class="nd-badge-inline green">PM-KISAN eligible</span></span></label>
+                    <label class="nd-radio"><input type="radio" name="land"> <span>1 to 2 acres <span class="nd-badge-inline green">PM-KISAN eligible</span></span></label>
+                    <label class="nd-radio"><input type="radio" name="land"> <span>2 to 5 acres</span></label>
+                    <label class="nd-radio"><input type="radio" name="land"> <span>More than 5 acres</span></label>
+                  </div>
+                  <div class="nd-field-hint">The 2-acre threshold is the PM-KISAN small and marginal farmer definition</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BLOCK E: Life Situation -->
+            <div class="nd-form-block nd-form-block-wide">
+              <div class="nd-fb-header">
+                <span class="nd-fb-letter">E</span>
+                <div>
+                  <div class="nd-fb-title">Current Life Situation & Connectivity</div>
+                  <div class="nd-fb-sub">High-intent signals that surface urgent, high-value schemes regardless of other answers</div>
+                </div>
+              </div>
+              <div class="nd-fields">
+                <div class="nd-field-row-3">
+                  <div class="nd-field">
+                    <label class="nd-label">Q11 — Life Situation <span class="nd-cond">Multi-select</span></label>
+                    <div class="nd-check-col">
+                      <label class="nd-check"><input type="checkbox" checked> <span>🏫 Children in school or college</span></label>
+                      <label class="nd-check"><input type="checkbox"> <span>💍 Married in last 2 years</span></label>
+                      <label class="nd-check"><input type="checkbox" checked> <span>🏠 Want to build / repair house</span></label>
+                      <label class="nd-check"><input type="checkbox"> <span>💼 Want to start a business</span></label>
+                      <label class="nd-check"><input type="checkbox"> <span>📚 Looking for skill training</span></label>
+                      <label class="nd-check"><input type="checkbox"> <span>👴 Senior citizen (60+) in household</span></label>
+                      <label class="nd-check"><input type="checkbox"> <span>⚔️ Ex-serviceman family</span></label>
+                      <label class="nd-check"><input type="checkbox"> <span>🌊 Recent flood / drought affected</span></label>
+                    </div>
+                  </div>
+                  <div class="nd-field">
+                    <label class="nd-label">Q12 — Bank Account Status</label>
+                    <div class="nd-radio-col">
+                      <label class="nd-radio"><input type="radio" name="bank" checked> <span>Yes — linked to Aadhar & mobile <span class="nd-badge-inline green">DBT-ready</span></span></label>
+                      <label class="nd-radio"><input type="radio" name="bank"> <span>Have account — not linked <span class="nd-badge-inline orange">Action needed</span></span></label>
+                      <label class="nd-radio"><input type="radio" name="bank"> <span>No bank account <span class="nd-badge-inline red">Facilitate first</span></span></label>
+                    </div>
+                    <div class="nd-field-hint">If no/unlinked account — flag for banking facilitation before scheme application</div>
+                    <label class="nd-label" style="margin-top:1.2rem">Aadhar Card Available?</label>
+                    <div class="nd-radio-row">
+                      <label class="nd-radio"><input type="radio" name="aadhar" checked> <span>Yes</span></label>
+                      <label class="nd-radio"><input type="radio" name="aadhar"> <span>No — needs enrollment</span></label>
+                    </div>
+                  </div>
+                  <div class="nd-field">
+                    <label class="nd-label">Household Size</label>
+                    <input class="nd-input nd-input-mono" type="number" placeholder="No. of members" min="1" max="20">
+                    <label class="nd-label" style="margin-top:1rem">No. of Adult Women</label>
+                    <input class="nd-input nd-input-mono" type="number" placeholder="Count" min="0" max="15">
+                    <div class="nd-field-hint">Critical for Orunodoi eligibility — ₹1,250/month per qualifying household woman</div>
+                    <label class="nd-label" style="margin-top:1rem">Currently receiving Orunodoi?</label>
+                    <div class="nd-radio-row">
+                      <label class="nd-radio"><input type="radio" name="oru"> <span>Yes</span></label>
+                      <label class="nd-radio"><input type="radio" name="oru" checked> <span>No</span></label>
+                      <label class="nd-radio"><input type="radio" name="oru"> <span>Unknown</span></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- end nd-form-grid -->
+        </div><!-- end layer 0 -->
+
+        <!-- LAYER 2: VOTER INTELLIGENCE -->
+        <div class="nd-form-layer nd-form-layer-hidden" id="layer1">
+          <div class="nd-form-meta">
+            <span class="nd-form-tag intel">Voter Intelligence Data</span>
+            <span class="nd-form-note">War room use only · Not shown to voters · Feeds booth-level strategy</span>
+          </div>
+
+          <div class="nd-form-grid">
+
+            <!-- BLOCK F: Booth & Location Intel -->
+            <div class="nd-form-block">
+              <div class="nd-fb-header">
+                <span class="nd-fb-letter nd-fb-letter-intel">F</span>
+                <div>
+                  <div class="nd-fb-title">Booth & Location Intelligence</div>
+                  <div class="nd-fb-sub">Maps every household to a specific polling booth — the unit of election management</div>
+                </div>
+              </div>
+              <div class="nd-fields">
+                <div class="nd-field-row">
+                  <div class="nd-field">
+                    <label class="nd-label">Polling Booth Number</label>
+                    <input class="nd-input nd-input-mono" type="text" placeholder="e.g. Booth 047">
+                    <div class="nd-field-hint">Cross-reference with Electoral Roll — every identified supporter must map to a booth by Week 7</div>
+                  </div>
+                  <div class="nd-field">
+                    <label class="nd-label">Booth Cluster</label>
+                    <input class="nd-input nd-input-mono" type="text" placeholder="Cluster code">
+                  </div>
+                </div>
+                <div class="nd-field-row">
+                  <div class="nd-field">
+                    <label class="nd-label">Voter ID (EPIC) — Head of Household</label>
+                    <input class="nd-input nd-input-mono" type="text" placeholder="Voter ID number">
+                    <div class="nd-field-hint">Verify against electoral roll — flag if not on roll, wrong booth, or address mismatch</div>
+                  </div>
+                  <div class="nd-field">
+                    <label class="nd-label">Electoral Roll Status</label>
+                    <div class="nd-radio-col">
+                      <label class="nd-radio"><input type="radio" name="roll" checked> <span>Verified on roll ✓</span></label>
+                      <label class="nd-radio"><input type="radio" name="roll"> <span>On roll — wrong booth</span></label>
+                      <label class="nd-radio"><input type="radio" name="roll"> <span>Not on roll — action needed</span></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="nd-field">
+                  <label class="nd-label">Special Polling Day Needs</label>
+                  <div class="nd-check-row">
+                    <label class="nd-check"><input type="checkbox"> <span>Elderly / mobility issues — needs transport</span></label>
+                    <label class="nd-check"><input type="checkbox"> <span>Disabled voter</span></label>
+                    <label class="nd-check"><input type="checkbox"> <span>First-time voter</span></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BLOCK G: Political Intelligence -->
+            <div class="nd-form-block">
+              <div class="nd-fb-header">
+                <span class="nd-fb-letter nd-fb-letter-intel">G</span>
+                <div>
+                  <div class="nd-fb-title">Political Lean & Support Assessment</div>
+                  <div class="nd-fb-sub">The most sensitive data — guides where Narayan Deka spends personal time in Weeks 5–7</div>
+                </div>
+              </div>
+              <div class="nd-fields">
+                <div class="nd-field">
+                  <label class="nd-label">Assessed Political Lean <span class="nd-cond">Adhikar Mitra judgment</span></label>
+                  <div class="nd-lean-grid">
+                    <div class="nd-lean-card nd-lean-strong">
+                      <input type="radio" name="lean" id="l1">
+                      <label for="l1">
+                        <div class="nd-lean-label">Strong ND</div>
+                        <div class="nd-lean-sub">Confirmed supporter — focus on turnout</div>
+                      </label>
+                    </div>
+                    <div class="nd-lean-card nd-lean-soft">
+                      <input type="radio" name="lean" id="l2" checked>
+                      <label for="l2">
+                        <div class="nd-lean-label">Soft ND</div>
+                        <div class="nd-lean-sub">Leaning ND — needs reinforcement</div>
+                      </label>
+                    </div>
+                    <div class="nd-lean-card nd-lean-swing">
+                      <input type="radio" name="lean" id="l3">
+                      <label for="l3">
+                        <div class="nd-lean-label">Swing</div>
+                        <div class="nd-lean-sub">Undecided — highest personal attention priority</div>
+                      </label>
+                    </div>
+                    <div class="nd-lean-card nd-lean-opp">
+                      <input type="radio" name="lean" id="l4">
+                      <label for="l4">
+                        <div class="nd-lean-label">Likely Barman</div>
+                        <div class="nd-lean-sub">Don't invest time — focus elsewhere</div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="nd-field">
+                  <label class="nd-label">2021 Vote (if known)</label>
+                  <div class="nd-radio-row">
+                    <label class="nd-radio"><input type="radio" name="v21"> <span>Voted ND (BJP)</span></label>
+                    <label class="nd-radio"><input type="radio" name="v21"> <span>Voted Barman (INC)</span></label>
+                    <label class="nd-radio"><input type="radio" name="v21" checked> <span>Unknown</span></label>
+                    <label class="nd-radio"><input type="radio" name="v21"> <span>Did not vote</span></label>
+                  </div>
+                </div>
+                <div class="nd-field">
+                  <label class="nd-label">Primary Grievance / Concern <span class="nd-cond">Free text — Adhikar Mitra notes</span></label>
+                  <textarea class="nd-textarea" rows="3" placeholder="What is this household's main concern? Road, water, employment, school, health..."></textarea>
+                  <div class="nd-field-hint">Feeds the contrast storyline — which incumbent delivery failures are most salient in this village</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BLOCK H: Network & Influence -->
+            <div class="nd-form-block">
+              <div class="nd-fb-header">
+                <span class="nd-fb-letter nd-fb-letter-intel">H</span>
+                <div>
+                  <div class="nd-fb-title">Network & Influence Mapping</div>
+                  <div class="nd-fb-sub">Identifies community multipliers — one influencer can move 30–50 households</div>
+                </div>
+              </div>
+              <div class="nd-fields">
+                <div class="nd-field">
+                  <label class="nd-label">Is anyone in this household a community influencer?</label>
+                  <div class="nd-check-col">
+                    <label class="nd-check"><input type="checkbox"> <span>School teacher / headmaster</span></label>
+                    <label class="nd-check"><input type="checkbox"> <span>ASHA worker</span></label>
+                    <label class="nd-check"><input type="checkbox"> <span>Anganwadi worker</span></label>
+                    <label class="nd-check"><input type="checkbox"> <span>Panchayat member / former member</span></label>
+                    <label class="nd-check"><input type="checkbox"> <span>Religious leader</span></label>
+                    <label class="nd-check"><input type="checkbox"> <span>Tea stall / shop owner</span></label>
+                    <label class="nd-check"><input type="checkbox"> <span>Farmer cooperative / SHG leader</span></label>
+                    <label class="nd-check"><input type="checkbox"> <span>Youth / student leader</span></label>
+                  </div>
+                </div>
+                <div class="nd-field">
+                  <label class="nd-label">WhatsApp Group Admin?</label>
+                  <div class="nd-radio-row">
+                    <label class="nd-radio"><input type="radio" name="wa"> <span>Yes — village group</span></label>
+                    <label class="nd-radio"><input type="radio" name="wa"> <span>Yes — other group</span></label>
+                    <label class="nd-radio"><input type="radio" name="wa" checked> <span>No</span></label>
+                  </div>
+                  <div class="nd-field-hint">Flag for WhatsApp comms network — these are the nodes content flows through</div>
+                </div>
+                <div class="nd-field">
+                  <label class="nd-label">Willing to be Adhikar Mitra?</label>
+                  <div class="nd-radio-row">
+                    <label class="nd-radio"><input type="radio" name="am"> <span>Yes — interested</span></label>
+                    <label class="nd-radio"><input type="radio" name="am"> <span>Maybe</span></label>
+                    <label class="nd-radio"><input type="radio" name="am" checked> <span>No</span></label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BLOCK I: Follow-Up & Outcome Tracking -->
+            <div class="nd-form-block nd-form-block-wide">
+              <div class="nd-fb-header">
+                <span class="nd-fb-letter nd-fb-letter-intel">I</span>
+                <div>
+                  <div class="nd-fb-title">Follow-Up & Outcome Tracking</div>
+                  <div class="nd-fb-sub">Updated weekly by Adhikar Mitra — converts data into the campaign's story engine</div>
+                </div>
+              </div>
+              <div class="nd-fields">
+                <div class="nd-field-row-3">
+                  <div class="nd-field">
+                    <label class="nd-label">Scheme Application Status</label>
+                    <div class="nd-status-stack">
+                      <div class="nd-status-row">
+                        <span class="nd-status-scheme">PM-KISAN</span>
+                        <select class="nd-select-mini">
+                          <option>Matched — not yet applied</option>
+                          <option>Applied</option>
+                          <option selected>Receiving ✓</option>
+                          <option>Stuck — document missing</option>
+                          <option>Rejected</option>
+                        </select>
+                      </div>
+                      <div class="nd-status-row">
+                        <span class="nd-status-scheme">Orunodoi</span>
+                        <select class="nd-select-mini">
+                          <option selected>Matched — not yet applied</option>
+                          <option>Applied</option>
+                          <option>Receiving ✓</option>
+                          <option>Stuck — document missing</option>
+                          <option>Rejected</option>
+                        </select>
+                      </div>
+                      <div class="nd-status-row">
+                        <span class="nd-status-scheme">PMAY-G</span>
+                        <select class="nd-select-mini">
+                          <option selected>Matched — not yet applied</option>
+                          <option>Applied</option>
+                          <option>Receiving ✓</option>
+                          <option>Stuck — document missing</option>
+                          <option>Rejected</option>
+                        </select>
+                      </div>
+                      <div class="nd-status-row">
+                        <span class="nd-status-scheme">Ayushman</span>
+                        <select class="nd-select-mini">
+                          <option>Matched — not yet applied</option>
+                          <option>Applied</option>
+                          <option selected>Receiving ✓</option>
+                          <option>Stuck — document missing</option>
+                          <option>Rejected</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="nd-field">
+                    <label class="nd-label">Story Potential</label>
+                    <div class="nd-radio-col">
+                      <label class="nd-radio"><input type="radio" name="story"> <span>🌟 High — compelling outcome, family willing to share</span></label>
+                      <label class="nd-radio"><input type="radio" name="story" checked> <span>Medium — good outcome, standard</span></label>
+                      <label class="nd-radio"><input type="radio" name="story"> <span>Low — no notable outcome yet</span></label>
+                    </div>
+                    <div class="nd-field-hint">High story potential → escalate to comms team for WhatsApp video</div>
+                    <label class="nd-label" style="margin-top:1rem">Helpline Calls Made</label>
+                    <input class="nd-input nd-input-mono" type="number" placeholder="0" min="0" max="20">
+                  </div>
+                  <div class="nd-field">
+                    <label class="nd-label">Adhikar Mitra Notes</label>
+                    <textarea class="nd-textarea" rows="4" placeholder="Any follow-up needed? Stuck case details? Household sentiment shift after camp visit?"></textarea>
+                    <label class="nd-label" style="margin-top:1rem">Last Contact Date</label>
+                    <input class="nd-input nd-input-mono" type="date">
+                    <label class="nd-label" style="margin-top:1rem">Record Updated By</label>
+                    <input class="nd-input" type="text" placeholder="Adhikar Mitra name">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- end nd-form-grid layer 2 -->
+
+          <!-- Data value summary -->
+          <div class="nd-data-value-bar nd-reveal">
+            <div class="nd-dvb-title">What this record enables</div>
+            <div class="nd-dvb-grid">
+              <div class="nd-dvb-item">
+                <div class="nd-dvb-icon">🗳️</div>
+                <div class="nd-dvb-text">Every household mapped to a booth — polling day turnout is managed, not hoped for</div>
+              </div>
+              <div class="nd-dvb-item">
+                <div class="nd-dvb-icon">📍</div>
+                <div class="nd-dvb-text">Swing households identified by village — Narayan Deka's personal time goes exactly where it converts</div>
+              </div>
+              <div class="nd-dvb-item">
+                <div class="nd-dvb-icon">📱</div>
+                <div class="nd-dvb-text">WhatsApp group admins mapped — the content distribution network is known before a single message is sent</div>
+              </div>
+              <div class="nd-dvb-item">
+                <div class="nd-dvb-icon">🌟</div>
+                <div class="nd-dvb-text">Success stories flagged at source — the comms team never has to search for content, it surfaces automatically</div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- end layer 1 -->
+
+        <!-- Form footer -->
+        <div class="nd-form-footer">
+          <div class="nd-form-footer-left">
+            <span class="nd-form-id">Record: <strong>BK-047-293</strong></span>
+            <span class="nd-form-status">● Unsaved draft</span>
+          </div>
+          <div class="nd-form-footer-right">
+            <button class="nd-btn-outline" onclick="switchLayer(currentLayer === 0 ? 1 : 0)">
+              <span id="layerToggleLabel">Switch to Voter Intelligence →</span>
+            </button>
+            <button class="nd-next" onclick="alert('In the live portal, this saves to the constituency database and generates the household slip.')">Save Record &amp; Print Slip</button>
+          </div>
+        </div>
+
+      </div><!-- end nd-form-wrap -->
+    </div>
+  </section>
+
+
   <!-- ── CTA ── -->
   <section id="contact" class="nd-section">
     <div class="nd-cta nd-reveal">
       <h2>Ready to build a campaign that <em>actually delivers?</em></h2>
       <p>This is a working strategy, not a deck. Every component is designed to launch immediately — the portal, the volunteer network, the scheme database, the comms layer.</p>
       <div class="nd-cta-btns">
-        <a href="mailto:hello@indieco.in" class="nd-btn-primary">Start the Conversation →</a>
+        <a href="/cdn-cgi/l/email-protection#bfd7dad3d3d0ffd6d1dbd6dadcd091d6d1" class="nd-btn-primary">Start the Conversation →</a>
         <a href="https://indieco.in" class="nd-btn-ghost">About indieco.in</a>
       </div>
     </div>
@@ -394,7 +965,7 @@
   <!-- DEMO BADGE -->
   <div class="nd-demo-badge">⚡ Demo Build</div>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Scrolled nav
     const nav = document.getElementById('ndNav');
     window.addEventListener('scroll', () => {
@@ -431,7 +1002,19 @@
     document.querySelectorAll('.nd-opt').forEach(btn => {
       btn.addEventListener('click', () => btn.classList.toggle('selected'));
     });
-  </script>
 
-</body>
-</html>
+    // Layer switcher for data form
+    let currentLayer = 0;
+    function switchLayer(idx) {
+      currentLayer = idx;
+      document.querySelectorAll('.nd-form-layer').forEach((l, i) => {
+        l.style.display = i === idx ? 'block' : 'none';
+      });
+      document.querySelectorAll('.nd-layer-tab').forEach((t, i) => {
+        t.classList.toggle('active', i === idx);
+      });
+      const lbl = document.getElementById('layerToggleLabel');
+      if (lbl) lbl.textContent = idx === 0 ? 'Switch to Voter Intelligence →' : '← Back to Scheme Eligibility';
+    }
+    // init
+    switchLayer(0);
