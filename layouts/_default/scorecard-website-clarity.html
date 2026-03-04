@@ -68,6 +68,20 @@
     margin-top: 6px;
   }
 
+  /* ── Saffron badge (self-contained, no dependency on site CSS) ── */
+  .wca-badge {
+    display: inline-block;
+    background: #FF9933;
+    color: #2d3a8c;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 3px;
+  }
+
   /* ── Intro card ───────────────────────────────────────────── */
   .wca-intro-card-wrap {
     max-width: 560px;
@@ -76,7 +90,7 @@
   }
   .wca-intro-card {
     background: #ffffff;
-    border: 2px solid var(--color-primary, #2d3a8c);
+    border: 2px solid #2d3a8c;
     border-radius: 12px;
     padding: 40px;
     box-shadow: 0 8px 32px rgba(45,58,140,0.12);
@@ -84,7 +98,7 @@
   .wca-intro-card h2 {
     font-family: 'Playfair Display', serif;
     font-size: 26px;
-    color: var(--color-primary, #2d3a8c);
+    color: #2d3a8c;
     margin: 16px 0 8px;
     font-weight: 700;
   }
@@ -94,11 +108,69 @@
     line-height: 1.6;
     margin-bottom: 24px;
   }
+  /* URL label + input row */
+  .wca-url-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #e7e5e4;
+    border-radius: 4px;
+    padding: 0 16px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .wca-url-row:focus-within {
+    border-color: #2d3a8c;
+    box-shadow: 0 0 0 3px rgba(45,58,140,0.1);
+  }
+  .wca-url-row label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1c1917;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 14px 0;
+  }
+  .wca-url-row input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: #1c1917;
+    padding: 14px 0;
+    background: transparent;
+    min-width: 0;
+  }
+  .wca-url-row input::placeholder { color: #a8a29e; }
   .wca-url-error {
     font-size: 13px;
     color: #ef4444;
     margin-top: 6px;
     display: none;
+  }
+  /* Start button — fully self-contained, no reliance on site btn classes */
+  .wca-btn-start {
+    display: block;
+    width: 100%;
+    margin-top: 16px;
+    padding: 16px 32px;
+    background: #2d3a8c;
+    color: #ffffff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+  }
+  .wca-btn-start:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(45,58,140,0.25);
   }
   .wca-disclaimer {
     font-size: 12px;
@@ -115,7 +187,7 @@
     margin-top: 48px;
   }
   .wca-category-pill { text-align: center; }
-  .wca-category-pill strong { display: block; font-size: 13px; font-weight: 700; color: var(--color-primary, #2d3a8c); }
+  .wca-category-pill strong { display: block; font-size: 13px; font-weight: 700; color: #2d3a8c; }
   .wca-category-pill span   { font-size: 12px; color: #57534e; }
 
   /* ── Generating ───────────────────────────────────────────── */
@@ -236,7 +308,7 @@
 
     <div class="wca-hero">
       <div class="wca-hero-inner">
-        <span class="badge badge-saffron">Free Diagnostic Tool</span>
+        <span class="wca-badge">Free Diagnostic Tool</span>
         <h1>Website Clarity<br>Audit</h1>
         <div class="wca-hero-accent"></div>
         <p>Discover what's holding your website back from generating consistent leads — and get a personalised action plan in under 5 minutes.</p>
@@ -246,23 +318,24 @@
 
     <div class="wca-intro-card-wrap">
       <div class="wca-intro-card">
-        <span class="badge badge-saffron">Step 1 of 3</span>
+        <span class="wca-badge">Step 1 of 3</span>
         <h2>Enter your website URL</h2>
         <p>We'll build your personalised audit around your site and goals.</p>
 
-        <label class="form-label" for="wca-url">Website URL</label>
-        <input
-          type="text"
-          id="wca-url"
-          class="form-input"
-          placeholder="yourwebsite.com"
-          autocomplete="off"
-          autocapitalize="none"
-          onkeydown="if(event.key==='Enter') wcaStart()"
-        />
+        <div class="wca-url-row">
+          <label for="wca-url">Website URL</label>
+          <input
+            type="text"
+            id="wca-url"
+            placeholder="yourwebsite.com"
+            autocomplete="off"
+            autocapitalize="none"
+            onkeydown="if(event.key==='Enter') wcaStart()"
+          />
+        </div>
         <p id="wca-url-error" class="wca-url-error"></p>
 
-        <button class="btn btn-primary" style="width:100%;margin-top:24px" onclick="wcaStart()">
+        <button type="button" class="wca-btn-start" onclick="wcaStart()">
           Start My Free Audit →
         </button>
         <p class="wca-disclaimer">No spam. No sales calls unless you want one. Just clarity.</p>
