@@ -6,7 +6,7 @@ const wcaQuestions = [
         id: 1,
         category: 'Positioning',
         question: "What is your website's #1 job right now?",
-        hint: "Be honest — what should a visitor do the moment they land?",
+        hint: "Be honest — what should the site do for a visitor the moment they land?",
         options: [
             { text: 'Generate leads / enquiries',    scores: { positioning: 3 } },
             { text: 'Drive direct sales / bookings', scores: { positioning: 3 } },
