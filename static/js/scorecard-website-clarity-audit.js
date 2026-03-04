@@ -194,9 +194,6 @@ function wcaShowQuestion(index) {
         optionsHTML +=
             '<button class="option-btn" onclick="wcaSelectOption(' + index + ',' + i + ')">' +
                 '<span class="option-text">' + option.text + '</span>' +
-                '<svg class="option-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" width="16" height="16" style="width:16px;height:16px;flex-shrink:0">' +
-'<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>' +
-'</svg>' +
             '</button>';
     });
 
