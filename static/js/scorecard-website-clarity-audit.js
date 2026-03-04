@@ -1,10 +1,6 @@
 // Website Clarity Audit
 // indieco.in
 
-// ========================================
-// QUESTIONS DATA
-// ========================================
-
 const wcaQuestions = [
     {
         id: 1,
@@ -37,10 +33,10 @@ const wcaQuestions = [
         question: 'Can a first-time visitor understand what you do within 5 seconds?',
         hint: "The '5-second test' — no scrolling, no reading, just the hero section.",
         options: [
-            { text: "Yes — it's crystal clear",                    scores: { positioning: 4 } },
-            { text: 'Probably — but they might need to scroll',    scores: { positioning: 3 } },
-            { text: 'Unlikely — it requires some reading',         scores: { positioning: 2 } },
-            { text: "No — it's confusing or too generic",          scores: { positioning: 1 } }
+            { text: "Yes — it's crystal clear",                 scores: { positioning: 4 } },
+            { text: 'Probably — but they might need to scroll', scores: { positioning: 3 } },
+            { text: 'Unlikely — it requires some reading',      scores: { positioning: 2 } },
+            { text: "No — it's confusing or too generic",       scores: { positioning: 1 } }
         ]
     },
     {
@@ -132,20 +128,14 @@ const wcaQuestions = [
     }
 ];
 
-// ========================================
-// STATE
-// ========================================
-
+// ── State ──────────────────────────────────────────────────────
 let wcaCurrentQuestion = 0;
 let wcaScores = { positioning: 0, conversion: 0, leadflow: 0, brand: 0 };
 let wcaAnswers   = [];
 let wcaSiteUrl   = '';
 let wcaLoadTimer = null;
 
-// ========================================
-// START
-// ========================================
-
+// ── Start ──────────────────────────────────────────────────────
 function wcaStart() {
     const val   = document.getElementById('wca-url').value.trim();
     const errEl = document.getElementById('wca-url-error');
@@ -165,7 +155,6 @@ function wcaStart() {
     errEl.style.display = 'none';
     wcaSiteUrl = val;
 
-    // Reset
     wcaCurrentQuestion = 0;
     wcaScores  = { positioning: 0, conversion: 0, leadflow: 0, brand: 0 };
     wcaAnswers = [];
@@ -175,35 +164,25 @@ function wcaStart() {
     wcaShowQuestion(0);
 }
 
-// ========================================
-// QUESTIONS
-// ========================================
-
+// ── Questions ──────────────────────────────────────────────────
 function wcaShowQuestion(index) {
     wcaCurrentQuestion = index;
     const q     = wcaQuestions[index];
     const total = wcaQuestions.length;
     const pct   = Math.round(((index + 1) / total) * 100);
 
-    document.getElementById('wca-progress-fill').style.width  = pct + '%';
-    document.getElementById('wca-progress-label').textContent = 'Question ' + (index + 1) + ' of ' + total;
-    document.getElementById('wca-progress-pct').textContent   = pct + '%';
+    document.getElementById('wca-progress-fill').style.width = pct + '%';
 
     let optionsHTML = '';
     q.options.forEach(function (option, i) {
-        optionsHTML +=
-            '<button class="option-btn" onclick="wcaSelectOption(' + index + ',' + i + ')">' +
-                '<span class="option-text">' + option.text + '</span>' +
-            '</button>';
+        optionsHTML += '<button class="option-btn" onclick="wcaSelectOption(' + index + ',' + i + ')">' + option.text + '</button>';
     });
 
     document.getElementById('wca-question-container').innerHTML =
-        '<div class="question-card">' +
-            '<span class="question-dimension">' + q.category + '</span>' +
-            '<h2 class="question-text">' + q.question + '</h2>' +
-            (q.hint ? '<p class="wca-question-hint">' + q.hint + '</p>' : '') +
-            '<div class="question-options">' + optionsHTML + '</div>' +
-        '</div>';
+        '<p class="question-number">QUESTION ' + (index + 1) + ' OF ' + total + '</p>' +
+        '<p class="question-text">' + q.question + '</p>' +
+        (q.hint ? '<p style="font-size:14px;color:#57534e;font-style:italic;margin-bottom:1.5rem">' + q.hint + '</p>' : '') +
+        '<div class="options">' + optionsHTML + '</div>';
 }
 
 function wcaSelectOption(questionIndex, optionIndex) {
@@ -211,28 +190,20 @@ function wcaSelectOption(questionIndex, optionIndex) {
     const option = q.options[optionIndex];
 
     wcaAnswers.push({ question: q.question, answer: option.text, category: q.category });
-
-    for (var key in option.scores) {
-        wcaScores[key] += option.scores[key];
-    }
+    for (var key in option.scores) { wcaScores[key] += option.scores[key]; }
 
     if (questionIndex < wcaQuestions.length - 1) {
         setTimeout(function () { wcaShowQuestion(questionIndex + 1); }, 300);
     } else {
-        setTimeout(function () { wcaShowEmailCapture(); }, 300);
+        setTimeout(function () {
+            document.getElementById('wca-questions').style.display     = 'none';
+            document.getElementById('wca-email-capture').style.display = 'block';
+            window.scrollTo(0, 0);
+        }, 300);
     }
 }
 
-function wcaShowEmailCapture() {
-    document.getElementById('wca-questions').style.display     = 'none';
-    document.getElementById('wca-email-capture').style.display = 'block';
-    window.scrollTo(0, 0);
-}
-
-// ========================================
-// SCORING
-// ========================================
-
+// ── Scoring ────────────────────────────────────────────────────
 function wcaGetCategoryScores() {
     return {
         'Positioning':          Math.round(Math.min((wcaScores.positioning / 11) * 100, 100)),
@@ -253,41 +224,10 @@ function wcaScoreLabel(pct) {
     return               { label: 'Needs Work',  color: '#ef4444' };
 }
 
-// ========================================
-// SCORE BARS
-// ========================================
-
-function wcaBuildScoreBars(catScores) {
-    let html = '';
-    Object.keys(catScores).forEach(function (cat) {
-        const pct = catScores[cat];
-        const sl  = wcaScoreLabel(pct);
-        html +=
-            '<div class="score-bar-container">' +
-                '<div class="score-bar-label">' +
-                    '<span>' + cat + '</span>' +
-                    '<span class="score-value">' + pct + '/100</span>' +
-                '</div>' +
-                '<div class="score-bar-track">' +
-                    '<div class="score-bar-fill" style="width:' + pct + '%;background-color:' + sl.color + '"></div>' +
-                '</div>' +
-            '</div>';
-    });
-    return html;
-}
-
-// ========================================
-// AI REPORT
-// ========================================
-
+// ── AI Report ──────────────────────────────────────────────────
 function wcaGenerateAIReport(catScores, overall, name) {
-    const answersText = wcaAnswers.map(function (a) {
-        return a.question + ': ' + a.answer;
-    }).join('\n');
-
-    const scoreText = Object.keys(catScores).map(function (c) {
-        return c + ': ' + catScores[c] + '%';
-    }).join(', ');
+    const answersText = wcaAnswers.map(function (a) { return a.question + ': ' + a.answer; }).join('\n');
+    const scoreText   = Object.keys(catScores).map(function (c) { return c + ': ' + catScores[c] + '%'; }).join(', ');
 
     const prompt =
         'You are a senior growth consultant at indieco, a boutique consultancy for founders. ' +
@@ -297,7 +237,7 @@ function wcaGenerateAIReport(catScores, overall, name) {
         'Overall score: ' + overall + '/100\n' +
         'Category scores: ' + scoreText + '\n\n' +
         'Their answers:\n' + answersText + '\n\n' +
-        'Write a Website Clarity Audit Report with these exact sections. Be specific to their answers.\n\n' +
+        'Write a Website Clarity Audit Report with these exact sections:\n\n' +
         '1. HEADLINE (one punchy sentence summarising their biggest opportunity)\n' +
         '2. YOUR BIGGEST WIN (what they are already doing well — 2-3 sentences)\n' +
         '3. THE CRITICAL GAP (the single most important thing holding them back — 3-4 sentences)\n' +
@@ -315,9 +255,7 @@ function wcaGenerateAIReport(catScores, overall, name) {
         })
     })
     .then(function (res) { return res.json(); })
-    .then(function (data) {
-        return (data.content || []).map(function (b) { return b.text || ''; }).join('\n');
-    });
+    .then(function (data) { return (data.content || []).map(function (b) { return b.text || ''; }).join('\n'); });
 }
 
 function wcaParseReport(text) {
@@ -336,10 +274,7 @@ function wcaParseReport(text) {
     return s;
 }
 
-// ========================================
-// SHOW RESULT
-// ========================================
-
+// ── Render Result ──────────────────────────────────────────────
 function wcaShowResult(reportText) {
     const catScores = wcaGetCategoryScores();
     const overall   = wcaOverallScore(catScores);
@@ -349,60 +284,67 @@ function wcaShowResult(reportText) {
     document.getElementById('wca-generating').style.display = 'none';
     document.getElementById('wca-result').style.display     = 'block';
 
-    document.getElementById('wca-overall-score').textContent = overall;
-    document.getElementById('wca-result-url').textContent    = 'Audit for: ' + wcaSiteUrl;
+    let scoreBarsHTML = '';
+    Object.keys(catScores).forEach(function (cat) {
+        const pct  = catScores[cat];
+        const csl  = wcaScoreLabel(pct);
+        scoreBarsHTML +=
+            '<div style="margin-bottom:1rem">' +
+                '<div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:6px">' +
+                    '<span>' + cat + '</span>' +
+                    '<span style="color:' + csl.color + '">' + pct + '/100</span>' +
+                '</div>' +
+                '<div style="background:#e7e5e4;border-radius:4px;height:8px;overflow:hidden">' +
+                    '<div style="width:' + pct + '%;height:100%;background:' + csl.color + ';border-radius:4px"></div>' +
+                '</div>' +
+            '</div>';
+    });
 
-    const badge          = document.getElementById('wca-overall-badge');
-    badge.textContent    = sl.label;
-    badge.style.background = sl.color + '22';
-    badge.style.border   = '1px solid ' + sl.color + '44';
-    badge.style.color    = sl.color;
+    document.getElementById('wca-result-card').innerHTML =
+        '<p class="result-label">Website Clarity Audit · ' + wcaSiteUrl + '</p>' +
+        '<h2 class="result-title">' + overall + '<span style="font-size:1.5rem;color:#57534e"> / 100</span></h2>' +
+        '<p class="result-subtitle" style="color:' + sl.color + '">' + sl.label + '</p>' +
+        (sections.headline ? '<p style="font-style:italic;font-size:1.125rem;margin-bottom:2rem">"' + sections.headline + '"</p>' : '') +
 
-    if (sections.headline) {
-        document.getElementById('wca-headline').textContent = '\u201c' + sections.headline + '\u201d';
-    }
+        '<div style="margin:2rem 0;text-align:left">' + scoreBarsHTML + '</div>' +
 
-    document.getElementById('wca-score-bars').innerHTML = wcaBuildScoreBars(catScores);
+        (sections.win ?
+            '<div style="background:#f0fdf4;border-left:4px solid #10b981;border-radius:4px;padding:1.5rem;margin-bottom:1rem;text-align:left">' +
+            '<p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#10b981;margin-bottom:.5rem">Your Biggest Win</p>' +
+            '<p style="white-space:pre-line">' + sections.win + '</p></div>' : '') +
 
-    function fill(id, icon, title, content, titleColor) {
-        if (!content) return;
-        document.getElementById(id).innerHTML =
-            '<div class="wca-section-header">' +
-                '<span class="wca-section-icon">' + icon + '</span>' +
-                '<h3 class="wca-section-title" style="color:' + titleColor + '">' + title + '</h3>' +
-            '</div>' +
-            '<div class="wca-section-body">' + content + '</div>';
-    }
+        (sections.gap ?
+            '<div style="background:#fff7ed;border-left:4px solid #f59e0b;border-radius:4px;padding:1.5rem;margin-bottom:1rem;text-align:left">' +
+            '<p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#f59e0b;margin-bottom:.5rem">The Critical Gap</p>' +
+            '<p style="white-space:pre-line">' + sections.gap + '</p></div>' : '') +
 
-    fill('wca-r-win',       '\u2726', 'Your Biggest Win', sections.win,       '#10b981');
-    fill('wca-r-gap',       '\u25C8', 'The Critical Gap', sections.gap,       '#1c1917');
-    fill('wca-r-quickwins', '\u2192', 'Three Quick Wins', sections.quickwins, '#2d3a8c');
-    fill('wca-r-next',      '\u25C6', 'Where to Go Next', sections.next,      '#2d3a8c');
+        (sections.quickwins ?
+            '<div style="background:#f5f5f4;border-left:4px solid #2d3a8c;border-radius:4px;padding:1.5rem;margin-bottom:1rem;text-align:left">' +
+            '<p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#2d3a8c;margin-bottom:.5rem">Three Quick Wins</p>' +
+            '<p style="white-space:pre-line">' + sections.quickwins + '</p></div>' : '') +
+
+        (sections.next ?
+            '<div style="background:#f5f5f4;border-left:4px solid #2d3a8c;border-radius:4px;padding:1.5rem;margin-bottom:2rem;text-align:left">' +
+            '<p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#2d3a8c;margin-bottom:.5rem">Where to Go Next</p>' +
+            '<p style="white-space:pre-line">' + sections.next + '</p></div>' : '') +
+
+        '<div class="result-cta">' +
+            '<a href="/contact/" class="btn btn-primary">Book Free Strategy Call →</a>' +
+        '</div>';
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-const WCA_FALLBACK = '1. HEADLINE\nYour website has real opportunities to turn more visitors into leads.\n2. YOUR BIGGEST WIN\nYou took the time to audit your site — that self-awareness puts you ahead of most founders who never stop to question what their website is actually doing.\n3. THE CRITICAL GAP\nWithout the full AI analysis, the clearest next step is a direct conversation. Book a call and Leon will walk through your scores personally.\n4. THREE QUICK WINS\n1. Make sure your homepage has exactly one primary CTA above the fold with no competing links.\n2. Add one client testimonial that includes a specific, measurable outcome.\n3. Set up an automatic email reply for every form submission so no lead goes cold.\n5. WHERE TO GO NEXT\nBook a free strategy call to get your fully personalised recommendations.';
+const WCA_FALLBACK = '1. HEADLINE\nYour website has real opportunities to turn more visitors into leads.\n2. YOUR BIGGEST WIN\nYou took the time to audit your site — that self-awareness puts you ahead of most founders.\n3. THE CRITICAL GAP\nThe clearest next step is a direct conversation. Book a call and Leon will walk through your scores personally.\n4. THREE QUICK WINS\n1. Make sure your homepage has exactly one primary CTA above the fold.\n2. Add one client testimonial that includes a specific, measurable outcome.\n3. Set up an automatic email reply for every form submission so no lead goes cold.\n5. WHERE TO GO NEXT\nBook a free strategy call to get your fully personalised recommendations.';
 
 function wcaStartLoadMessages() {
-    const msgs = [
-        'Analysing your answers\u2026',
-        'Mapping your conversion gaps\u2026',
-        'Identifying quick wins\u2026',
-        'Crafting your personalised report\u2026'
-    ];
+    const msgs = ['Analysing your answers…', 'Mapping your conversion gaps…', 'Identifying quick wins…', 'Crafting your personalised report…'];
     let i = 0;
     const el = document.getElementById('wca-load-msg');
-    wcaLoadTimer = setInterval(function () {
-        i = (i + 1) % msgs.length;
-        if (el) el.textContent = msgs[i];
-    }, 2200);
+    wcaLoadTimer = setInterval(function () { i = (i + 1) % msgs.length; if (el) el.textContent = msgs[i]; }, 2200);
 }
 
-// ========================================
-// FORM SUBMISSION
-// ========================================
-
+// ── Form Submit ────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('wca-email-form');
     if (!form) return;
@@ -413,7 +355,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const name     = document.getElementById('wca-cap-name').value.trim();
         const email    = document.getElementById('wca-cap-email').value.trim();
         const whatsapp = document.getElementById('wca-cap-whatsapp').value.trim();
-
         const catScores = wcaGetCategoryScores();
         const overall   = wcaOverallScore(catScores);
 
@@ -428,14 +369,12 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('wca-nf-brand').value       = catScores['Brand Coherence'];
         document.getElementById('wca-nf-answers').value     = JSON.stringify(wcaAnswers);
 
-        // Submit to Netlify in background
         fetch('/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: new URLSearchParams(new FormData(form)).toString()
         }).catch(function (err) { console.warn('Netlify form error:', err); });
 
-        // Show generating
         document.getElementById('wca-email-capture').style.display = 'none';
         document.getElementById('wca-generating').style.display    = 'block';
         window.scrollTo(0, 0);
