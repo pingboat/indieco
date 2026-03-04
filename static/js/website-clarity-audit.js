@@ -147,6 +147,7 @@ let wcaLoadTimer = null;
 // ========================================
 
 function wcaStart() {
+    alert('wcaStart fired. URL value: ' + document.getElementById('wca-url').value);
     const val   = document.getElementById('wca-url').value.trim();
     const errEl = document.getElementById('wca-url-error');
 
