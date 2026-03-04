@@ -468,5 +468,5 @@
 
 </main>
 
-<script src="/js/scorecard-website-clarity.js"></script>
+<script src="/js/scorecard-website-clarity-audit.js"></script>
 {{ end }}
