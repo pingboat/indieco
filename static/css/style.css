@@ -2422,11 +2422,9 @@ NON-PROFIT SCORECARD
 }
 
 .nonprofit-scorecard .scorecard-questions {
-    text-align: center !important;
-    max-width: 800px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding: 3rem 1.5rem !important;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .nonprofit-scorecard .scorecard-email {
