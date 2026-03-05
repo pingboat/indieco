@@ -185,7 +185,7 @@ strong {
     font-weight: 600;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--color-primary);
+    color: var(--color-accent);
     text-align: center;
     margin-bottom: 1.5rem;
 }
