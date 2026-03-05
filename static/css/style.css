@@ -2417,6 +2417,7 @@ NON-PROFIT SCORECARD
     max-width: var(--max-width-narrow);
     margin: 0 auto;
     padding: 0 1.5rem;
+}
 
 /* Container widths */
 .nonprofit-scorecard .scorecard-intro {
