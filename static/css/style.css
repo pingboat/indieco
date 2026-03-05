@@ -2400,8 +2400,7 @@ NON-PROFIT SCORECARD
     text-align: center !important;
 }
 
-/* Exceptions - things that MUST be left-aligned for usability */
-.nonprofit-scorecard .option-text,
+/* Exceptions*/
 .nonprofit-scorecard .form-group label,
 .nonprofit-scorecard .form-group input,
 .nonprofit-scorecard .form-group select,
@@ -2599,11 +2598,7 @@ NON-PROFIT SCORECARD
 }
 
 .nonprofit-scorecard .option-arrow {
-    flex-shrink: 0 !important;
-    width: 20px !important;
-    height: 20px !important;
-    color: #2d3a8c !important;
-    stroke-width: 2.5 !important;
+    display: none !important;
 }
 
 .nonprofit-scorecard .option-btn:hover {
