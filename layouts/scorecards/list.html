@@ -1,42 +1,177 @@
 {{ define "main" }}
+
+<section class="scorecard-hero">
+  <div class="scorecard-hero-inner">
+    <span class="scorecard-badge">Free Diagnostic Tools</span>
+    <h1>Find Your Clarity</h1>
+    <div class="scorecard-hero-accent"></div>
+    <p>Answer a few honest questions. Get a personalised report that tells you exactly where to focus — no fluff, no sales pitch.</p>
+    <p class="scorecard-hero-meta">4 tools &nbsp;·&nbsp; 3–5 minutes each &nbsp;·&nbsp; Always free</p>
+  </div>
+</section>
+
 <main class="container">
 
-    <section class="scorecard-intro">
-        <h1 class="scorecard-title">Free Diagnostic Tools</h1>
-        <p class="scorecard-subtitle">Answer a few questions and get a personalised report — no fluff, just clarity.</p>
-    </section>
+  <div class="scorecards-grid">
 
-    <div class="services-grid" style="max-width:720px;margin:0 auto 6rem">
+    <a href="/scorecards/website-clarity-audit/" class="scorecard-listing-card">
+      <div class="slc-meta">
+        <span class="slc-tag">Website</span>
+        <span class="slc-time">10 questions · ~4 min</span>
+      </div>
+      <h2 class="slc-title">Website Clarity Audit</h2>
+      <p class="slc-desc">Discover what's holding your website back from generating consistent leads — and get a personalised action plan.</p>
+      <span class="slc-cta">Start the audit →</span>
+    </a>
 
-        <a href="/scorecards/website-clarity-audit/" class="service-card" style="text-decoration:none;color:inherit">
-            <span class="service-number">FREE TOOL</span>
-            <h3 class="service-title">Website Clarity Audit</h3>
-            <p class="service-desc">Discover what's holding your website back from generating consistent leads.</p>
-            <p style="margin-top:1.5rem;font-size:14px;color:#57534e">10 questions · ~4 minutes →</p>
-        </a>
+    <a href="/scorecards/founder-readiness/" class="scorecard-listing-card">
+      <div class="slc-meta">
+        <span class="slc-tag">Founder</span>
+        <span class="slc-time">15 questions · ~3 min</span>
+      </div>
+      <h2 class="slc-title">Founder Readiness Scorecard</h2>
+      <p class="slc-desc">Find out where you are in your journey — across clarity, positioning, go-to-market, and investor readiness.</p>
+      <span class="slc-cta">Check your readiness →</span>
+    </a>
 
-        <a href="/scorecards/founder-readiness/" class="service-card" style="text-decoration:none;color:inherit">
-            <span class="service-number">FREE TOOL</span>
-            <h3 class="service-title">Founder Readiness</h3>
-            <p class="service-desc">Find out how ready you are to scale — and where to focus first.</p>
-            <p style="margin-top:1.5rem;font-size:14px;color:#57534e">→</p>
-        </a>
+    <a href="/scorecards/nonprofit-readiness/" class="scorecard-listing-card">
+      <div class="slc-meta">
+        <span class="slc-tag">Non-Profit</span>
+        <span class="slc-time">15 questions · ~5 min</span>
+      </div>
+      <h2 class="slc-title">Non-Profit Readiness Scorecard</h2>
+      <p class="slc-desc">Assess your organisation's capacity across 10 dimensions — mission, governance, fundraising, and more.</p>
+      <span class="slc-cta">Start the assessment →</span>
+    </a>
 
-        <a href="/scorecards/nonprofit-readiness/" class="service-card" style="text-decoration:none;color:inherit">
-            <span class="service-number">FREE TOOL</span>
-            <h3 class="service-title">Non-Profit Readiness</h3>
-            <p class="service-desc">Assess your organisation's capacity across mission, governance, finance, and more.</p>
-            <p style="margin-top:1.5rem;font-size:14px;color:#57534e">→</p>
-        </a>
+    <a href="/scorecards/unnati-eligibility/" class="scorecard-listing-card scorecard-listing-card--accent">
+      <div class="slc-meta">
+        <span class="slc-tag slc-tag--dark">North-East · Deadline: 31 Mar 2026</span>
+        <span class="slc-time slc-time--dark">15 questions · ~4 min</span>
+      </div>
+      <h2 class="slc-title">UNNATI Scheme Eligibility</h2>
+      <p class="slc-desc">Check if your North-East business qualifies for up to ₹7.5 crore in government incentives before the deadline.</p>
+      <span class="slc-cta slc-cta--dark">Check eligibility →</span>
+    </a>
 
-        <a href="/scorecards/unnati-eligibility/" class="service-card" style="text-decoration:none;color:inherit">
-            <span class="service-number">FREE TOOL</span>
-            <h3 class="service-title">UNNATI Scheme Eligibility</h3>
-            <p class="service-desc">Check if your North-East business qualifies for up to ₹7.5 crore in government incentives.</p>
-            <p style="margin-top:1.5rem;font-size:14px;color:#57534e">15 questions · 4 minutes →</p>
-        </a>
-
-    </div>
+  </div>
 
 </main>
+
+<style>
+.scorecards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 860px;
+    margin: -2rem auto 6rem;
+    padding: 0 1.5rem;
+}
+
+.scorecard-listing-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-white);
+    border: 2px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.scorecard-listing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(45,58,140,0.12);
+    border-color: var(--color-primary);
+}
+
+.scorecard-listing-card--accent {
+    background: linear-gradient(135deg, #2d3a8c 0%, #1e2766 100%);
+    border-color: transparent;
+}
+
+.scorecard-listing-card--accent:hover {
+    border-color: #FF9933;
+    box-shadow: 0 12px 32px rgba(45,58,140,0.3);
+}
+
+.slc-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    gap: 0.5rem;
+}
+
+.slc-tag {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background: rgba(45,58,140,0.08);
+    padding: 3px 10px;
+    border-radius: 3px;
+}
+
+.slc-tag--dark {
+    color: #FF9933;
+    background: rgba(255,153,51,0.15);
+}
+
+.slc-time {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+}
+
+.slc-time--dark {
+    color: rgba(255,255,255,0.5);
+}
+
+.slc-title {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+}
+
+.scorecard-listing-card--accent .slc-title {
+    color: #ffffff;
+}
+
+.slc-desc {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    flex: 1;
+    margin-bottom: 1.5rem;
+}
+
+.scorecard-listing-card--accent .slc-desc {
+    color: rgba(255,255,255,0.7);
+}
+
+.slc-cta {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-top: auto;
+}
+
+.slc-cta--dark {
+    color: #FF9933;
+}
+
+@media (max-width: 640px) {
+    .scorecards-grid {
+        grid-template-columns: 1fr;
+        margin-top: -1rem;
+    }
+}
+</style>
+
 {{ end }}
