@@ -9,14 +9,14 @@
     <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ .Permalink }}">
-    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+    <meta property="og:title" content="{{ if .IsHome }}indieco | Growth partner for founders building brands that last{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
     <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <meta property="og:image" content="{{ if .Params.ogimage }}{{ .Params.ogimage | absURL }}{{ else }}{{ "/images/og-default.png" | absURL }}{{ end }}">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ .Permalink }}">
-    <meta property="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
+    <meta property="og:title" content="{{ if .IsHome }}indieco | Growth partner for founders building brands that last{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}">
     <meta property="twitter:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <meta property="twitter:image" content="{{ if .Params.ogimage }}{{ .Params.ogimage | absURL }}{{ else }}{{ "/images/og-default.png" | absURL }}{{ end }}">
 
