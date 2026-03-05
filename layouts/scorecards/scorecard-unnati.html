@@ -1,31 +1,36 @@
 {{ define "main" }}
-<main class="container scorecard-container">
 
-    <!-- Scorecard Intro -->
-    <section class="scorecard-intro" id="intro">
-        <div class="urgency-banner" id="countdown-banner">
-            <!-- Countdown inserted by JavaScript -->
-        </div>
-        
-        <h1 class="scorecard-title">
-            UNNATI Scheme<br>
-            <span class="title-connector">Eligibility Checker</span>
-        </h1>
-        <p class="scorecard-subtitle">Answer 15 questions to discover if you qualify for up to ₹7.5 crore in government incentives for your North-East business.</p>
-        <p class="scorecard-meta">15 questions · 4 minutes · Deadline: March 31, 2026</p>
-        <button class="btn btn-primary" onclick="startScorecard()">Check my eligibility</button>
-    </section>
+<section id="intro">
+  <div class="scorecard-hero">
+    <div class="scorecard-hero-inner">
+      <span class="scorecard-badge">Free Eligibility Checker</span>
+      <h1>UNNATI Scheme<br>Eligibility Checker</h1>
+      <div class="scorecard-hero-accent"></div>
+      <p>Discover if you qualify for up to ₹7.5 crore in government incentives for your North-East business.</p>
+      <p class="scorecard-hero-meta">15 questions &nbsp;·&nbsp; 4 minutes &nbsp;·&nbsp; Deadline: March 31, 2026</p>
+    </div>
+  </div>
+  <div class="scorecard-intro-card-wrap">
+    <div class="scorecard-intro-card">
+      <div class="urgency-banner" id="countdown-banner">
+        <!-- Countdown inserted by JavaScript -->
+      </div>
+      <button type="button" class="btn btn-primary" style="width:100%;margin-top:16px" onclick="startScorecard()">Check My Eligibility →</button>
+      <p style="font-size:12px;color:#57534e;margin-top:12px">Free. Takes 4 minutes.</p>
+    </div>
+  </div>
+</section>
+
+<main class="container scorecard-container">
 
     <!-- Questions -->
     <section class="scorecard-questions" id="questions" style="display: none;">
         <div class="urgency-banner-small" id="countdown-banner-small">
             <!-- Countdown inserted by JavaScript -->
         </div>
-        
         <div class="progress-bar">
             <div class="progress-fill" id="progress"></div>
         </div>
-        
         <div class="question-container" id="question-container">
             <!-- Questions inserted by JS -->
         </div>
