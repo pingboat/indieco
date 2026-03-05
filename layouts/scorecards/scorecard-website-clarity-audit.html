@@ -1,24 +1,31 @@
 {{ define "main" }}
+
+<section id="wca-intro">
+  <div class="scorecard-hero">
+    <div class="scorecard-hero-inner">
+      <span class="scorecard-badge">Free Diagnostic Tool</span>
+      <h1>Website Clarity<br>Audit</h1>
+      <div class="scorecard-hero-accent"></div>
+      <p>Discover what's holding your website back from generating consistent leads — and get a personalised action plan in under 5 minutes.</p>
+      <p class="scorecard-hero-meta">10 questions &nbsp;·&nbsp; ~4 minutes &nbsp;·&nbsp; Free</p>
+    </div>
+  </div>
+  <div class="scorecard-intro-card-wrap">
+    <div class="scorecard-intro-card">
+      <div style="display:flex;align-items:center;gap:12px;border:1px solid #e7e5e4;border-radius:4px;padding:0 16px;background:#fff">
+        <label for="wca-url" style="font-size:14px;font-weight:600;color:#1c1917;white-space:nowrap;flex-shrink:0;padding:14px 0;margin:0">Website URL</label>
+        <input type="text" id="wca-url" placeholder="yourwebsite.com" autocomplete="off" autocapitalize="none"
+          style="flex:1;border:none;outline:none;font-family:var(--font-body);font-size:15px;color:#1c1917;padding:14px 0;background:transparent;min-width:0"
+          onkeydown="if(event.key==='Enter') wcaStart()" />
+      </div>
+      <p id="wca-url-error" style="font-size:13px;color:#ef4444;margin-top:6px;display:none"></p>
+      <button type="button" class="btn btn-primary" style="width:100%;margin-top:16px" onclick="wcaStart()">Start My Free Audit →</button>
+      <p style="font-size:12px;color:#57534e;margin-top:12px">No spam. No sales calls unless you want one. Just clarity.</p>
+    </div>
+  </div>
+</section>
+
 <main class="container scorecard-container">
-
-    <!-- Intro -->
-    <section class="scorecard-intro" id="wca-intro">
-        <h1 class="scorecard-title">Website Clarity<br><span class="title-connector">Audit</span></h1>
-        <p class="scorecard-subtitle">Discover what's holding your website back from generating consistent leads — and get a personalised action plan in under 5 minutes.</p>
-        <p class="scorecard-meta">10 questions · 4 minutes ·</p>
-
-        <div style="max-width:480px;margin:2rem auto 0">
-            <div style="display:flex;align-items:center;gap:12px;border:1px solid #e7e5e4;border-radius:4px;padding:0 16px;background:#fff">
-                <label for="wca-url" style="font-size:14px;font-weight:600;color:#1c1917;white-space:nowrap;flex-shrink:0;padding:14px 0;margin:0">Website URL</label>
-                <input type="text" id="wca-url" placeholder="yourwebsite.com" autocomplete="off" autocapitalize="none"
-                    style="flex:1;border:none;outline:none;font-family:var(--font-body);font-size:15px;color:#1c1917;padding:14px 0;background:transparent;min-width:0"
-                    onkeydown="if(event.key==='Enter') wcaStart()" />
-            </div>
-            <p id="wca-url-error" style="font-size:13px;color:#ef4444;margin-top:6px;display:none"></p>
-            <button type="button" class="btn btn-primary" style="width:100%;margin-top:16px" onclick="wcaStart()">Start My Free Audit →</button>
-            <p style="font-size:12px;color:#57534e;text-align:center;margin-top:12px">No spam. No sales calls unless you want one. Just clarity.</p>
-        </div>
-    </section>
 
     <!-- Questions -->
     <section class="scorecard-questions" id="wca-questions" style="display:none">
