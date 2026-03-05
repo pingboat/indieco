@@ -1,0 +1,73 @@
+{{ define "main" }}
+<main class="container scorecard-container">
+
+    <!-- Intro -->
+    <section class="scorecard-intro" id="wca-intro">
+        <h1 class="scorecard-title">Website Clarity<br><span class="title-connector">Audit</span></h1>
+        <p class="scorecard-subtitle">Discover what's holding your website back from generating consistent leads — and get a personalised action plan in under 5 minutes.</p>
+        <p class="scorecard-meta">10 questions · 4 minutes ·</p>
+
+        <div style="max-width:480px;margin:2rem auto 0">
+            <div style="display:flex;align-items:center;gap:12px;border:1px solid #e7e5e4;border-radius:4px;padding:0 16px;background:#fff">
+                <label for="wca-url" style="font-size:14px;font-weight:600;color:#1c1917;white-space:nowrap;flex-shrink:0;padding:14px 0;margin:0">Website URL</label>
+                <input type="text" id="wca-url" placeholder="yourwebsite.com" autocomplete="off" autocapitalize="none"
+                    style="flex:1;border:none;outline:none;font-family:var(--font-body);font-size:15px;color:#1c1917;padding:14px 0;background:transparent;min-width:0"
+                    onkeydown="if(event.key==='Enter') wcaStart()" />
+            </div>
+            <p id="wca-url-error" style="font-size:13px;color:#ef4444;margin-top:6px;display:none"></p>
+            <button type="button" class="btn btn-primary" style="width:100%;margin-top:16px" onclick="wcaStart()">Start My Free Audit →</button>
+            <p style="font-size:12px;color:#57534e;text-align:center;margin-top:12px">No spam. No sales calls unless you want one. Just clarity.</p>
+        </div>
+    </section>
+
+    <!-- Questions -->
+    <section class="scorecard-questions" id="wca-questions" style="display:none">
+        <div class="progress-bar">
+            <div class="progress-fill" id="wca-progress-fill"></div>
+        </div>
+        <div class="question-container" id="wca-question-container">
+            <!-- Questions inserted by JS -->
+        </div>
+    </section>
+
+    <!-- Email Capture -->
+    <section class="scorecard-email" id="wca-email-capture" style="display:none">
+        <h2>Almost there!</h2>
+        <p>Enter your details to see your personalised Website Clarity results.</p>
+        <form class="email-form" id="wca-email-form" name="website-clarity-audit" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name"         value="website-clarity-audit" />
+            <input type="hidden" name="bot-field" />
+            <input type="hidden" name="website_url"       id="wca-nf-url" />
+            <input type="hidden" name="name"              id="wca-nf-name" />
+            <input type="hidden" name="email"             id="wca-nf-email" />
+            <input type="hidden" name="whatsapp"          id="wca-nf-whatsapp" />
+            <input type="hidden" name="overall_score"     id="wca-nf-overall" />
+            <input type="hidden" name="positioning_score" id="wca-nf-positioning" />
+            <input type="hidden" name="conversion_score"  id="wca-nf-conversion" />
+            <input type="hidden" name="leadflow_score"    id="wca-nf-leadflow" />
+            <input type="hidden" name="brand_score"       id="wca-nf-brand" />
+            <input type="hidden" name="answers_json"      id="wca-nf-answers" />
+            <input type="text"   name="name_display"  id="wca-cap-name"     placeholder="Your name" required />
+            <input type="email"  name="email_display" id="wca-cap-email"    placeholder="Your email address" required />
+            <input type="tel"    name="whatsapp_display" id="wca-cap-whatsapp" placeholder="WhatsApp number (optional)" />
+            <button type="submit" class="btn btn-primary">Show My Results →</button>
+        </form>
+    </section>
+
+    <!-- Generating -->
+    <section class="scorecard-email" id="wca-generating" style="display:none">
+        <h2>Crafting your report…</h2>
+        <p id="wca-load-msg">Analysing your answers…</p>
+    </section>
+
+    <!-- Result -->
+    <section class="scorecard-result" id="wca-result" style="display:none">
+        <div class="result-card" id="wca-result-card">
+            <!-- Result inserted by JS -->
+        </div>
+    </section>
+
+</main>
+
+<script src="/js/scorecard-website-clarity-audit.js"></script>
+{{ end }}
