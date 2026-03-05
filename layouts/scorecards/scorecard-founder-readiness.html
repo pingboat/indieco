@@ -1,13 +1,24 @@
 {{ define "main" }}
-<main class="container scorecard-container">
 
-    <!-- Scorecard Intro -->
-    <section class="scorecard-intro" id="intro">
-        <h1 class="scorecard-title">The Founder Readiness Scorecard</h1>
-        <p class="scorecard-subtitle">Find out where you are in your journey — and what to focus on next.</p>
-        <p class="scorecard-meta">15 questions · 3 minutes</p>
-        <button class="btn btn-primary" onclick="startScorecard()">Start the scorecard</button>
-    </section>
+<section id="intro">
+  <div class="scorecard-hero">
+    <div class="scorecard-hero-inner">
+      <span class="scorecard-badge">Free Diagnostic Tool</span>
+      <h1>The Founder Readiness Scorecard</h1>
+      <div class="scorecard-hero-accent"></div>
+      <p>Find out where you are in your journey — and what to focus on next.</p>
+      <p class="scorecard-hero-meta">15 questions · 3 minutes · Free</p>
+    </div>
+  </div>
+  <div class="scorecard-intro-card-wrap">
+    <div class="scorecard-intro-card">
+      <button type="button" class="btn btn-primary" onclick="startScorecard()">Start the Scorecard →</button>
+      <p style="font-size:12px;color:#57534e;margin-top:12px">Free. No spam. Takes 3 minutes.</p>
+    </div>
+  </div>
+</section>
+
+<main class="container scorecard-container">
 
     <!-- Questions -->
     <section class="scorecard-questions" id="questions" style="display: none;">
