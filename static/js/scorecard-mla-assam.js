@@ -5,7 +5,7 @@ const mlaQuestions = [
   {
     id: 1, category: "intelligence",
     en: "Do you have a booth-level voter map — identifying strong, soft, swing, and opposition supporters?",
-    as: "আপোনাৰ কাছত বুথ-স্তৰৰ ভোটাৰ মেপ আছেনে — শক্তিশালী, দুৰ্বল, দোদুল্যমান আৰু বিৰোধী সমৰ্থকসকলক চিনাক্ত কৰি?",
+    as: "আপোনাৰ লগত বুথ-স্তৰৰ ভোটাৰ মেপ আছেনে — শক্তিশালী, দুৰ্বল, দোদুল্যমান আৰু বিৰোধী সমৰ্থকসকলক চিনাক্ত কৰি?",
     options: [
       { en: "No — we have no systematic booth data", as: "নাই — আমাৰ কোনো বুথ তথ্য নাই", score: 0 },
       { en: "We have voter lists but no political intelligence layered in", as: "ভোটাৰ তালিকা আছে কিন্তু ৰাজনৈতিক তথ্য যোগ কৰা হোৱা নাই", score: 1 },
