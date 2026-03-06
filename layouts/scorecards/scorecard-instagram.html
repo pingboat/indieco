@@ -1,0 +1,69 @@
+{{ define "main" }}
+
+<section id="ig-intro">
+  <div class="scorecard-hero">
+    <div class="scorecard-hero-inner">
+      <span class="scorecard-badge">Free Diagnostic Tool</span>
+      <h1>Instagram Growth<br>Scorecard</h1>
+      <div class="scorecard-hero-accent"></div>
+      <p>Find out what's really holding your Instagram growth back — and get a personalised action plan to fix it.</p>
+      <p class="scorecard-hero-meta">15 questions &nbsp;·&nbsp; ~4 minutes &nbsp;·&nbsp; Free</p>
+    </div>
+  </div>
+  <div class="scorecard-intro-card-wrap">
+    <div class="scorecard-intro-card">
+      <button type="button" class="btn btn-primary" style="width:100%" onclick="igStart()">Start My Audit →</button>
+      <p style="font-size:12px;color:#57534e;margin-top:12px">Free. No spam. Takes 4 minutes.</p>
+    </div>
+  </div>
+</section>
+
+<main class="container scorecard-container">
+
+  <!-- Questions -->
+  <section class="scorecard-questions" id="ig-questions" style="display:none">
+    <div class="progress-bar">
+      <div class="progress-fill" id="ig-progress-fill"></div>
+    </div>
+    <div class="question-container" id="ig-question-container">
+      <!-- Questions inserted by JS -->
+    </div>
+  </section>
+
+  <!-- Email Capture -->
+  <section class="scorecard-email" id="ig-email-capture" style="display:none">
+    <h2>Almost there!</h2>
+    <p>Enter your details to see your personalised Instagram audit results.</p>
+    <form class="email-form" id="ig-email-form" name="instagram-scorecard" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="instagram-scorecard" />
+      <input type="hidden" name="bot-field" />
+      <input type="hidden" name="name"       id="ig-nf-name" />
+      <input type="hidden" name="email"      id="ig-nf-email" />
+      <input type="hidden" name="ig_handle"  id="ig-nf-handle" />
+      <input type="hidden" name="score"      id="ig-nf-score" />
+      <input type="hidden" name="qualifies"  id="ig-nf-qualifies" />
+      <input type="hidden" name="answers"    id="ig-nf-answers" />
+      <input type="text"   name="name_display"   id="ig-cap-name"   placeholder="Your name" required />
+      <input type="email"  name="email_display"  id="ig-cap-email"  placeholder="Your email address" required />
+      <input type="text"   name="handle_display" id="ig-cap-handle" placeholder="Your Instagram handle (optional)" />
+      <button type="submit" class="btn btn-primary">Show My Results →</button>
+    </form>
+  </section>
+
+  <!-- Generating -->
+  <section class="scorecard-email" id="ig-generating" style="display:none">
+    <h2>Building your report…</h2>
+    <p id="ig-load-msg">Analysing your Instagram presence…</p>
+  </section>
+
+  <!-- Result -->
+  <section class="scorecard-result" id="ig-result" style="display:none">
+    <div class="result-card" id="ig-result-card">
+      <!-- Result inserted by JS -->
+    </div>
+  </section>
+
+</main>
+
+<script src="/js/scorecard-instagram.js"></script>
+{{ end }}
