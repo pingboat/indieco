@@ -69,42 +69,6 @@
   }
   .pd-progress-pip.done   { background: #FF9933; }
   .pd-progress-pip.active { background: rgba(255,153,51,0.6); }
-
-  .pd-hero {
-    background: linear-gradient(135deg, #1e2766 0%, #2d3a8c 100%);
-    padding: 5rem 1.5rem 4rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .pd-hero::before {
-    content: '';
-    position: absolute;
-    top: -60px; right: -60px;
-    width: 300px; height: 300px;
-    border-radius: 50%;
-    background: rgba(255,153,51,0.06);
-    pointer-events: none;
-  }
-  .pd-hero h1 {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 5vw, 3.25rem);
-    color: #fff;
-    line-height: 1.1;
-    margin-bottom: 1.25rem;
-    font-weight: 700;
-  }
-  .pd-hero-desc {
-    color: rgba(255,255,255,0.78);
-    font-size: 1.0625rem;
-    line-height: 1.7;
-    max-width: 540px;
-    margin: 0 auto 1rem;
-  }
-  .pd-hero-meta {
-    color: rgba(255,255,255,0.45);
-    font-size: 0.875rem;
-  }
   .pd-submit-anchor {
     text-align: center;
     padding: 2rem 1.5rem 0.5rem;
@@ -129,7 +93,6 @@
     margin-top: 0;
   }
   .pd-step.active { display: block; }
-
   .pd-step-label {
     font-size: 0.6875rem;
     font-weight: 700;
@@ -153,8 +116,6 @@
     padding-bottom: 1.5rem;
     border-bottom: 1px solid #f0efee;
   }
-
-  /* Sub-sections within a step */
   .pd-subsection {
     margin-top: 2rem;
     padding-top: 1.5rem;
@@ -168,7 +129,6 @@
     color: #2d3a8c;
     margin-bottom: 1.25rem;
   }
-
   .pd-field { margin-bottom: 1.5rem; }
   .pd-label {
     display: block;
@@ -185,7 +145,6 @@
     margin-top: 0.375rem;
     line-height: 1.5;
   }
-
   .pd-input, .pd-select, .pd-textarea {
     width: 100%;
     border: 1.5px solid #e7e5e4;
@@ -214,10 +173,7 @@
     padding-right: 2.5rem;
     cursor: pointer;
   }
-
   .pd-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-
-  /* Radio */
   .pd-radio-group { display: flex; flex-direction: column; gap: 0.5rem; }
   .pd-radio-inline { display: flex; gap: 0.75rem; flex-wrap: wrap; }
   .pd-radio-item {
@@ -248,8 +204,6 @@
     background: #2d3a8c; border-radius: 50%;
   }
   .pd-radio-label { font-size: 0.9375rem; color: #1c1917; }
-
-  /* Checkbox */
   .pd-check-group { display: flex; flex-direction: column; gap: 0.5rem; }
   .pd-check-item {
     display: flex;
@@ -280,8 +234,6 @@
     transform: rotate(-45deg) translate(1px,-1px); display: block;
   }
   .pd-check-label { font-size: 0.9375rem; color: #1c1917; }
-
-  /* Nav */
   .pd-nav {
     display: flex; justify-content: space-between; align-items: center;
     margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #f0efee;
@@ -306,15 +258,12 @@
     box-shadow: 0 4px 16px rgba(255,153,51,0.35);
   }
   .pd-btn-submit:hover { opacity: 0.92; transform: translateY(-1px); }
-
   .pd-error { font-size: 0.8125rem; color: #ef4444; margin-top: 0.375rem; display: none; }
-
-  /* Thank you */
   .pd-thankyou {
     display: none; text-align: center;
     background: #fff; border-radius: 16px;
     box-shadow: 0 4px 24px rgba(30,39,102,0.08);
-    padding: 4rem 2rem; margin-top: -1.5rem;
+    padding: 4rem 2rem; margin-top: 0;
   }
   .pd-thankyou-icon {
     width: 64px; height: 64px; background: rgba(255,153,51,0.1);
@@ -331,7 +280,6 @@
   .pd-next-steps h3 { font-size: 0.875rem; font-weight: 700; color: #1e2766; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.06em; }
   .pd-next-steps ol { padding-left: 1.25rem; margin: 0; }
   .pd-next-steps li { font-size: 0.9rem; color: #57534e; line-height: 1.6; margin-bottom: 0.375rem; }
-
   @media (max-width: 640px) {
     .pd-step { padding: 2rem 1.25rem 1.5rem; }
     .pd-grid-2 { grid-template-columns: 1fr; }
@@ -353,7 +301,7 @@
     <h1>Investor Pitch Deck</h1>
     <div class="pd-accent"></div>
     <p class="pd-hero-desc">Get an investor-ready pitch deck for your dream venture.</p>
-    <p class="pd-hero-meta">This takes 15-20 minutes to complete thoroughly. Don’t rush it - the quality of your inputs directly affects the quality of the final deck.</p>
+    <p class="pd-hero-meta">This takes 15-20 minutes to complete thoroughly. Don't rush it - the quality of your inputs directly affects the quality of the final deck.</p>
   </div>
 </section>
 
@@ -367,12 +315,11 @@
     <input type="hidden" name="form-name" value="pitch-deck" />
     <input type="hidden" name="bot-field" />
 
-    <!-- ── STEP 1: Your Information ─────────────────────────────────── -->
+    <!-- STEP 1 -->
     <div class="pd-step active" id="pd-step-1">
       <div class="pd-step-label">Step 1 of 4</div>
       <div class="pd-step-title">Your Information</div>
       <p class="pd-step-desc">Let's start with who you are and how to reach you.</p>
-
       <div style="margin-top:1.5rem">
         <div class="pd-grid-2">
           <div class="pd-field">
@@ -396,20 +343,17 @@
           <input type="text" name="linkedin" class="pd-input" placeholder="https://linkedin.com/in/yourname" />
         </div>
       </div>
-
       <div class="pd-nav">
         <div></div>
         <button type="button" class="pd-btn-next" onclick="pdNext(1)">Continue →</button>
       </div>
     </div>
 
-    <!-- ── STEP 2: Your Business ────────────────────────────────────── -->
+    <!-- STEP 2 -->
     <div class="pd-step" id="pd-step-2">
       <div class="pd-step-label">Step 2 of 4</div>
       <div class="pd-step-title">Your Business</div>
       <p class="pd-step-desc">Tell us about your company, the problem you solve, your solution, and your business model.</p>
-
-      <!-- Company Basics -->
       <div class="pd-subsection">
         <div class="pd-subsection-title">Company Basics</div>
         <div class="pd-grid-2">
@@ -432,12 +376,12 @@
           <div class="pd-field">
             <label class="pd-label">Current Stage <span class="req">*</span></label>
             <select name="stage" class="pd-select" id="pd-stage">
-              <option value="">Select stage…</option>
+              <option value="">Select stage...</option>
               <option value="idea">Idea Stage</option>
               <option value="mvp">MVP / Prototype</option>
-              <option value="early-revenue">Early Revenue (under ₹50L)</option>
-              <option value="scaling">Scaling (₹50L–5Cr)</option>
-              <option value="growth">Growth Stage (above ₹5Cr)</option>
+              <option value="early-revenue">Early Revenue (under Rs.50L)</option>
+              <option value="scaling">Scaling (Rs.50L-5Cr)</option>
+              <option value="growth">Growth Stage (above Rs.5Cr)</option>
             </select>
             <div class="pd-error" id="err-pd-stage">Please select your stage</div>
           </div>
@@ -448,18 +392,16 @@
           <div class="pd-error" id="err-pd-oneliner">Please enter your one-liner</div>
         </div>
       </div>
-
-      <!-- The Problem -->
       <div class="pd-subsection">
         <div class="pd-subsection-title">The Problem You're Solving</div>
         <div class="pd-field">
           <label class="pd-label">What problem are you solving? <span class="req">*</span></label>
-          <textarea name="problem" class="pd-textarea tall" id="pd-problem" placeholder="Describe the problem clearly in 3–4 sentences. Be specific — investors need to understand why this problem matters."></textarea>
+          <textarea name="problem" class="pd-textarea tall" id="pd-problem" placeholder="Describe the problem clearly in 3-4 sentences. Be specific — investors need to understand why this problem matters."></textarea>
           <div class="pd-error" id="err-pd-problem">Please describe the problem</div>
         </div>
         <div class="pd-field">
           <label class="pd-label">Who has this problem? <span class="req">*</span></label>
-          <textarea name="target-customer" class="pd-textarea" id="pd-customer" placeholder="e.g. SME owners in tier 2 cities, college students aged 18–24…"></textarea>
+          <textarea name="target-customer" class="pd-textarea" id="pd-customer" placeholder="e.g. SME owners in tier 2 cities, college students aged 18-24..."></textarea>
           <div class="pd-error" id="err-pd-customer">Please describe your target customer</div>
         </div>
         <div class="pd-field">
@@ -473,13 +415,11 @@
           <div class="pd-error" id="err-pd-alts">Please describe current alternatives</div>
         </div>
       </div>
-
-      <!-- Your Solution -->
       <div class="pd-subsection">
         <div class="pd-subsection-title">Your Solution</div>
         <div class="pd-field">
           <label class="pd-label">What is your product / service? <span class="req">*</span></label>
-          <textarea name="solution" class="pd-textarea tall" id="pd-solution" placeholder="Explain your solution in 3–4 sentences"></textarea>
+          <textarea name="solution" class="pd-textarea tall" id="pd-solution" placeholder="Explain your solution in 3-4 sentences"></textarea>
           <div class="pd-error" id="err-pd-solution">Please describe your solution</div>
         </div>
         <div class="pd-field">
@@ -497,26 +437,24 @@
               <input type="radio" name="has-demo" value="no" checked /><div class="pd-radio-dot"></div><span class="pd-radio-label">No</span>
             </label>
           </div>
-          <input type="text" id="demo-link" name="demo-link" class="pd-input" placeholder="https://…" style="display:none;margin-top:0.75rem" />
+          <input type="text" id="demo-link" name="demo-link" class="pd-input" placeholder="https://..." style="display:none;margin-top:0.75rem" />
         </div>
       </div>
-
-      <!-- Business Model -->
       <div class="pd-subsection">
         <div class="pd-subsection-title">Business Model</div>
         <div class="pd-field">
           <label class="pd-label">How do you make money? <span class="req">*</span></label>
-          <textarea name="revenue-model" class="pd-textarea" id="pd-revenue" placeholder="e.g. Subscription, Transaction fee, Freemium, B2B SaaS…"></textarea>
+          <textarea name="revenue-model" class="pd-textarea" id="pd-revenue" placeholder="e.g. Subscription, Transaction fee, Freemium, B2B SaaS..."></textarea>
           <div class="pd-error" id="err-pd-revenue">Please describe your revenue model</div>
         </div>
         <div class="pd-grid-2">
           <div class="pd-field">
             <label class="pd-label">Pricing <span class="opt">(optional)</span></label>
-            <input type="text" name="pricing" class="pd-input" placeholder="e.g. ₹999/month, 2% commission" />
+            <input type="text" name="pricing" class="pd-input" placeholder="e.g. Rs.999/month, 2% commission" />
           </div>
           <div class="pd-field">
             <label class="pd-label">Current monthly revenue <span class="opt">(optional)</span></label>
-            <input type="text" name="current-revenue" class="pd-input" placeholder="e.g. ₹5L/month, Pre-revenue" />
+            <input type="text" name="current-revenue" class="pd-input" placeholder="e.g. Rs.5L/month, Pre-revenue" />
           </div>
         </div>
         <div class="pd-field">
@@ -524,63 +462,56 @@
           <textarea name="unit-economics" class="pd-textarea" placeholder="If you don't have this yet, that's okay — leave blank"></textarea>
         </div>
       </div>
-
       <div class="pd-nav">
         <button type="button" class="pd-btn-back" onclick="pdBack(2)">← Back</button>
         <button type="button" class="pd-btn-next" onclick="pdNext(2)">Continue →</button>
       </div>
     </div>
 
-    <!-- ── STEP 3: Traction, Market & Team ─────────────────────────── -->
+    <!-- STEP 3 -->
     <div class="pd-step" id="pd-step-3">
       <div class="pd-step-label">Step 3 of 4</div>
       <div class="pd-step-title">Traction, Market & Team</div>
       <p class="pd-step-desc">Your numbers, your competitive position, and the people behind it.</p>
-
-      <!-- Traction -->
       <div class="pd-subsection">
         <div class="pd-subsection-title">Traction & Metrics</div>
         <div class="pd-field">
           <label class="pd-label">Current key metrics <span class="req">*</span></label>
-          <textarea name="current-metrics" class="pd-textarea tall" id="pd-metrics" placeholder="e.g. 5,000 users, 200 paying customers, 30% MoM growth, ₹10L revenue. If pre-launch, mention pilots, LOIs, or validation."></textarea>
+          <textarea name="current-metrics" class="pd-textarea tall" id="pd-metrics" placeholder="e.g. 5,000 users, 200 paying customers, 30% MoM growth, Rs.10L revenue. If pre-launch, mention pilots, LOIs, or validation."></textarea>
           <div class="pd-error" id="err-pd-metrics">Please share your key metrics</div>
         </div>
         <div class="pd-field">
           <label class="pd-label">Key milestones achieved <span class="opt">(optional)</span></label>
-          <textarea name="milestones" class="pd-textarea" placeholder="Product launched, First paying customer, Hit ₹1Cr ARR, Partnership with X…"></textarea>
+          <textarea name="milestones" class="pd-textarea" placeholder="Product launched, First paying customer, Hit Rs.1Cr ARR, Partnership with X..."></textarea>
         </div>
         <div class="pd-field">
           <label class="pd-label">Notable customers / clients <span class="opt">(optional)</span></label>
-          <input type="text" name="notable-customers" class="pd-input" placeholder="e.g. Tata, Reliance, IIT Delhi…" />
+          <input type="text" name="notable-customers" class="pd-input" placeholder="e.g. Tata, Reliance, IIT Delhi..." />
         </div>
       </div>
-
-      <!-- Competition -->
       <div class="pd-subsection">
         <div class="pd-subsection-title">Market & Competition</div>
         <div class="pd-field">
           <label class="pd-label">Who are your main competitors? <span class="req">*</span></label>
-          <textarea name="competitors" class="pd-textarea" id="pd-competitors" placeholder="List 3–5 direct and indirect competitors"></textarea>
+          <textarea name="competitors" class="pd-textarea" id="pd-competitors" placeholder="List 3-5 direct and indirect competitors"></textarea>
           <div class="pd-error" id="err-pd-competitors">Please list your competitors</div>
         </div>
         <div class="pd-field">
           <label class="pd-label">What's your competitive advantage? <span class="req">*</span></label>
-          <textarea name="competitive-advantage" class="pd-textarea" id="pd-advantage" placeholder="Why will you win? Technology, team, distribution, network effects…"></textarea>
+          <textarea name="competitive-advantage" class="pd-textarea" id="pd-advantage" placeholder="Why will you win? Technology, team, distribution, network effects..."></textarea>
           <div class="pd-error" id="err-pd-advantage">Please describe your competitive advantage</div>
         </div>
         <div class="pd-field">
           <label class="pd-label">How will you acquire customers? <span class="req">*</span></label>
-          <textarea name="gtm-strategy" class="pd-textarea" id="pd-gtm" placeholder="Digital marketing, sales team, partnerships, community building…"></textarea>
+          <textarea name="gtm-strategy" class="pd-textarea" id="pd-gtm" placeholder="Digital marketing, sales team, partnerships, community building..."></textarea>
           <div class="pd-error" id="err-pd-gtm">Please describe your GTM strategy</div>
         </div>
       </div>
-
-      <!-- Team -->
       <div class="pd-subsection">
         <div class="pd-subsection-title">Your Team</div>
         <div class="pd-field">
           <label class="pd-label">Founder details <span class="req">*</span></label>
-          <textarea name="founders" class="pd-textarea tall" id="pd-founders" placeholder="For each founder: Name, Role, 1–2 sentences of relevant background&#10;e.g. Rahul Sharma, CEO — 8 years at Google leading product teams. IIT Delhi CS."></textarea>
+          <textarea name="founders" class="pd-textarea tall" id="pd-founders" placeholder="For each founder: Name, Role, 1-2 sentences of relevant background&#10;e.g. Rahul Sharma, CEO - 8 years at Google leading product teams. IIT Delhi CS."></textarea>
           <div class="pd-error" id="err-pd-founders">Please share founder details</div>
         </div>
         <div class="pd-field">
@@ -599,20 +530,17 @@
           <textarea name="advisors" class="pd-textarea" placeholder="Names and credentials"></textarea>
         </div>
       </div>
-
       <div class="pd-nav">
         <button type="button" class="pd-btn-back" onclick="pdBack(3)">← Back</button>
         <button type="button" class="pd-btn-next" onclick="pdNext(3)">Continue →</button>
       </div>
     </div>
 
-    <!-- ── STEP 4: Financials, Ask & Delivery ───────────────────────── -->
+    <!-- STEP 4 -->
     <div class="pd-step" id="pd-step-4">
       <div class="pd-step-label">Step 4 of 4</div>
       <div class="pd-step-title">Financials, Ask & Delivery</div>
       <p class="pd-step-desc">Your fundraising details, materials you already have, and design preferences.</p>
-
-      <!-- Financials -->
       <div class="pd-subsection">
         <div class="pd-subsection-title">Financials</div>
         <div class="pd-field">
@@ -625,15 +553,15 @@
               <input type="radio" name="has-projections" value="no" checked /><div class="pd-radio-dot"></div><span class="pd-radio-label">No</span>
             </label>
             <label class="pd-radio-item" onclick="pdRadio(this,'has-projections')">
-              <input type="radio" name="has-projections" value="need-help" /><div class="pd-radio-dot"></div><span class="pd-radio-label">No — need help creating them</span>
+              <input type="radio" name="has-projections" value="need-help" /><div class="pd-radio-dot"></div><span class="pd-radio-label">No - need help creating them</span>
             </label>
           </div>
-          <textarea id="projections-details" name="projections-details" class="pd-textarea" placeholder="Describe your projections (3–5 year revenue, expenses, breakeven timeline)" style="display:none;margin-top:0.75rem"></textarea>
+          <textarea id="projections-details" name="projections-details" class="pd-textarea" placeholder="Describe your projections (3-5 year revenue, expenses, breakeven timeline)" style="display:none;margin-top:0.75rem"></textarea>
         </div>
         <div class="pd-grid-2">
           <div class="pd-field">
             <label class="pd-label">Current monthly burn rate <span class="opt">(optional)</span></label>
-            <input type="text" name="burn-rate" class="pd-input" placeholder="e.g. ₹5L/month" />
+            <input type="text" name="burn-rate" class="pd-input" placeholder="e.g. Rs.5L/month" />
           </div>
           <div class="pd-field">
             <label class="pd-label">Current runway <span class="opt">(optional)</span></label>
@@ -641,23 +569,21 @@
           </div>
         </div>
       </div>
-
-      <!-- The Ask -->
       <div class="pd-subsection">
         <div class="pd-subsection-title">The Ask (Fundraising)</div>
         <div class="pd-grid-2">
           <div class="pd-field">
             <label class="pd-label">How much are you raising? <span class="req">*</span></label>
-            <input type="text" name="raise-amount" class="pd-input" id="pd-raise" placeholder="e.g. ₹2 Cr, $500K" />
+            <input type="text" name="raise-amount" class="pd-input" id="pd-raise" placeholder="e.g. Rs.2 Cr, $500K" />
             <div class="pd-error" id="err-pd-raise">Please enter the amount</div>
           </div>
           <div class="pd-field">
             <label class="pd-label">Fundraising timeline <span class="req">*</span></label>
             <select name="raise-timeline" class="pd-select" id="pd-timeline">
-              <option value="">Select…</option>
+              <option value="">Select...</option>
               <option value="immediate">Within 1 month</option>
-              <option value="1-3-months">1–3 months</option>
-              <option value="3-6-months">3–6 months</option>
+              <option value="1-3-months">1-3 months</option>
+              <option value="3-6-months">3-6 months</option>
               <option value="6-plus-months">6+ months</option>
             </select>
             <div class="pd-error" id="err-pd-timeline">Please select a timeline</div>
@@ -665,7 +591,7 @@
         </div>
         <div class="pd-field">
           <label class="pd-label">What will you use the funds for? <span class="req">*</span></label>
-          <textarea name="fund-usage" class="pd-textarea tall" id="pd-usage" placeholder="List top 3–4 uses with % allocation&#10;e.g. Product development 40%, Marketing 30%, Team hiring 20%, Ops 10%"></textarea>
+          <textarea name="fund-usage" class="pd-textarea tall" id="pd-usage" placeholder="List top 3-4 uses with % allocation&#10;e.g. Product development 40%, Marketing 30%, Team hiring 20%, Ops 10%"></textarea>
           <div class="pd-error" id="err-pd-usage">Please describe fund usage</div>
         </div>
         <div class="pd-field">
@@ -679,8 +605,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Existing Materials -->
       <div class="pd-subsection">
         <div class="pd-subsection-title">Existing Materials</div>
         <div class="pd-field">
@@ -708,8 +632,6 @@
           <p class="pd-helper">If yes, share a link in the Additional Information field below</p>
         </div>
       </div>
-
-      <!-- Design & Delivery -->
       <div class="pd-subsection">
         <div class="pd-subsection-title">Design & Delivery</div>
         <div class="pd-grid-2">
@@ -727,8 +649,8 @@
             <label class="pd-label">Expected number of slides</label>
             <select name="slide-count" class="pd-select">
               <option value="">Not sure</option>
-              <option value="10-12">10–12 slides (Concise)</option>
-              <option value="15-18">15–18 slides (Standard)</option>
+              <option value="10-12">10-12 slides (Concise)</option>
+              <option value="15-18">15-18 slides (Standard)</option>
               <option value="20-plus">20+ slides (Comprehensive)</option>
             </select>
           </div>
@@ -753,20 +675,20 @@
           <input type="text" name="inspiration" class="pd-input" placeholder="Share links to examples if you have them" />
         </div>
       </div>
-
-      <!-- Budget & Additional -->
       <div class="pd-subsection">
         <div class="pd-subsection-title">Budget & Additional Information</div>
         <div class="pd-grid-2">
           <div class="pd-field">
-            <label class="pd-label">Budget for this project <span class="opt">(optional)</span></label>
-            <select name="budget" class="pd-select">
-              <option value="under-25k">Under ₹25,000</option>
-              <option value="25k-50k">₹25,000 – ₹50,000</option>
-              <option value="50k-1l">₹50,000 – ₹1,00,000</option>
-              <option value="1l-plus">₹1,00,000+</option>
+            <label class="pd-label">Budget for this project <span class="req">*</span></label>
+            <select name="budget" class="pd-select" id="pd-budget">
+              <option value="">Select budget...</option>
+              <option value="under-25k">Under Rs.25,000</option>
+              <option value="25k-50k">Rs.25,000 - Rs.50,000</option>
+              <option value="50k-1l">Rs.50,000 - Rs.1,00,000</option>
+              <option value="1l-plus">Rs.1,00,000+</option>
               <option value="not-sure">Not sure, need guidance</option>
             </select>
+            <div class="pd-error" id="err-pd-budget">Please select your budget</div>
           </div>
           <div class="pd-field">
             <label class="pd-label">Have you worked with a pitch deck designer before?</label>
@@ -782,14 +704,13 @@
         </div>
         <div class="pd-field">
           <label class="pd-label">Anything else we should know? <span class="opt">(optional)</span></label>
-          <textarea name="additional-info" class="pd-textarea tall" placeholder="Links to existing materials, specific requirements, questions, concerns…"></textarea>
+          <textarea name="additional-info" class="pd-textarea tall" placeholder="Links to existing materials, specific requirements, questions, concerns..."></textarea>
         </div>
         <div class="pd-field">
           <label class="pd-label">How did you hear about us? <span class="opt">(optional)</span></label>
-          <input type="text" name="referral" class="pd-input" placeholder="Google, Referral, LinkedIn…" />
+          <input type="text" name="referral" class="pd-input" placeholder="Google, Referral, LinkedIn..." />
         </div>
       </div>
-
       <div class="pd-nav">
         <button type="button" class="pd-btn-back" onclick="pdBack(4)">← Back</button>
         <button type="submit" class="pd-btn-submit">Submit Brief →</button>
@@ -818,7 +739,6 @@
   </form>
 </div>
 
-<!-- Checkbox interactivity -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.pd-check-item').forEach(function(item) {
