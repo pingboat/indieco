@@ -79,6 +79,7 @@ function pdValidate(step) {
     if (!pdVal('pd-timeline'))   { pdShowError('err-pd-timeline', true);  valid = false; } else pdShowError('err-pd-timeline', false);
     if (!pdVal('pd-usage'))      { pdShowError('err-pd-usage', true);     valid = false; } else pdShowError('err-pd-usage', false);
     if (!pdVal('pd-deadline'))   { pdShowError('err-pd-deadline', true);  valid = false; } else pdShowError('err-pd-deadline', false);
+    if (!pdVal('pd-budget'))     { pdShowError('err-pd-budget', true);    valid = false; } else pdShowError('err-pd-budget', false);
   }
 
   return valid;
