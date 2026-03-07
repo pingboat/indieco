@@ -1,478 +1,786 @@
 {{ define "main" }}
-<div class="pitch-deck-container">
-    <section class="pitch-deck-intro">
-        <div class="pitch-deck-header">
-            <span class="pitch-deck-label">INVESTOR PITCH DECK</span>
-            <h1 class="pitch-deck-title">{{ .Title }}</h1>
-            <p class="pitch-deck-subtitle">{{ .Description }}</p>
+
+<style>
+  .pd-hero {
+    background: linear-gradient(135deg, #1e2766 0%, #2d3a8c 100%);
+    padding: 5rem 1.5rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .pd-hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,153,51,0.06);
+    pointer-events: none;
+  }
+  .pd-badge {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #FF9933;
+    background: rgba(255,153,51,0.12);
+    border: 1px solid rgba(255,153,51,0.25);
+    padding: 5px 14px;
+    border-radius: 3px;
+    margin-bottom: 1.5rem;
+  }
+  .pd-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+  }
+  .pd-accent {
+    width: 48px; height: 3px;
+    background: #FF9933;
+    margin: 0 auto 1.5rem;
+    border-radius: 2px;
+  }
+  .pd-hero-desc {
+    color: rgba(255,255,255,0.78);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    max-width: 540px;
+    margin: 0 auto 1rem;
+  }
+  .pd-hero-meta {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.875rem;
+  }
+  .pd-progress-wrap {
+    display: flex;
+    gap: 6px;
+    max-width: 240px;
+    margin: 0 auto 2.5rem;
+  }
+  .pd-progress-pip {
+    flex: 1; height: 3px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 2px;
+    transition: background 0.3s ease;
+  }
+  .pd-progress-pip.done   { background: #FF9933; }
+  .pd-progress-pip.active { background: rgba(255,153,51,0.6); }
+
+  .pd-wrap {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+  }
+  .pd-step {
+    display: none;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(30,39,102,0.08);
+    padding: 2.5rem 2.5rem 2rem;
+    margin-top: -2rem;
+  }
+  .pd-step.active { display: block; }
+
+  .pd-step-label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #FF9933;
+    margin-bottom: 0.375rem;
+  }
+  .pd-step-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e2766;
+    margin-bottom: 0.5rem;
+  }
+  .pd-step-desc {
+    font-size: 0.9375rem;
+    color: #78716c;
+    line-height: 1.6;
+    margin-bottom: 0;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #f0efee;
+  }
+
+  /* Sub-sections within a step */
+  .pd-subsection {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f0efee;
+  }
+  .pd-subsection-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #2d3a8c;
+    margin-bottom: 1.25rem;
+  }
+
+  .pd-field { margin-bottom: 1.5rem; }
+  .pd-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1c1917;
+    margin-bottom: 0.5rem;
+  }
+  .pd-label .req { color: #ef4444; margin-left: 2px; }
+  .pd-label .opt { color: #a8a29e; font-weight: 400; font-size: 0.8125rem; margin-left: 4px; }
+  .pd-helper {
+    font-size: 0.8125rem;
+    color: #a8a29e;
+    margin-top: 0.375rem;
+    line-height: 1.5;
+  }
+
+  .pd-input, .pd-select, .pd-textarea {
+    width: 100%;
+    border: 1.5px solid #e7e5e4;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: #1c1917;
+    background: #fafaf9;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+  }
+  .pd-input:focus, .pd-select:focus, .pd-textarea:focus {
+    outline: none;
+    border-color: #2d3a8c;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(45,58,140,0.08);
+  }
+  .pd-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+  .pd-textarea.tall { min-height: 120px; }
+  .pd-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2378716c' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+
+  .pd-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  /* Radio */
+  .pd-radio-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .pd-radio-inline { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+  .pd-radio-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 1rem;
+    border: 1.5px solid #e7e5e4;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    background: #fafaf9;
+  }
+  .pd-radio-item:hover { border-color: #2d3a8c; background: #fff; }
+  .pd-radio-item input { display: none; }
+  .pd-radio-item.selected { border-color: #2d3a8c; background: rgba(45,58,140,0.04); }
+  .pd-radio-dot {
+    width: 16px; height: 16px;
+    border: 2px solid #d6d3d1;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color 0.2s;
+  }
+  .pd-radio-item.selected .pd-radio-dot { border-color: #2d3a8c; }
+  .pd-radio-item.selected .pd-radio-dot::after {
+    content: ''; width: 7px; height: 7px;
+    background: #2d3a8c; border-radius: 50%;
+  }
+  .pd-radio-label { font-size: 0.9375rem; color: #1c1917; }
+
+  /* Checkbox */
+  .pd-check-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .pd-check-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 1rem;
+    border: 1.5px solid #e7e5e4;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    background: #fafaf9;
+  }
+  .pd-check-item:hover { border-color: #2d3a8c; background: #fff; }
+  .pd-check-item input { display: none; }
+  .pd-check-item.selected { border-color: #2d3a8c; background: rgba(45,58,140,0.04); }
+  .pd-check-box {
+    width: 16px; height: 16px;
+    border: 2px solid #d6d3d1;
+    border-radius: 4px;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .pd-check-item.selected .pd-check-box { border-color: #2d3a8c; background: #2d3a8c; }
+  .pd-check-item.selected .pd-check-box::after {
+    content: ''; width: 9px; height: 5px;
+    border-left: 2px solid #fff; border-bottom: 2px solid #fff;
+    transform: rotate(-45deg) translate(1px,-1px); display: block;
+  }
+  .pd-check-label { font-size: 0.9375rem; color: #1c1917; }
+
+  /* Nav */
+  .pd-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #f0efee;
+  }
+  .pd-btn-back {
+    background: none; border: 1.5px solid #e7e5e4; border-radius: 8px;
+    padding: 0.75rem 1.5rem; font-family: var(--font-body); font-size: 0.9375rem;
+    color: #57534e; cursor: pointer; transition: border-color 0.2s, color 0.2s;
+  }
+  .pd-btn-back:hover { border-color: #2d3a8c; color: #2d3a8c; }
+  .pd-btn-next {
+    background: #2d3a8c; border: none; border-radius: 8px;
+    padding: 0.75rem 2rem; font-family: var(--font-body); font-size: 0.9375rem;
+    font-weight: 600; color: #fff; cursor: pointer; transition: background 0.2s, transform 0.1s;
+  }
+  .pd-btn-next:hover { background: #1e2766; transform: translateY(-1px); }
+  .pd-btn-submit {
+    background: linear-gradient(135deg, #FF9933, #e8821a); border: none; border-radius: 8px;
+    padding: 0.875rem 2.5rem; font-family: var(--font-body); font-size: 1rem;
+    font-weight: 700; color: #fff; cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    box-shadow: 0 4px 16px rgba(255,153,51,0.35);
+  }
+  .pd-btn-submit:hover { opacity: 0.92; transform: translateY(-1px); }
+
+  .pd-error { font-size: 0.8125rem; color: #ef4444; margin-top: 0.375rem; display: none; }
+
+  /* Thank you */
+  .pd-thankyou {
+    display: none; text-align: center;
+    background: #fff; border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(30,39,102,0.08);
+    padding: 4rem 2rem; margin-top: -2rem;
+  }
+  .pd-thankyou-icon {
+    width: 64px; height: 64px; background: rgba(255,153,51,0.1);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem; font-size: 1.75rem;
+  }
+  .pd-thankyou h2 { font-family: var(--font-display); font-size: 1.75rem; color: #1e2766; margin-bottom: 0.75rem; }
+  .pd-thankyou p { color: #57534e; font-size: 0.9375rem; line-height: 1.7; max-width: 480px; margin: 0 auto 1rem; }
+  .pd-next-steps {
+    background: #f5f5f4; border-radius: 12px;
+    padding: 1.5rem 2rem; text-align: left;
+    max-width: 460px; margin: 1.5rem auto 2rem;
+  }
+  .pd-next-steps h3 { font-size: 0.875rem; font-weight: 700; color: #1e2766; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .pd-next-steps ol { padding-left: 1.25rem; margin: 0; }
+  .pd-next-steps li { font-size: 0.9rem; color: #57534e; line-height: 1.6; margin-bottom: 0.375rem; }
+
+  @media (max-width: 640px) {
+    .pd-step { padding: 2rem 1.25rem 1.5rem; }
+    .pd-grid-2 { grid-template-columns: 1fr; }
+    .pd-hero { padding: 3.5rem 1.25rem 3rem; }
+    .pd-radio-inline { flex-direction: column; }
+  }
+</style>
+
+<!-- Hero -->
+<section class="pd-hero">
+  <div class="pd-progress-wrap" id="pd-progress-wrap">
+    <div class="pd-progress-pip active" id="pd-pip-1"></div>
+    <div class="pd-progress-pip" id="pd-pip-2"></div>
+    <div class="pd-progress-pip" id="pd-pip-3"></div>
+    <div class="pd-progress-pip" id="pd-pip-4"></div>
+  </div>
+  <div style="max-width:580px;margin:0 auto">
+    <span class="pd-badge">Investor Pitch Deck &nbsp;·&nbsp; Brief Form</span>
+    <h1>{{ .Title }}</h1>
+    <div class="pd-accent"></div>
+    <p class="pd-hero-desc">{{ .Be so good they can't ignore you. }}</p>
+    <p class="pd-hero-meta">Creating a compelling pitch deck right information, organised clearly, that comes across as a moving & impactful story. Complete this brief so we can design a winning pitch deck that helps you raise capital.</p>
+  </div>
+</section>
+
+<div class="pd-wrap">
+  <form id="pd-form" name="pitch-deck" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="pitch-deck" />
+    <input type="hidden" name="bot-field" />
+
+    <!-- ── STEP 1: Your Information ─────────────────────────────────── -->
+    <div class="pd-step active" id="pd-step-1">
+      <div class="pd-step-label">Step 1 of 4</div>
+      <div class="pd-step-title">Your Information</div>
+      <p class="pd-step-desc">Let's start with who you are and how to reach you.</p>
+
+      <div style="margin-top:1.5rem">
+        <div class="pd-grid-2">
+          <div class="pd-field">
+            <label class="pd-label">Full Name <span class="req">*</span></label>
+            <input type="text" name="full-name" class="pd-input" id="pd-name" placeholder="Your name" />
+            <div class="pd-error" id="err-pd-name">Please enter your name</div>
+          </div>
+          <div class="pd-field">
+            <label class="pd-label">Phone Number <span class="req">*</span></label>
+            <input type="tel" name="phone" class="pd-input" id="pd-phone" placeholder="+91 98765 43210" />
+            <div class="pd-error" id="err-pd-phone">Please enter your phone number</div>
+          </div>
         </div>
-
-        <div class="pitch-deck-content">
-            {{ .Content }}
+        <div class="pd-field">
+          <label class="pd-label">Email Address <span class="req">*</span></label>
+          <input type="email" name="email" class="pd-input" id="pd-email" placeholder="you@yourstartup.com" />
+          <div class="pd-error" id="err-pd-email">Please enter a valid email</div>
         </div>
-    </section>
+        <div class="pd-field">
+          <label class="pd-label">LinkedIn Profile <span class="opt">(optional)</span></label>
+          <input type="text" name="linkedin" class="pd-input" placeholder="https://linkedin.com/in/yourname" />
+        </div>
+      </div>
 
-    <!-- The Form -->
-    <section class="pitch-deck-form-section">
-        <form name="pitch-deck" method="POST" data-netlify="true" id="pitch-deck-form">
-            <input type="hidden" name="form-name" value="pitch-deck">
-            
-            <!-- Section 1: Contact Information -->
-            <div class="form-section">
-                <h2 class="section-title">1. Your Information</h2>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="full-name">Full Name *</label>
-                        <input type="text" id="full-name" name="full-name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="linkedin">LinkedIn Profile (optional)</label>
-                        <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/...">
-                    </div>
-                </div>
+      <div class="pd-nav">
+        <div></div>
+        <button type="button" class="pd-btn-next" onclick="pdNext(1)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 2: Your Business ────────────────────────────────────── -->
+    <div class="pd-step" id="pd-step-2">
+      <div class="pd-step-label">Step 2 of 4</div>
+      <div class="pd-step-title">Your Business</div>
+      <p class="pd-step-desc">Tell us about your company, the problem you solve, your solution, and your business model.</p>
+
+      <!-- Company Basics -->
+      <div class="pd-subsection">
+        <div class="pd-subsection-title">Company Basics</div>
+        <div class="pd-grid-2">
+          <div class="pd-field">
+            <label class="pd-label">Company / Startup Name <span class="req">*</span></label>
+            <input type="text" name="company-name" class="pd-input" id="pd-company" placeholder="Your startup" />
+            <div class="pd-error" id="err-pd-company">Please enter your company name</div>
+          </div>
+          <div class="pd-field">
+            <label class="pd-label">Website <span class="opt">(if exists)</span></label>
+            <input type="text" name="website" class="pd-input" placeholder="https://..." />
+          </div>
+        </div>
+        <div class="pd-grid-2">
+          <div class="pd-field">
+            <label class="pd-label">Industry / Sector <span class="req">*</span></label>
+            <input type="text" name="industry" class="pd-input" id="pd-industry" placeholder="e.g. EdTech, FinTech, D2C" />
+            <div class="pd-error" id="err-pd-industry">Please enter your industry</div>
+          </div>
+          <div class="pd-field">
+            <label class="pd-label">Current Stage <span class="req">*</span></label>
+            <select name="stage" class="pd-select" id="pd-stage">
+              <option value="">Select stage…</option>
+              <option value="idea">Idea Stage</option>
+              <option value="mvp">MVP / Prototype</option>
+              <option value="early-revenue">Early Revenue (&lt;₹50L)</option>
+              <option value="scaling">Scaling (₹50L–5Cr)</option>
+              <option value="growth">Growth Stage (&gt;₹5Cr)</option>
+            </select>
+            <div class="pd-error" id="err-pd-stage">Please select your stage</div>
+          </div>
+        </div>
+        <div class="pd-field">
+          <label class="pd-label">One-line description of what you do <span class="req">*</span></label>
+          <input type="text" name="one-liner" class="pd-input" id="pd-oneliner" placeholder="e.g. Uber for X, Airbnb for Y" />
+          <div class="pd-error" id="err-pd-oneliner">Please enter your one-liner</div>
+        </div>
+      </div>
+
+      <!-- The Problem -->
+      <div class="pd-subsection">
+        <div class="pd-subsection-title">The Problem You're Solving</div>
+        <div class="pd-field">
+          <label class="pd-label">What problem are you solving? <span class="req">*</span></label>
+          <textarea name="problem" class="pd-textarea tall" id="pd-problem" placeholder="Describe the problem clearly in 3–4 sentences. Be specific — investors need to understand why this problem matters."></textarea>
+          <div class="pd-error" id="err-pd-problem">Please describe the problem</div>
+        </div>
+        <div class="pd-field">
+          <label class="pd-label">Who has this problem? <span class="req">*</span></label>
+          <textarea name="target-customer" class="pd-textarea" id="pd-customer" placeholder="e.g. SME owners in tier 2 cities, college students aged 18–24…"></textarea>
+          <div class="pd-error" id="err-pd-customer">Please describe your target customer</div>
+        </div>
+        <div class="pd-field">
+          <label class="pd-label">How big is this market? <span class="req">*</span></label>
+          <textarea name="market-size" class="pd-textarea" id="pd-market" placeholder="TAM/SAM/SOM if available, or rough estimates with sources"></textarea>
+          <div class="pd-error" id="err-pd-market">Please describe the market size</div>
+        </div>
+        <div class="pd-field">
+          <label class="pd-label">How do people solve this today? <span class="req">*</span></label>
+          <textarea name="current-alternatives" class="pd-textarea" id="pd-alts" placeholder="What alternatives or competitors exist?"></textarea>
+          <div class="pd-error" id="err-pd-alts">Please describe current alternatives</div>
+        </div>
+      </div>
+
+      <!-- Your Solution -->
+      <div class="pd-subsection">
+        <div class="pd-subsection-title">Your Solution</div>
+        <div class="pd-field">
+          <label class="pd-label">What is your product / service? <span class="req">*</span></label>
+          <textarea name="solution" class="pd-textarea tall" id="pd-solution" placeholder="Explain your solution in 3–4 sentences"></textarea>
+          <div class="pd-error" id="err-pd-solution">Please describe your solution</div>
+        </div>
+        <div class="pd-field">
+          <label class="pd-label">What makes your solution unique? <span class="req">*</span></label>
+          <textarea name="unique-value" class="pd-textarea" id="pd-unique" placeholder="Why is your approach better than alternatives?"></textarea>
+          <div class="pd-error" id="err-pd-unique">Please describe your unique value</div>
+        </div>
+        <div class="pd-field">
+          <label class="pd-label">Do you have a demo / prototype / MVP?</label>
+          <div class="pd-radio-group pd-radio-inline">
+            <label class="pd-radio-item" onclick="pdRadio(this,'has-demo')">
+              <input type="radio" name="has-demo" value="yes" /><div class="pd-radio-dot"></div><span class="pd-radio-label">Yes</span>
+            </label>
+            <label class="pd-radio-item selected" onclick="pdRadio(this,'has-demo')">
+              <input type="radio" name="has-demo" value="no" checked /><div class="pd-radio-dot"></div><span class="pd-radio-label">No</span>
+            </label>
+          </div>
+          <input type="text" id="demo-link" name="demo-link" class="pd-input" placeholder="https://…" style="display:none;margin-top:0.75rem" />
+        </div>
+      </div>
+
+      <!-- Business Model -->
+      <div class="pd-subsection">
+        <div class="pd-subsection-title">Business Model</div>
+        <div class="pd-field">
+          <label class="pd-label">How do you make money? <span class="req">*</span></label>
+          <textarea name="revenue-model" class="pd-textarea" id="pd-revenue" placeholder="e.g. Subscription, Transaction fee, Freemium, B2B SaaS…"></textarea>
+          <div class="pd-error" id="err-pd-revenue">Please describe your revenue model</div>
+        </div>
+        <div class="pd-grid-2">
+          <div class="pd-field">
+            <label class="pd-label">Pricing <span class="opt">(optional)</span></label>
+            <input type="text" name="pricing" class="pd-input" placeholder="e.g. ₹999/month, 2% commission" />
+          </div>
+          <div class="pd-field">
+            <label class="pd-label">Current monthly revenue <span class="opt">(optional)</span></label>
+            <input type="text" name="current-revenue" class="pd-input" placeholder="e.g. ₹5L/month, Pre-revenue" />
+          </div>
+        </div>
+        <div class="pd-field">
+          <label class="pd-label">Unit economics <span class="opt">(CAC, LTV if known)</span></label>
+          <textarea name="unit-economics" class="pd-textarea" placeholder="If you don't have this yet, that's okay — leave blank"></textarea>
+        </div>
+      </div>
+
+      <div class="pd-nav">
+        <button type="button" class="pd-btn-back" onclick="pdBack(2)">← Back</button>
+        <button type="button" class="pd-btn-next" onclick="pdNext(2)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 3: Traction, Market & Team ─────────────────────────── -->
+    <div class="pd-step" id="pd-step-3">
+      <div class="pd-step-label">Step 3 of 4</div>
+      <div class="pd-step-title">Traction, Market & Team</div>
+      <p class="pd-step-desc">Your numbers, your competitive position, and the people behind it.</p>
+
+      <!-- Traction -->
+      <div class="pd-subsection">
+        <div class="pd-subsection-title">Traction & Metrics</div>
+        <div class="pd-field">
+          <label class="pd-label">Current key metrics <span class="req">*</span></label>
+          <textarea name="current-metrics" class="pd-textarea tall" id="pd-metrics" placeholder="e.g. 5,000 users, 200 paying customers, 30% MoM growth, ₹10L revenue. If pre-launch, mention pilots, LOIs, or validation."></textarea>
+          <div class="pd-error" id="err-pd-metrics">Please share your key metrics</div>
+        </div>
+        <div class="pd-field">
+          <label class="pd-label">Key milestones achieved <span class="opt">(optional)</span></label>
+          <textarea name="milestones" class="pd-textarea" placeholder="Product launched, First paying customer, Hit ₹1Cr ARR, Partnership with X…"></textarea>
+        </div>
+        <div class="pd-field">
+          <label class="pd-label">Notable customers / clients <span class="opt">(optional)</span></label>
+          <input type="text" name="notable-customers" class="pd-input" placeholder="e.g. Tata, Reliance, IIT Delhi…" />
+        </div>
+      </div>
+
+      <!-- Competition -->
+      <div class="pd-subsection">
+        <div class="pd-subsection-title">Market & Competition</div>
+        <div class="pd-field">
+          <label class="pd-label">Who are your main competitors? <span class="req">*</span></label>
+          <textarea name="competitors" class="pd-textarea" id="pd-competitors" placeholder="List 3–5 direct and indirect competitors"></textarea>
+          <div class="pd-error" id="err-pd-competitors">Please list your competitors</div>
+        </div>
+        <div class="pd-field">
+          <label class="pd-label">What's your competitive advantage? <span class="req">*</span></label>
+          <textarea name="competitive-advantage" class="pd-textarea" id="pd-advantage" placeholder="Why will you win? Technology, team, distribution, network effects…"></textarea>
+          <div class="pd-error" id="err-pd-advantage">Please describe your competitive advantage</div>
+        </div>
+        <div class="pd-field">
+          <label class="pd-label">How will you acquire customers? <span class="req">*</span></label>
+          <textarea name="gtm-strategy" class="pd-textarea" id="pd-gtm" placeholder="Digital marketing, sales team, partnerships, community building…"></textarea>
+          <div class="pd-error" id="err-pd-gtm">Please describe your GTM strategy</div>
+        </div>
+      </div>
+
+      <!-- Team -->
+      <div class="pd-subsection">
+        <div class="pd-subsection-title">Your Team</div>
+        <div class="pd-field">
+          <label class="pd-label">Founder details <span class="req">*</span></label>
+          <textarea name="founders" class="pd-textarea tall" id="pd-founders" placeholder="For each founder: Name, Role, 1–2 sentences of relevant background&#10;e.g. Rahul Sharma, CEO — 8 years at Google leading product teams. IIT Delhi CS."></textarea>
+          <div class="pd-error" id="err-pd-founders">Please share founder details</div>
+        </div>
+        <div class="pd-field">
+          <label class="pd-label">Do you have professional photos of the team?</label>
+          <div class="pd-radio-group pd-radio-inline">
+            <label class="pd-radio-item" onclick="pdRadio(this,'has-photos')">
+              <input type="radio" name="has-photos" value="yes" /><div class="pd-radio-dot"></div><span class="pd-radio-label">Yes, will provide</span>
+            </label>
+            <label class="pd-radio-item selected" onclick="pdRadio(this,'has-photos')">
+              <input type="radio" name="has-photos" value="no" checked /><div class="pd-radio-dot"></div><span class="pd-radio-label">No, need help</span>
+            </label>
+          </div>
+        </div>
+        <div class="pd-field">
+          <label class="pd-label">Key advisors or notable team members <span class="opt">(optional)</span></label>
+          <textarea name="advisors" class="pd-textarea" placeholder="Names and credentials"></textarea>
+        </div>
+      </div>
+
+      <div class="pd-nav">
+        <button type="button" class="pd-btn-back" onclick="pdBack(3)">← Back</button>
+        <button type="button" class="pd-btn-next" onclick="pdNext(3)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ── STEP 4: Financials, Ask & Delivery ───────────────────────── -->
+    <div class="pd-step" id="pd-step-4">
+      <div class="pd-step-label">Step 4 of 4</div>
+      <div class="pd-step-title">Financials, Ask & Delivery</div>
+      <p class="pd-step-desc">Your fundraising details, materials you already have, and design preferences.</p>
+
+      <!-- Financials -->
+      <div class="pd-subsection">
+        <div class="pd-subsection-title">Financials</div>
+        <div class="pd-field">
+          <label class="pd-label">Do you have financial projections?</label>
+          <div class="pd-radio-group">
+            <label class="pd-radio-item" onclick="pdRadio(this,'has-projections')">
+              <input type="radio" name="has-projections" value="yes" /><div class="pd-radio-dot"></div><span class="pd-radio-label">Yes</span>
+            </label>
+            <label class="pd-radio-item selected" onclick="pdRadio(this,'has-projections')">
+              <input type="radio" name="has-projections" value="no" checked /><div class="pd-radio-dot"></div><span class="pd-radio-label">No</span>
+            </label>
+            <label class="pd-radio-item" onclick="pdRadio(this,'has-projections')">
+              <input type="radio" name="has-projections" value="need-help" /><div class="pd-radio-dot"></div><span class="pd-radio-label">No — need help creating them</span>
+            </label>
+          </div>
+          <textarea id="projections-details" name="projections-details" class="pd-textarea" placeholder="Describe your projections (3–5 year revenue, expenses, breakeven timeline)" style="display:none;margin-top:0.75rem"></textarea>
+        </div>
+        <div class="pd-grid-2">
+          <div class="pd-field">
+            <label class="pd-label">Current monthly burn rate <span class="opt">(optional)</span></label>
+            <input type="text" name="burn-rate" class="pd-input" placeholder="e.g. ₹5L/month" />
+          </div>
+          <div class="pd-field">
+            <label class="pd-label">Current runway <span class="opt">(optional)</span></label>
+            <input type="text" name="runway" class="pd-input" placeholder="e.g. 12 months" />
+          </div>
+        </div>
+      </div>
+
+      <!-- The Ask -->
+      <div class="pd-subsection">
+        <div class="pd-subsection-title">The Ask (Fundraising)</div>
+        <div class="pd-grid-2">
+          <div class="pd-field">
+            <label class="pd-label">How much are you raising? <span class="req">*</span></label>
+            <input type="text" name="raise-amount" class="pd-input" id="pd-raise" placeholder="e.g. ₹2 Cr, $500K" />
+            <div class="pd-error" id="err-pd-raise">Please enter the amount</div>
+          </div>
+          <div class="pd-field">
+            <label class="pd-label">Fundraising timeline <span class="req">*</span></label>
+            <select name="raise-timeline" class="pd-select" id="pd-timeline">
+              <option value="">Select…</option>
+              <option value="immediate">Within 1 month</option>
+              <option value="1-3-months">1–3 months</option>
+              <option value="3-6-months">3–6 months</option>
+              <option value="6-plus-months">6+ months</option>
+            </select>
+            <div class="pd-error" id="err-pd-timeline">Please select a timeline</div>
+          </div>
+        </div>
+        <div class="pd-field">
+          <label class="pd-label">What will you use the funds for? <span class="req">*</span></label>
+          <textarea name="fund-usage" class="pd-textarea tall" id="pd-usage" placeholder="List top 3–4 uses with % allocation&#10;e.g. Product development 40%, Marketing 30%, Team hiring 20%, Ops 10%"></textarea>
+          <div class="pd-error" id="err-pd-usage">Please describe fund usage</div>
+        </div>
+        <div class="pd-field">
+          <label class="pd-label">Who are you targeting?</label>
+          <div class="pd-check-group">
+            <label class="pd-check-item"><input type="checkbox" name="investor-target[]" value="Angel Investors" /><div class="pd-check-box"></div><span class="pd-check-label">Angel Investors</span></label>
+            <label class="pd-check-item"><input type="checkbox" name="investor-target[]" value="VC Funds" /><div class="pd-check-box"></div><span class="pd-check-label">VC Funds</span></label>
+            <label class="pd-check-item"><input type="checkbox" name="investor-target[]" value="Corporate / Strategic Investors" /><div class="pd-check-box"></div><span class="pd-check-label">Corporate / Strategic Investors</span></label>
+            <label class="pd-check-item"><input type="checkbox" name="investor-target[]" value="Accelerators / Incubators" /><div class="pd-check-box"></div><span class="pd-check-label">Accelerators / Incubators</span></label>
+            <label class="pd-check-item"><input type="checkbox" name="investor-target[]" value="Other" /><div class="pd-check-box"></div><span class="pd-check-label">Other</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Existing Materials -->
+      <div class="pd-subsection">
+        <div class="pd-subsection-title">Existing Materials</div>
+        <div class="pd-field">
+          <label class="pd-label">Do you have an existing pitch deck?</label>
+          <div class="pd-radio-group pd-radio-inline">
+            <label class="pd-radio-item" onclick="pdRadio(this,'has-existing-deck')">
+              <input type="radio" name="has-existing-deck" value="yes" /><div class="pd-radio-dot"></div><span class="pd-radio-label">Yes</span>
+            </label>
+            <label class="pd-radio-item selected" onclick="pdRadio(this,'has-existing-deck')">
+              <input type="radio" name="has-existing-deck" value="no" checked /><div class="pd-radio-dot"></div><span class="pd-radio-label">No</span>
+            </label>
+          </div>
+          <p class="pd-helper">If yes, share a link in the Additional Information field below</p>
+        </div>
+        <div class="pd-field">
+          <label class="pd-label">Do you have brand guidelines / a logo?</label>
+          <div class="pd-radio-group pd-radio-inline">
+            <label class="pd-radio-item" onclick="pdRadio(this,'has-brand')">
+              <input type="radio" name="has-brand" value="yes" /><div class="pd-radio-dot"></div><span class="pd-radio-label">Yes</span>
+            </label>
+            <label class="pd-radio-item selected" onclick="pdRadio(this,'has-brand')">
+              <input type="radio" name="has-brand" value="no" checked /><div class="pd-radio-dot"></div><span class="pd-radio-label">No</span>
+            </label>
+          </div>
+          <p class="pd-helper">If yes, share a link in the Additional Information field below</p>
+        </div>
+      </div>
+
+      <!-- Design & Delivery -->
+      <div class="pd-subsection">
+        <div class="pd-subsection-title">Design & Delivery</div>
+        <div class="pd-grid-2">
+          <div class="pd-field">
+            <label class="pd-label">Design style preference</label>
+            <select name="design-style" class="pd-select">
+              <option value="">No specific preference</option>
+              <option value="minimal">Minimal & Clean</option>
+              <option value="bold">Bold & Visual</option>
+              <option value="corporate">Corporate & Professional</option>
+              <option value="creative">Creative & Unique</option>
+            </select>
+          </div>
+          <div class="pd-field">
+            <label class="pd-label">Expected number of slides</label>
+            <select name="slide-count" class="pd-select">
+              <option value="">Not sure</option>
+              <option value="10-12">10–12 slides (Concise)</option>
+              <option value="15-18">15–18 slides (Standard)</option>
+              <option value="20-plus">20+ slides (Comprehensive)</option>
+            </select>
+          </div>
+        </div>
+        <div class="pd-grid-2">
+          <div class="pd-field">
+            <label class="pd-label">When do you need this by? <span class="req">*</span></label>
+            <input type="date" name="deadline" class="pd-input" id="pd-deadline" />
+            <div class="pd-error" id="err-pd-deadline">Please select a deadline</div>
+          </div>
+          <div class="pd-field">
+            <label class="pd-label">Preferred format</label>
+            <select name="format-preference" class="pd-select">
+              <option value="ppt">PowerPoint</option>
+              <option value="google-slides">Google Slides</option>
+              <option value="both">Both</option>
+            </select>
+          </div>
+        </div>
+        <div class="pd-field">
+          <label class="pd-label">Any decks you admire? <span class="opt">(optional)</span></label>
+          <input type="text" name="inspiration" class="pd-input" placeholder="Share links to examples if you have them" />
+        </div>
+      </div>
+
+      <!-- Budget & Additional -->
+      <div class="pd-subsection">
+        <div class="pd-subsection-title">Budget & Additional Information</div>
+        <div class="pd-grid-2">
+          <div class="pd-field">
+            <label class="pd-label">Budget for this project <span class="opt">(optional)</span></label>
+            <select name="budget" class="pd-select">
+              <option value="">Prefer not to say</option>
+              <option value="under-25k">Under ₹25,000</option>
+              <option value="25k-50k">₹25,000 – ₹50,000</option>
+              <option value="50k-1l">₹50,000 – ₹1,00,000</option>
+              <option value="1l-plus">₹1,00,000+</option>
+              <option value="not-sure">Not sure, need guidance</option>
+            </select>
+          </div>
+          <div class="pd-field">
+            <label class="pd-label">Have you worked with a pitch deck designer before?</label>
+            <div class="pd-radio-group pd-radio-inline">
+              <label class="pd-radio-item" onclick="pdRadio(this,'previous-designer')">
+                <input type="radio" name="previous-designer" value="yes" /><div class="pd-radio-dot"></div><span class="pd-radio-label">Yes</span>
+              </label>
+              <label class="pd-radio-item selected" onclick="pdRadio(this,'previous-designer')">
+                <input type="radio" name="previous-designer" value="no" checked /><div class="pd-radio-dot"></div><span class="pd-radio-label">No</span>
+              </label>
             </div>
+          </div>
+        </div>
+        <div class="pd-field">
+          <label class="pd-label">Anything else we should know? <span class="opt">(optional)</span></label>
+          <textarea name="additional-info" class="pd-textarea tall" placeholder="Links to existing materials, specific requirements, questions, concerns…"></textarea>
+        </div>
+        <div class="pd-field">
+          <label class="pd-label">How did you hear about us? <span class="opt">(optional)</span></label>
+          <input type="text" name="referral" class="pd-input" placeholder="Google, Referral, LinkedIn…" />
+        </div>
+      </div>
 
-            <!-- Section 2: Company Basics -->
-            <div class="form-section">
-                <h2 class="section-title">2. Company Basics</h2>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="company-name">Company/Startup Name *</label>
-                        <input type="text" id="company-name" name="company-name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="website">Website (if exists)</label>
-                        <input type="url" id="website" name="website" placeholder="https://...">
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="industry">Industry/Sector *</label>
-                        <input type="text" id="industry" name="industry" placeholder="e.g., EdTech, FinTech, Healthcare" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="stage">Current Stage *</label>
-                        <select id="stage" name="stage" required>
-                            <option value="">Select stage...</option>
-                            <option value="idea">Idea Stage</option>
-                            <option value="mvp">MVP/Prototype</option>
-                            <option value="early-revenue">Early Revenue (<₹50L)</option>
-                            <option value="scaling">Scaling (₹50L-5Cr)</option>
-                            <option value="growth">Growth Stage (>₹5Cr)</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="one-liner">One-line description of what you do *</label>
-                    <input type="text" id="one-liner" name="one-liner" placeholder="e.g., Uber for X, Airbnb for Y" required>
-                </div>
-            </div>
+      <div class="pd-nav">
+        <button type="button" class="pd-btn-back" onclick="pdBack(4)">← Back</button>
+        <button type="submit" class="pd-btn-submit">Submit Brief →</button>
+      </div>
+    </div>
 
-            <!-- Section 3: The Problem -->
-            <div class="form-section">
-                <h2 class="section-title">3. The Problem You're Solving</h2>
-                
-                <div class="form-group">
-                    <label for="problem">What problem are you solving? *</label>
-                    <textarea id="problem" name="problem" rows="4" placeholder="Describe the problem clearly in 3-4 sentences" required></textarea>
-                    <span class="helper-text">Be specific. Investors need to understand why this problem matters.</span>
-                </div>
-                
-                <div class="form-group">
-                    <label for="target-customer">Who has this problem? (Target customer) *</label>
-                    <textarea id="target-customer" name="target-customer" rows="3" placeholder="e.g., SME owners in tier 2 cities, College students aged 18-24, B2B SaaS companies..." required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="market-size">How big is this market? *</label>
-                    <textarea id="market-size" name="market-size" rows="3" placeholder="Provide TAM/SAM/SOM if you have it, or rough estimates with sources" required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="current-alternatives">How do people solve this today? *</label>
-                    <textarea id="current-alternatives" name="current-alternatives" rows="3" placeholder="What alternatives or competitors exist?" required></textarea>
-                </div>
-            </div>
+    <!-- Thank You -->
+    <div class="pd-thankyou" id="pd-thankyou">
+      <div class="pd-thankyou-icon">✅</div>
+      <h2>Brief received.</h2>
+      <p>We've received your pitch deck brief and will review it within 24 hours. You'll receive a custom quote via email with timeline and pricing.</p>
+      <div class="pd-next-steps">
+        <h3>What Happens Next</h3>
+        <ol>
+          <li>We review your brief and assess complexity</li>
+          <li>You receive a detailed quote with timeline and pricing</li>
+          <li>Once confirmed, we start designing your deck</li>
+          <li>You receive Draft 1 for review</li>
+          <li>Two rounds of revisions</li>
+          <li>Final delivery with editable files</li>
+        </ol>
+      </div>
+      <a href="/" class="btn btn-primary" style="display:inline-block">Back to indieco →</a>
+    </div>
 
-            <!-- Section 4: Your Solution -->
-            <div class="form-section">
-                <h2 class="section-title">4. Your Solution</h2>
-                
-                <div class="form-group">
-                    <label for="solution">What is your product/service? *</label>
-                    <textarea id="solution" name="solution" rows="4" placeholder="Explain your solution in 3-4 sentences" required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="unique-value">What makes your solution unique? *</label>
-                    <textarea id="unique-value" name="unique-value" rows="3" placeholder="Why is your approach better than alternatives?" required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="demo-link">Do you have a demo/prototype/MVP?</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="has-demo" value="yes" onclick="showDemoLink()"> Yes
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="has-demo" value="no" onclick="hideDemoLink()" checked> No
-                        </label>
-                    </div>
-                    <input type="url" id="demo-link" name="demo-link" placeholder="https://..." style="display: none; margin-top: 0.5rem;">
-                </div>
-            </div>
-
-            <!-- Section 5: Business Model -->
-            <div class="form-section">
-                <h2 class="section-title">5. Business Model</h2>
-                
-                <div class="form-group">
-                    <label for="revenue-model">How do you make money? *</label>
-                    <textarea id="revenue-model" name="revenue-model" rows="3" placeholder="e.g., Subscription, Transaction fee, Freemium, B2B SaaS pricing..." required></textarea>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="pricing">What's your pricing?</label>
-                        <input type="text" id="pricing" name="pricing" placeholder="e.g., ₹999/month, 2% commission per transaction">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="current-revenue">Current monthly revenue (if any)</label>
-                        <input type="text" id="current-revenue" name="current-revenue" placeholder="e.g., ₹5L/month, Pre-revenue">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="unit-economics">Unit economics (CAC, LTV, if known)</label>
-                    <textarea id="unit-economics" name="unit-economics" rows="2" placeholder="Customer acquisition cost, Lifetime value, margins, etc."></textarea>
-                    <span class="helper-text">If you don't have this data yet, that's okay.</span>
-                </div>
-            </div>
-
-            <!-- Section 6: Traction & Metrics -->
-            <div class="form-section">
-                <h2 class="section-title">6. Traction & Metrics</h2>
-                
-                <div class="form-group">
-                    <label for="current-metrics">Current key metrics *</label>
-                    <textarea id="current-metrics" name="current-metrics" rows="4" placeholder="e.g., 5,000 users, 200 paying customers, 30% MoM growth, ₹10L revenue, etc. If pre-launch, mention pilot customers, LOIs, or validation." required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="milestones">Key milestones achieved so far</label>
-                    <textarea id="milestones" name="milestones" rows="3" placeholder="Product launched, First paying customer, Hit ₹1Cr ARR, Partnership with X, etc."></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="notable-customers">Notable customers/clients (if any)</label>
-                    <input type="text" id="notable-customers" name="notable-customers" placeholder="e.g., Tata, Reliance, IIT Delhi...">
-                </div>
-            </div>
-
-            <!-- Section 7: Market & Competition -->
-            <div class="form-section">
-                <h2 class="section-title">7. Market & Competition</h2>
-                
-                <div class="form-group">
-                    <label for="competitors">Who are your main competitors? *</label>
-                    <textarea id="competitors" name="competitors" rows="3" placeholder="List 3-5 direct and indirect competitors" required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="competitive-advantage">What's your competitive advantage? *</label>
-                    <textarea id="competitive-advantage" name="competitive-advantage" rows="3" placeholder="Why will you win? Technology, team, distribution, network effects, etc." required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="gtm-strategy">How will you acquire customers? *</label>
-                    <textarea id="gtm-strategy" name="gtm-strategy" rows="3" placeholder="Digital marketing, sales team, partnerships, community building, etc." required></textarea>
-                </div>
-            </div>
-
-            <!-- Section 8: Team -->
-            <div class="form-section">
-                <h2 class="section-title">8. Your Team</h2>
-                
-                <div class="form-group">
-                    <label for="founders">Founder details *</label>
-                    <textarea id="founders" name="founders" rows="5" placeholder="For each founder, provide: Name, Role, Brief background (1-2 sentences highlighting relevant experience)" required></textarea>
-                    <span class="helper-text">Example: "Rahul Sharma, CEO - 8 years at Google leading product teams. IIT Delhi CS grad."</span>
-                </div>
-                
-                <div class="form-group">
-                    <label for="team-photos">Do you have professional photos of the team?</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="has-photos" value="yes"> Yes, will provide
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="has-photos" value="no" checked> No, need help with this
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="advisors">Key advisors or notable team members (if any)</label>
-                    <textarea id="advisors" name="advisors" rows="2" placeholder="Names and credentials"></textarea>
-                </div>
-            </div>
-
-            <!-- Section 9: Financials -->
-            <div class="form-section">
-                <h2 class="section-title">9. Financials</h2>
-                
-                <div class="form-group">
-                    <label for="has-projections">Do you have financial projections?</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="has-projections" value="yes" onclick="showProjectionsUpload()"> Yes
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="has-projections" value="no" onclick="hideProjectionsUpload()" checked> No
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="has-projections" value="need-help" onclick="hideProjectionsUpload()"> No, need help creating them
-                        </label>
-                    </div>
-                    <textarea id="projections-details" name="projections-details" rows="3" placeholder="Describe your projections (3-5 year revenue, expenses, breakeven timeline)" style="display: none; margin-top: 0.5rem;"></textarea>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="burn-rate">Current monthly burn rate (if applicable)</label>
-                        <input type="text" id="burn-rate" name="burn-rate" placeholder="e.g., ₹5L/month">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="runway">Current runway (if applicable)</label>
-                        <input type="text" id="runway" name="runway" placeholder="e.g., 12 months">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 10: The Ask -->
-            <div class="form-section">
-                <h2 class="section-title">10. The Ask (Fundraising)</h2>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="raise-amount">How much are you raising? *</label>
-                        <input type="text" id="raise-amount" name="raise-amount" placeholder="e.g., ₹2 Cr, $500K" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="raise-timeline">Expected timeline for fundraising *</label>
-                        <select id="raise-timeline" name="raise-timeline" required>
-                            <option value="">Select timeline...</option>
-                            <option value="immediate">Immediately (within 1 month)</option>
-                            <option value="1-3-months">1-3 months</option>
-                            <option value="3-6-months">3-6 months</option>
-                            <option value="6-plus-months">6+ months</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="fund-usage">What will you use the funds for? *</label>
-                    <textarea id="fund-usage" name="fund-usage" rows="4" placeholder="List top 3-4 uses (e.g., Product development - 40%, Marketing - 30%, Team hiring - 20%, Operations - 10%)" required></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="investor-target">Who are you targeting? *</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="investor-target" value="angel-investors"> Angel Investors
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="investor-target" value="vc-funds"> VC Funds
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="investor-target" value="corporate-investors"> Corporate/Strategic Investors
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="investor-target" value="accelerators"> Accelerators/Incubators
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="investor-target" value="other"> Other
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 11: Existing Materials -->
-            <div class="form-section">
-                <h2 class="section-title">11. Existing Materials</h2>
-                
-                <div class="form-group">
-                    <label for="existing-deck">Do you have an existing pitch deck?</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="has-existing-deck" value="yes"> Yes
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="has-existing-deck" value="no" checked> No
-                        </label>
-                    </div>
-                    <span class="helper-text">If yes, please share the link (Google Drive, Dropbox, etc.) in the "Additional Information" section below</span>
-                </div>
-                
-                <div class="form-group">
-                    <label for="brand-materials">Do you have brand guidelines or a logo?</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="has-brand" value="yes"> Yes
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="has-brand" value="no" checked> No
-                        </label>
-                    </div>
-                    <span class="helper-text">If yes, please share the link in the "Additional Information" section below</span>
-                </div>
-            </div>
-
-            <!-- Section 12: Design Preferences -->
-            <div class="form-section">
-                <h2 class="section-title">12. Design & Delivery</h2>
-                
-                <div class="form-group">
-                    <label for="design-style">Design style preference</label>
-                    <select id="design-style" name="design-style">
-                        <option value="">No specific preference</option>
-                        <option value="minimal">Minimal & Clean</option>
-                        <option value="bold">Bold & Visual</option>
-                        <option value="corporate">Corporate & Professional</option>
-                        <option value="creative">Creative & Unique</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="slide-count">Expected number of slides</label>
-                    <select id="slide-count" name="slide-count">
-                        <option value="">Not sure</option>
-                        <option value="10-12">10-12 slides (Concise)</option>
-                        <option value="15-18">15-18 slides (Standard)</option>
-                        <option value="20-plus">20+ slides (Comprehensive)</option>
-                    </select>
-                </div>
-                
-           <div class="form-group">
-    <label for="deadline">When do you need this by? *</label>
-    <input type="date" id="deadline" name="deadline" required>
+  </form>
 </div>
 
-<div class="form-group">
-    <label for="format-preference">Preferred format</label>
-    <select id="format-preference" name="format-preference">
-        <option value="ppt">PowerPoint</option>
-        <option value="google-slides">Google Slides</option>
-        <option value="both">Both</option>
-    </select>
-</div>
-                
-                <div class="form-group">
-                    <label for="inspiration">Any competitor decks you admire? (optional)</label>
-                    <input type="text" id="inspiration" name="inspiration" placeholder="Share links if you have examples">
-                </div>
-            </div>
-
-            <!-- Section 13: Budget & Additional Info -->
-            <div class="form-section">
-                <h2 class="section-title">13. Budget & Additional Information</h2>
-                
-                <div class="form-group">
-                    <label for="budget">What's your budget for this project?</label>
-                    <select id="budget" name="budget">
-                        <option value="">Prefer not to say</option>
-                        <option value="under-25k">Under ₹25,000</option>
-                        <option value="25k-50k">₹25,000 - ₹50,000</option>
-                        <option value="50k-1l">₹50,000 - ₹1,00,000</option>
-                        <option value="1l-plus">₹1,00,000+</option>
-                        <option value="not-sure">Not sure, need guidance</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="previous-designer">Have you worked with a pitch deck designer before?</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="previous-designer" value="yes"> Yes
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="previous-designer" value="no" checked> No
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="additional-info">Anything else we should know?</label>
-                    <textarea id="additional-info" name="additional-info" rows="4" placeholder="Links to existing materials, specific requirements, questions, concerns, etc."></textarea>
-                </div>
-                
-                <div class="form-group">
-                    <label for="referral">How did you hear about us?</label>
-                    <input type="text" id="referral" name="referral" placeholder="Google, Referral, LinkedIn, etc.">
-                </div>
-            </div>
-
-            <!-- Submit Button -->
-            <div class="form-section">
-                <button type="submit" class="btn btn-primary btn-large">
-                    Submit Brief
-                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                </button>
-                <p class="form-note">By submitting, you agree to receive a response from indieco within 24 hours</p>
-            </div>
-        </form>
-    </section>
-
-    <!-- Thank You Message (Hidden, shown after submission) -->
-    <section class="pitch-deck-thank-you" id="thank-you-message" style="display: none;">
-        <div class="thank-you-content">
-            <div class="thank-you-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-            </div>
-            <h2>Thank You!</h2>
-            <p>We've received your pitch deck brief and will review it within 24 hours.</p>
-            <p>You'll receive a custom quote via email at <strong id="submitted-email"></strong></p>
-            <div class="next-steps-box">
-                <h3>What Happens Next?</h3>
-                <ol>
-                    <li>We review your brief and assess complexity</li>
-                    <li>You receive a detailed quote with timeline and pricing</li>
-                    <li>Once confirmed, we start designing your deck</li>
-                    <li>You receive Draft 1 for review</li>
-                    <li>Two rounds of revisions</li>
-                    <li>Final delivery with editable files</li>
-                </ol>
-            </div>
-            <a href="/" class="btn btn-secondary">Back to Home</a>
-        </div>
-    </section>
-</div>
+<!-- Checkbox interactivity -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.pd-check-item').forEach(function(item) {
+    item.addEventListener('click', function() {
+      var input = this.querySelector('input[type="checkbox"]');
+      input.checked = !input.checked;
+      this.classList.toggle('selected', input.checked);
+    });
+  });
+});
+</script>
 
 <script src="/js/pitch-deck.js"></script>
 {{ end }}
