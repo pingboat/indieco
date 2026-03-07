@@ -20,11 +20,6 @@ function fffRadio(el, group) {
   el.querySelector('input').checked = true;
 }
 
-function fffCheck(el) {
-  el.classList.toggle('selected');
-  el.querySelector('input').checked = el.classList.contains('selected');
-}
-
 function fffShowError(id, show) {
   const el = document.getElementById(id);
   if (el) el.style.display = show ? 'block' : 'none';
@@ -113,6 +108,18 @@ function fffBack(step) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Checkbox group — attach change listeners
+  document.querySelectorAll('.fff-check-item input[type="checkbox"]').forEach(function(input) {
+    input.addEventListener('change', function() {
+      var item = this.closest('.fff-check-item');
+      if (this.checked) {
+        item.classList.add('selected');
+      } else {
+        item.classList.remove('selected');
+      }
+    });
+  });
+
   const form = document.getElementById('fff-form');
   if (!form) return;
 
