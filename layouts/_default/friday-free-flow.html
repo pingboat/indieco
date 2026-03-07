@@ -1,0 +1,458 @@
+{{ define "main" }}
+
+<style>
+  .fff-hero {
+    background: linear-gradient(135deg, #1e2766 0%, #2d3a8c 100%);
+    padding: 5rem 1.5rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .fff-hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,153,51,0.06);
+    pointer-events: none;
+  }
+  .fff-badge {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #FF9933;
+    background: rgba(255,153,51,0.12);
+    border: 1px solid rgba(255,153,51,0.25);
+    padding: 5px 14px;
+    border-radius: 3px;
+    margin-bottom: 1.5rem;
+  }
+  .fff-hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+  }
+  .fff-hero h1 em { font-style: normal; color: #FF9933; }
+  .fff-accent {
+    width: 48px; height: 3px;
+    background: #FF9933;
+    margin: 0 auto 1.5rem;
+    border-radius: 2px;
+  }
+  .fff-hero-desc {
+    color: rgba(255,255,255,0.78);
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    max-width: 540px;
+    margin: 0 auto 1rem;
+  }
+  .fff-hero-meta {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.875rem;
+  }
+  .fff-progress-wrap {
+    display: flex;
+    gap: 6px;
+    max-width: 200px;
+    margin: 0 auto 2.5rem;
+  }
+  .fff-progress-pip {
+    flex: 1; height: 3px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 2px;
+    transition: background 0.3s ease;
+  }
+  .fff-progress-pip.done   { background: #FF9933; }
+  .fff-progress-pip.active { background: rgba(255,153,51,0.6); }
+
+  .fff-wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+  }
+  .fff-step {
+    display: none;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(30,39,102,0.08);
+    padding: 2.5rem 2.5rem 2rem;
+    margin-top: -2rem;
+  }
+  .fff-step.active { display: block; }
+  .fff-step-label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #FF9933;
+    margin-bottom: 0.375rem;
+  }
+  .fff-step-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e2766;
+    margin-bottom: 0.5rem;
+  }
+  .fff-step-desc {
+    font-size: 0.9375rem;
+    color: #78716c;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #f0efee;
+  }
+  .fff-field { margin-bottom: 1.5rem; }
+  .fff-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1c1917;
+    margin-bottom: 0.5rem;
+  }
+  .fff-label .req { color: #ef4444; margin-left: 2px; }
+  .fff-label .opt { color: #a8a29e; font-weight: 400; font-size: 0.8125rem; margin-left: 4px; }
+  .fff-input, .fff-select, .fff-textarea {
+    width: 100%;
+    border: 1.5px solid #e7e5e4;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    color: #1c1917;
+    background: #fafaf9;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+  }
+  .fff-input:focus, .fff-select:focus, .fff-textarea:focus {
+    outline: none;
+    border-color: #2d3a8c;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(45,58,140,0.08);
+  }
+  .fff-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+  .fff-textarea.tall { min-height: 140px; }
+  .fff-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2378716c' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+  .fff-radio-group, .fff-check-group { display: flex; flex-direction: column; gap: 0.625rem; }
+  .fff-radio-item, .fff-check-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid #e7e5e4;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    background: #fafaf9;
+  }
+  .fff-radio-item:hover, .fff-check-item:hover { border-color: #2d3a8c; background: #fff; }
+  .fff-radio-item input, .fff-check-item input { display: none; }
+  .fff-radio-item.selected, .fff-check-item.selected {
+    border-color: #2d3a8c;
+    background: rgba(45,58,140,0.04);
+  }
+  .fff-radio-dot {
+    width: 18px; height: 18px;
+    border: 2px solid #d6d3d1;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color 0.2s;
+  }
+  .fff-radio-item.selected .fff-radio-dot { border-color: #2d3a8c; }
+  .fff-radio-item.selected .fff-radio-dot::after {
+    content: ''; width: 8px; height: 8px;
+    background: #2d3a8c; border-radius: 50%;
+  }
+  .fff-check-box {
+    width: 18px; height: 18px;
+    border: 2px solid #d6d3d1;
+    border-radius: 4px;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .fff-check-item.selected .fff-check-box { border-color: #2d3a8c; background: #2d3a8c; }
+  .fff-check-item.selected .fff-check-box::after {
+    content: ''; width: 10px; height: 6px;
+    border-left: 2px solid #fff; border-bottom: 2px solid #fff;
+    transform: rotate(-45deg) translate(1px, -1px); display: block;
+  }
+  .fff-radio-label, .fff-check-label { font-size: 0.9375rem; color: #1c1917; }
+  .fff-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .fff-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #f0efee;
+  }
+  .fff-btn-back {
+    background: none; border: 1.5px solid #e7e5e4; border-radius: 8px;
+    padding: 0.75rem 1.5rem; font-family: var(--font-body); font-size: 0.9375rem;
+    color: #57534e; cursor: pointer; transition: border-color 0.2s, color 0.2s;
+  }
+  .fff-btn-back:hover { border-color: #2d3a8c; color: #2d3a8c; }
+  .fff-btn-next {
+    background: #2d3a8c; border: none; border-radius: 8px;
+    padding: 0.75rem 2rem; font-family: var(--font-body); font-size: 0.9375rem;
+    font-weight: 600; color: #fff; cursor: pointer; transition: background 0.2s, transform 0.1s;
+  }
+  .fff-btn-next:hover { background: #1e2766; transform: translateY(-1px); }
+  .fff-btn-submit {
+    background: linear-gradient(135deg, #FF9933, #e8821a); border: none; border-radius: 8px;
+    padding: 0.875rem 2.5rem; font-family: var(--font-body); font-size: 1rem;
+    font-weight: 700; color: #fff; cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    box-shadow: 0 4px 16px rgba(255,153,51,0.35);
+  }
+  .fff-btn-submit:hover { opacity: 0.92; transform: translateY(-1px); }
+  .fff-error { font-size: 0.8125rem; color: #ef4444; margin-top: 0.375rem; display: none; }
+  .fff-thankyou {
+    display: none; text-align: center;
+    background: #fff; border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(30,39,102,0.08);
+    padding: 4rem 2rem; margin-top: -2rem;
+  }
+  .fff-thankyou-icon {
+    width: 64px; height: 64px; background: rgba(255,153,51,0.1);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem; font-size: 1.75rem;
+  }
+  .fff-thankyou h2 { font-family: var(--font-display); font-size: 1.75rem; color: #1e2766; margin-bottom: 0.75rem; }
+  .fff-thankyou p { color: #57534e; font-size: 0.9375rem; line-height: 1.7; max-width: 420px; margin: 0 auto 2rem; }
+
+  @media (max-width: 640px) {
+    .fff-step { padding: 2rem 1.25rem 1.5rem; }
+    .fff-grid-2 { grid-template-columns: 1fr; }
+    .fff-hero { padding: 3.5rem 1.25rem 3rem; }
+  }
+</style>
+
+<section class="fff-hero">
+  <div class="fff-progress-wrap" id="fff-progress-wrap">
+    <div class="fff-progress-pip active" id="pip-1"></div>
+    <div class="fff-progress-pip" id="pip-2"></div>
+    <div class="fff-progress-pip" id="pip-3"></div>
+  </div>
+  <div style="max-width:580px;margin:0 auto">
+    <span class="fff-badge">Limited Sessions &nbsp;·&nbsp; By Application</span>
+    <h1>Friday<br><em>Free Flow</em></h1>
+    <div class="fff-accent"></div>
+    <p class="fff-hero-desc">1 hour. 1 founder. Real conversation.<br>If you're building and at a decision point — apply.</p>
+    <p class="fff-hero-meta">Private &nbsp;·&nbsp; One-on-one &nbsp;·&nbsp; Hosted by indieco</p>
+  </div>
+</section>
+
+<div class="fff-wrap">
+  <form id="fff-form" name="friday-free-flow" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="friday-free-flow" />
+    <input type="hidden" name="bot-field" />
+
+    <!-- STEP 1 -->
+    <div class="fff-step active" id="fff-step-1">
+      <div class="fff-step-label">Step 1 of 3</div>
+      <div class="fff-step-title">About You</div>
+      <p class="fff-step-desc">Let's start with who you are.</p>
+
+      <div class="fff-grid-2">
+        <div class="fff-field">
+          <label class="fff-label">Full Name <span class="req">*</span></label>
+          <input type="text" name="name" class="fff-input" id="fff-name" placeholder="Your name" />
+          <div class="fff-error" id="err-name">Please enter your name</div>
+        </div>
+        <div class="fff-field">
+          <label class="fff-label">Phone Number <span class="req">*</span></label>
+          <input type="tel" name="phone" class="fff-input" id="fff-phone" placeholder="+91 98765 43210" />
+          <div class="fff-error" id="err-phone">Please enter your phone number</div>
+        </div>
+      </div>
+      <div class="fff-field">
+        <label class="fff-label">Email Address <span class="req">*</span></label>
+        <input type="email" name="email" class="fff-input" id="fff-email" placeholder="you@yourbusiness.com" />
+        <div class="fff-error" id="err-email">Please enter a valid email</div>
+      </div>
+      <div class="fff-grid-2">
+        <div class="fff-field">
+          <label class="fff-label">City / Location <span class="req">*</span></label>
+          <input type="text" name="city" class="fff-input" id="fff-city" placeholder="e.g. Mumbai" />
+          <div class="fff-error" id="err-city">Please enter your city</div>
+        </div>
+        <div class="fff-field">
+          <label class="fff-label">LinkedIn Profile <span class="opt">(optional)</span></label>
+          <input type="text" name="linkedin" class="fff-input" placeholder="linkedin.com/in/yourname" />
+        </div>
+      </div>
+      <div class="fff-field">
+        <label class="fff-label">Instagram / Website <span class="opt">(optional)</span></label>
+        <input type="text" name="instagram_website" class="fff-input" placeholder="@yourhandle or yourwebsite.com" />
+      </div>
+      <div class="fff-nav">
+        <div></div>
+        <button type="button" class="fff-btn-next" onclick="fffNext(1)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="fff-step" id="fff-step-2">
+      <div class="fff-step-label">Step 2 of 3</div>
+      <div class="fff-step-title">About Your Business</div>
+      <p class="fff-step-desc">Help us understand where you are and what you're building.</p>
+
+      <div class="fff-grid-2">
+        <div class="fff-field">
+          <label class="fff-label">Business Name <span class="req">*</span></label>
+          <input type="text" name="business_name" class="fff-input" id="fff-business" placeholder="Your venture" />
+          <div class="fff-error" id="err-business">Please enter your business name</div>
+        </div>
+        <div class="fff-field">
+          <label class="fff-label">Industry / Category <span class="req">*</span></label>
+          <select name="industry" class="fff-select" id="fff-industry">
+            <option value="">Select one</option>
+            <option>D2C / Consumer Brand</option>
+            <option>SaaS / Tech</option>
+            <option>Services / Consulting</option>
+            <option>Creator Economy</option>
+            <option>Social Enterprise / NGO</option>
+            <option>Food & Beverage</option>
+            <option>Health & Wellness</option>
+            <option>Education / EdTech</option>
+            <option>Real Estate</option>
+            <option>Manufacturing / Textiles</option>
+            <option>Media / Content</option>
+            <option>Other</option>
+          </select>
+          <div class="fff-error" id="err-industry">Please select an industry</div>
+        </div>
+      </div>
+
+      <div class="fff-field">
+        <label class="fff-label">Stage of Business <span class="req">*</span></label>
+        <div class="fff-radio-group">
+          <label class="fff-radio-item" onclick="fffRadio(this,'stage')"><input type="radio" name="stage" value="Idea stage" /><div class="fff-radio-dot"></div><span class="fff-radio-label">Idea stage</span></label>
+          <label class="fff-radio-item" onclick="fffRadio(this,'stage')"><input type="radio" name="stage" value="Pre-revenue" /><div class="fff-radio-dot"></div><span class="fff-radio-label">Pre-revenue</span></label>
+          <label class="fff-radio-item" onclick="fffRadio(this,'stage')"><input type="radio" name="stage" value="Early revenue" /><div class="fff-radio-dot"></div><span class="fff-radio-label">Early revenue</span></label>
+          <label class="fff-radio-item" onclick="fffRadio(this,'stage')"><input type="radio" name="stage" value="Scaling phase" /><div class="fff-radio-dot"></div><span class="fff-radio-label">Scaling phase</span></label>
+          <label class="fff-radio-item" onclick="fffRadio(this,'stage')"><input type="radio" name="stage" value="Established business" /><div class="fff-radio-dot"></div><span class="fff-radio-label">Established business</span></label>
+        </div>
+        <div class="fff-error" id="err-stage">Please select your stage</div>
+      </div>
+
+      <div class="fff-grid-2">
+        <div class="fff-field">
+          <label class="fff-label">How long have you been running this? <span class="req">*</span></label>
+          <input type="text" name="business_age" class="fff-input" id="fff-age" placeholder="e.g. 2 years" />
+          <div class="fff-error" id="err-age">Please answer this</div>
+        </div>
+        <div class="fff-field">
+          <label class="fff-label">Team Size <span class="opt">(optional)</span></label>
+          <select name="team_size" class="fff-select">
+            <option value="">Select one</option>
+            <option>Solo founder</option>
+            <option>2–5 people</option>
+            <option>6–15 people</option>
+            <option>15+ people</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="fff-field">
+        <label class="fff-label">Current Monthly Revenue Range <span class="opt">(optional)</span></label>
+        <div class="fff-radio-group">
+          <label class="fff-radio-item" onclick="fffRadio(this,'revenue')"><input type="radio" name="revenue" value="Not generating revenue yet" /><div class="fff-radio-dot"></div><span class="fff-radio-label">Not generating revenue yet</span></label>
+          <label class="fff-radio-item" onclick="fffRadio(this,'revenue')"><input type="radio" name="revenue" value="Under ₹50K" /><div class="fff-radio-dot"></div><span class="fff-radio-label">Under ₹50K / month</span></label>
+          <label class="fff-radio-item" onclick="fffRadio(this,'revenue')"><input type="radio" name="revenue" value="₹50K–₹2L" /><div class="fff-radio-dot"></div><span class="fff-radio-label">₹50K – ₹2L / month</span></label>
+          <label class="fff-radio-item" onclick="fffRadio(this,'revenue')"><input type="radio" name="revenue" value="₹2L–₹10L" /><div class="fff-radio-dot"></div><span class="fff-radio-label">₹2L – ₹10L / month</span></label>
+          <label class="fff-radio-item" onclick="fffRadio(this,'revenue')"><input type="radio" name="revenue" value="₹10L+" /><div class="fff-radio-dot"></div><span class="fff-radio-label">₹10L+ / month</span></label>
+        </div>
+      </div>
+
+      <div class="fff-field">
+        <label class="fff-label">Give us a short overview of your business <span class="req">*</span></label>
+        <textarea name="business_overview" class="fff-textarea tall" id="fff-overview" placeholder="What do you do, who do you serve, and what makes it distinct?"></textarea>
+        <div class="fff-error" id="err-overview">Please share a brief overview</div>
+      </div>
+      <div class="fff-field">
+        <label class="fff-label">What are your goals for the next 6–12 months? <span class="req">*</span></label>
+        <textarea name="goals" class="fff-textarea" id="fff-goals" placeholder="Where are you trying to get to?"></textarea>
+        <div class="fff-error" id="err-goals">Please share your goals</div>
+      </div>
+
+      <div class="fff-nav">
+        <button type="button" class="fff-btn-back" onclick="fffBack(2)">← Back</button>
+        <button type="button" class="fff-btn-next" onclick="fffNext(2)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="fff-step" id="fff-step-3">
+      <div class="fff-step-label">Step 3 of 3</div>
+      <div class="fff-step-title">The Real Conversation</div>
+      <p class="fff-step-desc">This is what the hour is actually for. Be specific — the more honest you are here, the more useful the session will be.</p>
+
+      <div class="fff-field">
+        <label class="fff-label">What is your key ask from this session? <span class="req">*</span></label>
+        <textarea name="key_ask" class="fff-textarea tall" id="fff-ask" placeholder="What do you most want to walk away with?"></textarea>
+        <div class="fff-error" id="err-ask">Please share your key ask</div>
+      </div>
+
+      <div class="fff-field">
+        <label class="fff-label">What specific support or guidance are you looking for? <span class="req">*</span></label>
+        <div class="fff-check-group">
+          <label class="fff-check-item" onclick="fffCheck(this)"><input type="checkbox" name="support[]" value="Growth strategy" /><div class="fff-check-box"></div><span class="fff-check-label">Growth strategy</span></label>
+          <label class="fff-check-item" onclick="fffCheck(this)"><input type="checkbox" name="support[]" value="Positioning & brand clarity" /><div class="fff-check-box"></div><span class="fff-check-label">Positioning & brand clarity</span></label>
+          <label class="fff-check-item" onclick="fffCheck(this)"><input type="checkbox" name="support[]" value="Pricing / revenue model" /><div class="fff-check-box"></div><span class="fff-check-label">Pricing / revenue model</span></label>
+          <label class="fff-check-item" onclick="fffCheck(this)"><input type="checkbox" name="support[]" value="Scaling challenges" /><div class="fff-check-box"></div><span class="fff-check-label">Scaling challenges</span></label>
+          <label class="fff-check-item" onclick="fffCheck(this)"><input type="checkbox" name="support[]" value="Fundraising readiness" /><div class="fff-check-box"></div><span class="fff-check-label">Fundraising readiness</span></label>
+          <label class="fff-check-item" onclick="fffCheck(this)"><input type="checkbox" name="support[]" value="Hiring / team building" /><div class="fff-check-box"></div><span class="fff-check-label">Hiring / team building</span></label>
+          <label class="fff-check-item" onclick="fffCheck(this)"><input type="checkbox" name="support[]" value="Marketing & brand" /><div class="fff-check-box"></div><span class="fff-check-label">Marketing & brand</span></label>
+          <label class="fff-check-item" onclick="fffCheck(this)"><input type="checkbox" name="support[]" value="Personal founder journey" /><div class="fff-check-box"></div><span class="fff-check-label">Personal founder journey</span></label>
+          <label class="fff-check-item" onclick="fffCheck(this)"><input type="checkbox" name="support[]" value="Confidence / decision-making" /><div class="fff-check-box"></div><span class="fff-check-label">Confidence / decision-making</span></label>
+          <label class="fff-check-item" onclick="fffCheck(this)"><input type="checkbox" name="support[]" value="Other" /><div class="fff-check-box"></div><span class="fff-check-label">Other</span></label>
+        </div>
+        <div class="fff-error" id="err-support">Please select at least one</div>
+      </div>
+
+      <div class="fff-field">
+        <label class="fff-label">What is the ONE biggest challenge you are currently facing? <span class="req">*</span></label>
+        <textarea name="biggest_challenge" class="fff-textarea tall" id="fff-challenge" placeholder="Be specific — what keeps you up at night?"></textarea>
+        <div class="fff-error" id="err-challenge">Please share your biggest challenge</div>
+      </div>
+      <div class="fff-field">
+        <label class="fff-label">If this session goes really well, what would you want by the end of the hour? <span class="opt">(optional)</span></label>
+        <textarea name="desired_outcome" class="fff-textarea" placeholder="A decision made? A direction confirmed? A framework to work with?"></textarea>
+      </div>
+      <div class="fff-field">
+        <label class="fff-label">Anything else you'd like Leon to know before the conversation? <span class="opt">(optional)</span></label>
+        <textarea name="anything_else" class="fff-textarea" placeholder="Context, constraints, or anything relevant…"></textarea>
+      </div>
+
+      <div class="fff-nav">
+        <button type="button" class="fff-btn-back" onclick="fffBack(3)">← Back</button>
+        <button type="submit" class="fff-btn-submit">Submit Application →</button>
+      </div>
+    </div>
+
+    <!-- Thank You -->
+    <div class="fff-thankyou" id="fff-thankyou">
+      <div class="fff-thankyou-icon">🙌</div>
+      <h2>Application received.</h2>
+      <p>Thank you for applying to Friday Free Flow. Applications are reviewed personally. If there's a strong fit, you'll hear from us within 3 working days with next steps.</p>
+      <a href="/" class="btn btn-primary" style="display:inline-block">Back to indieco →</a>
+    </div>
+
+  </form>
+</div>
+
+<script src="/js/friday-free-flow.js"></script>
+{{ end }}
